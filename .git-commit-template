@@ -1,0 +1,36 @@
+# <type>:
+# <--------------------50 CHARS-------------------->
+
+# <body>
+# <-------------------------------72 CHARS------------------------------->
+
+# Do not exceed line length specified by line length delimiter
+# The following line is a line length delimiter of 50 chars
+# <--------------------50 CHARS-------------------->
+# For the title of the commit, add the commit type # followed by a colon. Then,
+# answer the following question: "If applied, this commmit will..". Limit the 
+# title length, including the type tag, to 50 characters. Example:
+#
+# docs: Add an "Upgrades" section to the README
+# 
+# For the body of the commit message, be as verbose as you like, but limit each
+# line to 72 characters
+
+# --- COMMIT END ---
+# Type can be 
+#    feat     (new feature)
+#    fix      (bug fix)
+#    refactor (refactoring production code)
+#    style    (formatting, missing semi colons, etc; no code change)
+#    docs     (changes to documentation)
+#    test     (adding or refactoring tests; no production code change)
+#    chore    (updating grunt tasks etc; no production code change)
+# --------------------
+# Remember to
+#   - Capitalize the subject line
+#   - Use the imperative mood in the subject line
+#   - Do not end the subject line with a period
+#   - Separate subject from body with a blank line
+#   - Use the body to explain what and why vs. how
+#   - Can use multiple lines with "-" for bullet points in body
+# --------------------

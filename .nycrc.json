@@ -1,0 +1,21 @@
+{
+    "all": true,
+    "branches": 100,
+    "include": [
+        "emulators/**/*.js",
+        "src/**/*.js",
+        "tools/**/*.js"
+    ],
+    "exclude": [
+        "test/*.js"
+    ],
+    "excludeNodeModules": true,
+    "functions": 100,
+    "lines": 100,
+    "reportDir": ".coverage",
+    "statements": 100,
+    "reporter": [
+        "html",
+        "text"
+    ]
+}

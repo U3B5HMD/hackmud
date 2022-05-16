@@ -1,0 +1,28 @@
+{
+    "opts": {
+        "destination": "./docs/",
+        "readme": "./README.md",
+        "recurse": true,
+        "template": "./node_modules/docdash"
+    },
+    "plugins": [],
+    "recurseDepth": 10,
+    "source": {
+        "excludePattern": ".spec.js",
+        "include": [
+            "./emulators",
+            "./README.md",
+            "./src/",
+            "./tools"
+        ]
+    },
+    "sourceType": "module",
+    "tags": {
+        "allowUnknownTags": true,
+        "dictionaries": [
+            "jsdoc",
+            "closure"
+        ]
+    },
+    "title": "Hackmud"
+}

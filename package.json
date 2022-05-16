@@ -1,0 +1,43 @@
+{
+  "name": "hackmud",
+  "version": "1.0.0",
+  "description": "",
+  "main": "start.js",
+  "engines": {
+    "node": ">=16.13.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.9",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/register": "^7.17.7",
+    "@types/mocha": "^9.1.0",
+    "babel-preset-minify": "^0.5.1",
+    "chai": "^4.3.6",
+    "chalk": "^5.0.1",
+    "docdash": "^1.2.0",
+    "eslint": "^8.13.0",
+    "eslint-plugin-import": "^2.26.0",
+    "inquirer": "^8.2.4",
+    "jsdoc": "^3.6.10",
+    "mocha": "^10.0.0",
+    "nyc": "^15.1.0",
+    "sinon": "^14.0.0",
+    "sinon-chai": "^3.7.0"
+  },
+  "scripts": {
+    "coverage": "nyc npm run test",
+    "docs": "jsdoc -c .jsdocrc.json",
+    "prestart": "npm ci",
+    "start": "node ./start.js",
+    "lint": "eslint src/**/* test/**/*",
+    "prepublish": "rm -rf dist/**/scripts/*",
+    "publish": "node ./devops/publish",
+    "test": "mocha"
+  },
+  "keywords": [
+    "hackmud"
+  ],
+  "author": "Levi Hackwith <levi.hackwith@gmail.com>",
+  "license": "CC BY-SA 3.0"
+}

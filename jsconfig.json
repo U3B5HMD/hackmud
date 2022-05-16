@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "checkJs": true,
+        "declaration": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "inlineSourceMap": true,
+        "lib": [
+            "dom",
+            "es2018"
+        ],
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "noImplicitAny": false,
+        "noImplicitReturns": true,
+        "noUnusedLocals": false,
+        "outDir": "dist",
+        "removeComments": true,
+        "strict": true,
+        "target": "es6"
+    }
+}
