@@ -470,7 +470,7 @@ chars: 3763
 
 Your "class" is based on what type of upgrades you have loaded and how many.
 
-**Weaver:** Most of your upgrades are `architect` class 
+**weaver:** Most of your upgrades are `architect` class 
 
 **turtle:** Most of your upgrades are locks.
 
