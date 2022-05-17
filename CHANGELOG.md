@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
   - Locks Guide
+  - Common uses cases for `#db` commands in SCRIPTING_GUIDE
 
 ### Fixed
   - Typos in README

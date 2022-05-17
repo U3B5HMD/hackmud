@@ -352,9 +352,67 @@ milliseconds).
 ## Database Commands
 
 Every Hackmud user has access to a Mongo DB that they can use to store data for
-later retrieval. The main reason you would store data in Mongo is to save
-characters in your script. For example, you might store the list of unlock
-commands.
+later retrieval. The two mains reason you would store data in Mongo is to save
+characters in your script and to deal with slow locs.
+
+You can save characters in your script by storing commonly used constants in the
+database instead of in your code:
+
+```javascript
+#db.u1(
+    { _id: "constants" },
+    {
+        _id: "constants",
+        unlocks: [
+            "unlock",
+            "release",
+            "open"
+        ],
+        digits: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ],
+        primes: [
+            2, 3, 5, 7, 11, 13, 17,
+            19, 23, 29, 31, 37, 41,
+            43, 47, 53, 59, 61, 67,
+            71, 73, 79, 83, 89, 97
+        ],
+        colors: [
+            "red",
+            "orange",
+            "yellow",
+            "lime",
+            "green",
+            "cyan",
+            "blue",
+            "purple"
+        ]
+    }
+);
+
+return #db.f({ _id: "constants" }).array();
+```
+
+Additionally, if your script keeps timing out while trying to breach a loc, you
+could store known correct answers for a loc in the database between attempts.
+That way, the only calculations you'll need to do on the subsequent run is for
+the answers you don't already have:
+
+```javascript
+function cracker(context, args) {
+    let answers = {},
+    lib = #fs.sys.lib(),
+    prevAnswers = #db.f(_id: "prev_answers").first();
+
+    if(prevAnswers) {
+        answers = prevAnswers;
+    }
+
+    if(!can_continue_execution(Date.now() - _START)) {
+        #db.i{_id: "prev_answers", v: answers};
+    }
+    
+    // Continue breaking lock
+}
+```
 
 ### Create New Documents
 
