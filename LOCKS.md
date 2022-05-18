@@ -4,7 +4,6 @@ This document contains descriptions and spoilers for every lock I've encountered
 in the game.
 
 ## Table of Contents
-
 - [Tier 1](#tier-1)
   * [EZ_21](#ez-21)
   * [EZ_35](#ez-35)
@@ -55,7 +54,7 @@ abandoned_jrttl_walker.info_xk490x{EZ_40: "release", ez_prime: 31}
 ```
 
 The complete list of possible prime numbers is: 2, 3, 5, 7, 11, 13, 17, 19, 23,
-29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97.
+29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, and 97.
 
 ### C001
 
@@ -144,7 +143,7 @@ To calculate the value of `c003_triad_1`, use the following formula.
 ```
 
 If `red` has an index of 0, `green` has an index of 4. `(4+5) % 8` equals `1`
-and `(4+3) % 8` equals `7` which means the first complementary colors of `green`
+and `(4+3) % 8` equals `7` which means the complementary colors of `green`
 are `orange` and `purple`.
 
 An attempt at breaking an `c002` lock might look something like this:
@@ -183,14 +182,14 @@ This will show you all the fields stored in the security k3y upgrade, including
 any passwords.
 
 Here are all the possible passwords for a Tier 1 `l0cket` lock:
-  - vc2c7q
-  - cmppiq
-  - tvfkyq
-  - uphlaw
-  - 6hh8xw
-  - xwz7ja
-  - sa23uw
-  - 72umy0
+  - `vc2c7q`
+  - `cmppiq`
+  - `tvfkyq`
+  - `uphlaw`
+  - `6hh8xw`
+  - `xwz7ja`
+  - `sa23uw`
+  - `72umy0`
 
 An attempt at breaking a `l0cket` lock might look something like this:
 

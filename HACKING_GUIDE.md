@@ -1,56 +1,68 @@
 # Hacking Guide
 
 This is a guide for how to find NPC locs and break into them to earn [GC][01].
+This guide assumes that you have already configured the repository to connect
+to your Hackmud users' scripts folders and have run `npm run publish` to publish
+all existing scripts to your users' accounts. If you haven't done this yet,
+review the instructions in the README.
 
-## Spoiler Warning
+## Table of Contents
+- [Sectors](#sectors)
+- [How to Find Tier 1 Corporations in a Sector](#how-to-find-tier-1-corporations-in-a-sector)
+- [How to Hack a Tier 1 Corporation](#how-to-hack-a-tier-1-corporation)
+  * [Get the Key and Secret Page](#get-the-key-and-secret-page)
+  * [Get the Password](#get-the-password)
+  * [Get a List of Projects](#get-a-list-of-projects)
+  * [Search the Projects for Locs](#search-the-projects-for-locs)
+- [How to Breach an NPC](#how-to-breach-an-npc)
+- [How to Determine NPC Difficulty and Upgrades](#how-to-determine-npc-difficulty-and-upgrades)
+- [A List of Corporations](#a-list-of-corporations)
+- [Quickly Farm GC from Tier 1 NPCs](#quickly-farm-gc-from-tier-1-npcs)
+  * [Harvest the Locs](#harvest-the-locs)
+  * [Prepare the Commands](#prepare-the-commands)
+  * [Initialize a Hardline](#initialize-a-hardline)
+  * [Run the Commands](#run-the-commands)
 
-This guide is _complete_. This means that it guides you through everything you
-need to know about breaching corporations and tier 1 NPCs and leaves nothing
-for the player to discover for themselves.
+## Sectors
 
-Additionally, the end of this guide contains a substantial list of tier 1 NPCs
-to let you bypass hacking a corporation completely and go straight to cracking
-NPCs.
+A sector is essentially a folder that contains one or more scripts. Each script
+in a sector will have the same sec level. For example, when you run
+`scripts.fullsec` each script in the listed sectors will have a sec level of
+`FULLSEC`. Sectors contain both (public) user scripts and NPC corporation
+scripts. Sectors do not contain locs.
 
-## Hacking Corporations
+In order to hack a corporation, you must first find it's script inside of a
+sector.
 
-The easiest way to gain GC is to hack NPC corps.
+## How to Find Tier 1 Corporations in a Sector
 
-### Searching Sectors for Corps
+In order to list all the scripts in a sector, you have to join it first:
 
-1. Get a list of [FULLSEC][02] sectors by running `scripts.fullsec`
-1. Choose a sector to search
-1. Join the sector by running `chats.join(channel: "<sector>")`
-1. List the scripts in that sector by running `scripts.fullsec{sector: <sector>}`
-1. Look for scripts ending in `.public`
-
-#### Example Input/Output
-
-```
-scripts.fullsec
-
-KIN_LAMBDA_2  
-CHAOS_LAMBDA_2
-FORM_LAMBDA_2 
-VOID_LAMBDA_1 
-DATA_LAMBDA_1 
-
-chats.join{channel: "FORM_LAMBDA_2"}
-
-scripts.fullsec{sector: "FORM_LAMBDA_2"}
-
-crack.db
-xkcd.some_comic
-emucorp.public
-dtr.backup
+```javascript
+chats.join{channel: "<sector>"}
 ```
 
-In this example, the corp we want to hack is at `emucorp.public`
+Sectors count against the max numbers of channels you can join at a time. To
+leave a sector:
 
-### Searching Corps for Projects
+```javascript
+chats.leave{channel: "<sector>"}
+```
 
-Once you've found a corporation to hack, run the script: `emucorp.public`. 
-You'll see something like this:
+Tier 1 corporation scripts are always FULLSEC. To list out all FULLSEC scripts
+in a sector:
+
+```javascript
+scripts.fullsec{sector: "<sector>"}
+```
+
+Look for scripts that end in `.public`. Those are most likely going to be
+corporations.
+
+## How to Hack a Tier 1 Corporation
+
+Once you've found a corporation to hack, run the  without any parameters. You'll
+see something like this:
 
 ```
 #   /$$$$$$$$ /$$      /$$ /$$   /$$          /$$$$$$   /$$$$$$  /$$$$$$$  /$$$$$$$
@@ -68,15 +80,15 @@ Welcome to EMU-CORP public information script. Please refrain from engaging in c
 latest | strategy |
 ```
 
-This is the splash page of the corporation. Every tier 1 corporation has a
+This is the splash page of the corporation. Every Tier 1 corporation has a
 similar layout. The most important pieces of information are "latest | strategy
-|". These are the commands your going to use to find the passwords and projects
-needed to extract NPC locs from the corp. What we're missing right now is a
-`key`.
+|". These are the commands you're going to use to find the passwords and
+projects needed to extract NPC locs from the corp. What we're missing right now
+is a `key`.
 
-#### Get the Key and Secret Page
+### Get the Key and Secret Page
 
-Run `emucorp.public{}`. You should see something like this:
+Run `<corpname>.public{}`. You should see something like this:
 
 ```
 Please specify a command with command:"<command name>",
@@ -89,60 +101,71 @@ Now we know two important pieces of information:
 1. The `key` we need to use is `command`.
 1. The "secret" page is `employees`. 
 
-Run `emucorp.public{command: "employees"}`:
+Run `<corpname>.public{command: "employees"}`:
 
 ```
 No password specified
 ```
 
-#### Get the Password
+### Get the Password
 
-Looks like it's time to go find a password. Run `emucorp.public{command:
-"strategy"}`:
+It's time to go find a password. Run: 
+
+```javascript
+<corpName>.public{command:"strategy"}
+```
+And you'll see something like this.
 
 ```
 User-Obsessive Design for Hypertargete© Applications-- EMU-CORP
 We are calling this strategy endtheworld and we will continue to strive to deliver.
 ```
 
-In this exmaple, the password is `endtheworld`. Run `emucorp.public{command:
-"employees", password: "endtheworld"}`. You will see one of the following:
+In this exmaple, the password is `endtheworld`. Run: 
 
-If the password is wrong:
+```javascript
+<corpname>.public{command: "employees", password: "endtheworld"}
+```
+
+If the password is wrong, you will see
 
 ```
 Incorrect password.
 ```
 
-If the password is missing:
+If the password is missing, you will see:
 
 ```
 No password specified.
 ```
 
-If the password is correct:
-
-```
-Authenticated. Please specify a project to get a member list.
-```
-
-If you see "No password specified" even after providing a `password` parameter,
-it means you're not using the correct parameter. Tier 1 corps can have three
-possible password keys:
+If you see this even after providing a `password` parameter, it means you're not
+using the correct parameter. Tier 1 corps can have three possible password keys:
   - `password`
   - `pass`
   - `p`
 
 Try each one to see what works.
 
-#### Get a List of Projects
+If the password is correct, you will see:
 
-Next, provide a project name. To find a list of projects, run
-`emucorp.public{command: "latest"}`:
+```
+Authenticated. Please specify a project to get a member list.
+```
+
+### Get a List of Projects
+
+Next, provide a project name. To find a list of projects, run:
+
+```javascript
+<corpname>.public{command: "latest"}
+```
+
+You will something like this:
 
 ```
 2060AD D6
-indie_jones of project dsktp_mngr has come clean about the cancellatiÃn of her product.  'We just can't justify the cost.' she said.
+indie_jones of project dsktp_mngr has come clean about the cancellatiÃn of her product. 'We just can't justify the cost.' she said.
 2060AD D18¢
 Feral bunnybat¤attacks have been reported in the west garages after nightfall.  Employees are encouraged to stick to lighted areas and carry their employer-supplied mace.
 2059AD D246
@@ -161,9 +184,9 @@ names are `W3rla3NDER` and `delete_me_first`.
 
 Take each project name and apply it to the corp script:
 
-```
-emucorp.public{command: "employees", password: "endtheworld", project: "delete_me_first"}
-emucorp.public{command: "employees", password: "endtheworld", project: "W3rla3NDER"}
+```javascript
+<corpname>.public{command: "employees", password: "endtheworld", project: "delete_me_first"}
+<corpname>.public{command: "employees", password: "endtheworld", project: "W3rla3NDER"}
 ```
 
 Each time you run these commands, you'll receive a list of NPC [locs][03] and
@@ -174,9 +197,9 @@ anonym_jrttl_znx87h.public_fftgy3
 con.pubinfo_eoej39
 ```
 
-### Breach the NPC
+## How to Breach an NPC
 
-**Note:** There is a timelimit on how long you can take to breach a loc. Read
+**Note:** There is a time limit on how long you can take to breach a loc. Read
 all of these instructions thoroughly before you begin or you may run out of
 time and have to start over.
 
@@ -186,7 +209,7 @@ The first thing you'll need to do is establish a hardline. To do this, run
 `kernel.hardline`; type the IP address that appears on screen. Then, run the
 loc script you found earlier:
 
-```
+```javascript
 anonym_jrttl_znx87h.public_fftgy3{}
 ```
 
@@ -203,7 +226,7 @@ Access denied messages are always in the following format:
 Denied access by <company> <lock_name> lock.
 ```
 
-The amount and type of lock you'll encounter will depend on what tier of NPC
+The amount and types of lock you'll encounter will depend on what tier of NPC
 you're trying to breach.
 
 To breach a loc, you need to provide a list of parameters to the loc for each
@@ -228,9 +251,64 @@ script, remember that all key/value pairs are case sensitive.
 Once you breach all of the locks on an NPC, the NPC will "pop" and send any GC
 and upgrades it stored to your system. Afterwards, it will disappear.
 
+## How to Determine NPC Difficulty and Upgrades
+
+NPC scripts have a specific format:
+
+<name>_<rating><class>_<id>
+
+**Name** 
+
+The name will always be one of the following:
+  - `abandoned`
+  - `abndnd`
+  - `anon`
+  - `anonymous`
+  - `derelict`
+  - `uknown`
+  - `unidentified`
+  - `unknown`
+
+  Keep in mind that it is possible for non-NPC users to choose usernames
+  designed to look like an NPC account.
+
+**Rating**
+
+The next two characters determine the rating of the NPCs system. The higher the
+rating, the more locks the system has. See [_System Rating_][04] in the README
+for more information. 
+  - `jr`: Junkrack
+  - `dd`: Diggerdeck
+  - `wb`: Wreckbox
+  - `pr`: Phreakrig
+  - `ls`: Leetstack
+
+**Class**
+
+The class of an NPC is determined by what type of upgrades are loaded. See
+[_System Rating - Class_][05] in the README for more information. 
+  - `wvr`: Most of your upgrades are `architect` class 
+  - `ttl`: Most of your upgrades are locks.
+  - `wlf`: Most of your upgrades are `infiltrator` class.
+  - `rvn`: Most of your upgrades are `scavenger` class.
+  - `stg`: Most of your upgrades are `executive` class.
+
+**Address**
+
+This is the unique identifier for the loc. It's always 6 alphanumeric
+characters.
+
+**Example Loc:**
+
+```
+unknown_jrttl_yn0hlo.pubinfo_00bcts
+```
+
+This NPC has a `junkrack` rating, and is classed as a `turtle`.
+
 ## A List of Corporations
 
-  Here is a list of tier 1 corporations you can get Tier 1 NPC locs from:
+  Here is a list of Tier 1 corporations you can get Tier 1 NPC locs from:
   - `amal_robo.public`,
   - `aon.public`,
   - `archaic.public`,
@@ -282,11 +360,11 @@ and upgrades it stored to your system. Afterwards, it will disappear.
 
 I'll be the first to admit that getting 1 million GC to initialize your system
 is a nightmare and something that should be changed about the game. The average
-tier 1 NPC releases about 50K GC when breached. That means you'll need to breach
-roughly 20 NPCs just to reach tier 1. Without scripting, this is an impossible
+Tier 1 NPC releases about 50K GC when breached. That means you'll need to breach
+roughly 20 NPCs just to reach Tier 1. Without scripting, this is an impossible
 task.
 
-This repo contains all the tools you'll need to rapidly farm tier 1 NPCs.
+This repo contains all the tools you'll need to rapidly farm Tier 1 NPCs.
 
 ### Harvest the Locs
 
@@ -309,33 +387,39 @@ work. Copy the list of locs to another window. Keep doing this with each corp in
 the list. You should have a couple dozen locs by the end of it.
 
 Since an uninitialized system only has one script slot, you'll need to delete
-the loc_harvester before you can upload the tier 1 cracker:
+the `loc_harvester` before you can upload the Tier 1 cracker:
 
 ```
 #up loc_harvester delete
 #up tier1_cracker
 ```
 
+### Prepare the Commands
+
 Append the lock cracking command to the list of NPC locs you made earler. For
 example, if the first item in your list is this:
 
 ```
-abndnd_m2j0yc.access_5j3sxh
+anonym_jrttl_znx87h.public_fftgy3
 ```
 
 It becomes this:
 
 ```
-tier1_cracker{t: #s.abndnd_m2j0yc.access_5j3sxh}
+tier1_cracker{t: #s.anonym_jrttl_znx87h.public_fftgy3}
 ```
 
-Initialize a hardline:
+### Initialize a Hardline
+
+Run:
 
 ```
 kernel.hardline
 ```
 
 Enter the numbers you see on the screen.
+
+### Run the Commands
 
 Grab the first item from your list of locs and paste it into the command line.
 If all goes according to plan, you should receive the GC for the NPC loc. If the
@@ -345,14 +429,18 @@ because you can't switch to a different loc during a hardline until after you've
 breached the previous one.
 
 If your loc name has corrupted characters (looks like a little square), just
-skip it and move on to the next or or attempt to guess the missing character.
+skip it and move on to the next one or attempt to guess the missing character.
 
 When breaching multiple locs in a single run, you'll only be able to connect
 to 4 locs before you have to disconnect your hardline and start again.
 
-Once you reach 1 million GC, run `sys.init` and follow the instructions to
-initialize your system to tier 1.
+## How to Crack A Specific Lock
+
+For a guide to all Tier 1 locks, see [the lock guide][06].
 
 [01]: https://hackmud.fandom.com/wiki/GC
 [02]: https://hackmud.fandom.com/wiki/Security_Levels
 [03]: https://hackmud.fandom.com/wiki/Loc
+[04]: ./README.md#system-rating
+[05]: ./README.md#class
+[06]: ./LOCKS.md#class
