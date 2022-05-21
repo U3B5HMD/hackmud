@@ -43,7 +43,10 @@
         ],
         "func-call-spacing": "error",
         "generator-star-spacing": "error",
-        "import/extensions": "error",
+        "import/extensions": {
+            "js": "never",
+            "json": "always"
+        },
         "import/imports-first": "error",
         "import/newline-after-import": "error",
         "import/no-nodejs-modules": "off",
