@@ -9,7 +9,7 @@ This guide will cover the basics of writing custom scripts in Hackmud.
   * [Subscript](#subscript)
   * [Bot Brain](#bot-brain)
   * [Cracker](#cracker)
-  * [Harvester / Scraper](#harvester---scraper)
+  * [Harvester / Scraper](#harvester--scraper)
 - [A Basic Script Example](#a-basic-script-example)
 - [Outputting Text to the Screen](#outputting-text-to-the-screen)
 - [Tips for Writing Your First Script](#tips-for-writing-your-first-script)
@@ -18,7 +18,6 @@ This guide will cover the basics of writing custom scripts in Hackmud.
   * [Let Go of Const](#let-go-of-const)
   * [Create (Tiny) Helper functions](#create--tiny--helper-functions)
   * [Declare Everything at Once](#declare-everything-at-once)
-  * [Ditch the While Loop](#ditch-the-while-loop)
   * [Don't Type Check](#don-t-type-check)
   * [Don't use Booleans](#don-t-use-booleans)
   * [Look for Patterns (and Learn Regex)](#look-for-patterns--and-learn-regex-)
@@ -208,34 +207,6 @@ function(context, args) {
 ```
 
 You'll save 3 characters for every variable you would have declared separately.
-
-### Ditch the While Loop
-
-`for` has fewer characters than while:
-
-Instead of:
-
-```javascript
-function(context, args) {
-    let someCondition = true,
-
-    while(someCondition) {
-        // Stuff
-    }
-}
-```
-
-Do this:
-
-```javascript
-function(context, args) {
-    let someCondition = true;
- 
-    for(; someCondition;) {
-        // Stuff
-    }
-}
-```
 
 ### Don't Type Check
 
