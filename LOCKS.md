@@ -14,7 +14,7 @@ in the game.
   * [l0cket](#l0cket)
   * [DATA_CHECK](#data-check)
     + [Answers](#answers)
-    + [Helpful scripts](#helpful-scripts)
+- [Helpful scripts](#helpful-scripts)
 
 ## Tier 1
 
@@ -313,7 +313,7 @@ outta_juice
 
 poetry
 
-#### Helpful scripts
+## Helpful scripts
 
 `lore.data_check` can be used to answer `DATA_CHECK`:
 
