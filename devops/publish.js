@@ -32,7 +32,12 @@ const run = async () => {
     ];
 
     const publishPath = path.resolve(__dirname, "../dist/");
-    const userFolders = await readdir(path.resolve(publishPath));
+    const userFolders = (
+        await readdir(path.resolve(publishPath), { withFileTypes: true })
+    )
+    .filter((file) => !file.isFile())
+    .map(file => file.name)
+
 
     // Stores stats about the files to be printed out after the script runs.
     const results = [];
@@ -52,7 +57,7 @@ const run = async () => {
                 code, config) || {};
 
             if (!transformedCode) {
-                return;
+                continue;
             }
 
             /*
