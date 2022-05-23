@@ -1,3 +1,4 @@
+/* global _START*/
 import Hackmud from "../src/hackmud";
 
 export default function omniCracker (context, args) {
@@ -12,6 +13,10 @@ export default function omniCracker (context, args) {
 
     while (!/nn/.exec(response)) {
         [ , key = key ] = /.*`N(.*?)`.*$/.exec(response) || [];
+        
+        if((Date.now() - _START) >= 4750) {
+            return response;
+        }
 
         switch (key) {
             case "ez_prime":
