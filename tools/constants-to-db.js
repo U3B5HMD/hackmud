@@ -40,6 +40,5 @@ export default function constants () {
         }
     );
 
-
     return Hackmud.db.f({ _id: "constants" }).array();
 }
