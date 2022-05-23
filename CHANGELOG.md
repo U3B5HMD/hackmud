@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+
+### Added
+  - Tier 2 section to LOCKS.md
+
+### Changed
+  - Made the locks in LOCKS.md be in alphabetical order
+
 ## [1.1.1] - 2022-05-21
 
 ### Changed
