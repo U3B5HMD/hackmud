@@ -5,12 +5,12 @@ in the game.
 
 ## Table of Contents
 - [Tier 1](#tier-1)
-  * [EZ_21](#ez-21)
-  * [EZ_35](#ez-35)
-  * [EZ_40](#ez-40)
   * [C001](#c001)
   * [C002](#c002)
   * [C003](#c003)
+  * [EZ_21](#ez-21)
+  * [EZ_35](#ez-35)
+  * [EZ_40](#ez-40)
   * [l0cket](#l0cket)
   * [DATA_CHECK](#data-check)
     + [Answers](#answers)
@@ -25,44 +25,6 @@ in the game.
 
 
 ## Tier 1
-
-### EZ_21
-
-To break an `EZ_21` lock, you need to provide one of three possible unlock
-commands: `open`, `release`, or `unlock`. 
-
-An attempt at breaking an `EZ_21` lock might look something like this:
-
-```
-abandoned_jrttl_walker.info_xk490x{EZ_21: "unlock"}
-```
-
-### EZ_35
-
-To break an `EZ_35` lock, you need to provide one of three possible unlock
-commands: `open`, `release`, or `unlock`. The lock also requires a `digit`
-parameter with a value between 0 and 9 (inclusive).
-
-An attempt at breaking an `EZ_35` lock might look something like this:
-
-```
-abandoned_jrttl_walker.info_xk490x{EZ_35: "open", digit: 5}
-```
-
-### EZ_40
-
- To break an `EZ_40` lock, you need to provide one of three possible unlock
-commands: `open`, `release`, or `unlock`. The lock also requires an `ez_prime`
-parameter with a value being a prime number between 2 and 97 (inclusive).
-
-An attempt at breaking an `EZ_40` lock might look something like this:
-
-```
-abandoned_jrttl_walker.info_xk490x{EZ_40: "release", ez_prime: 31}
-```
-
-The complete list of possible prime numbers is: 2, 3, 5, 7, 11, 13, 17, 19, 23,
-29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, and 97.
 
 ### C001
 
@@ -159,6 +121,44 @@ An attempt at breaking an `c002` lock might look something like this:
 ```javascript
 abandoned_jrttl_walker.info_xk490x{c001: "green", c003_triad_1: "orange", c003_triad_2: "purple"}
 ```
+
+### EZ_21
+
+To break an `EZ_21` lock, you need to provide one of three possible unlock
+commands: `open`, `release`, or `unlock`. 
+
+An attempt at breaking an `EZ_21` lock might look something like this:
+
+```
+abandoned_jrttl_walker.info_xk490x{EZ_21: "unlock"}
+```
+
+### EZ_35
+
+To break an `EZ_35` lock, you need to provide one of three possible unlock
+commands: `open`, `release`, or `unlock`. The lock also requires a `digit`
+parameter with a value between 0 and 9 (inclusive).
+
+An attempt at breaking an `EZ_35` lock might look something like this:
+
+```
+abandoned_jrttl_walker.info_xk490x{EZ_35: "open", digit: 5}
+```
+
+### EZ_40
+
+ To break an `EZ_40` lock, you need to provide one of three possible unlock
+commands: `open`, `release`, or `unlock`. The lock also requires an `ez_prime`
+parameter with a value being a prime number between 2 and 97 (inclusive).
+
+An attempt at breaking an `EZ_40` lock might look something like this:
+
+```
+abandoned_jrttl_walker.info_xk490x{EZ_40: "release", ez_prime: 31}
+```
+
+The complete list of possible prime numbers is: 2, 3, 5, 7, 11, 13, 17, 19, 23,
+29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, and 97.
 
 ### l0cket
 
