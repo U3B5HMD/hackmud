@@ -5,9 +5,9 @@ in the game.
 
 ## Table of Contents
 - [Tier 1](#tier-1)
-  * [C001](#c001)
-  * [C002](#c002)
-  * [C003](#c003)
+  * [c001](#c001)
+  * [c002](#c002)
+  * [c003](#c003)
   * [EZ_21](#ez-21)
   * [EZ_35](#ez-35)
   * [EZ_40](#ez-40)
@@ -26,7 +26,7 @@ in the game.
 
 ## Tier 1
 
-### C001
+### c001
 
 To break a `c001` lock, you need to provide the correct color from the Hackmud
 color wheel:
@@ -49,7 +49,7 @@ An attempt at breaking an `c001` lock might look something like this:
 abandoned_jrttl_walker.info_xk490x{c001: "red", color_digit: 3}
 ```
 
-### C002
+### c002
 
 To break a `c002` lock, you need to provide the correct color from the Hackmud
 color wheel:
@@ -83,7 +83,7 @@ An attempt at breaking an `c002` lock might look something like this:
 abandoned_jrttl_walker.info_xk490x{c002: "green", c002_complement: "red"}
 ```
 
-### C003
+### c003
 
 To break a `c003` lock, you need to provide the correct color from the Hackmud
 color wheel:
@@ -106,7 +106,7 @@ To calculate the value of `c003_triad_1`, use the following formula.
 (colorIndex + 5) % 8;
 ```
 
-To calculate the value of `c003_triad_1`, use the following formula.
+To calculate the value of `c003_triad_2`, use the following formula.
 
 ```javascript
 (colorIndex + 3) % 8;
@@ -116,10 +116,10 @@ If `red` has an index of 0, `green` has an index of 4. `(4+5) % 8` equals `1`
 and `(4+3) % 8` equals `7` which means the complementary colors of `green`
 are `orange` and `purple`.
 
-An attempt at breaking an `c002` lock might look something like this:
+An attempt at breaking an `c003` lock might look something like this:
 
 ```javascript
-abandoned_jrttl_walker.info_xk490x{c001: "green", c003_triad_1: "orange", c003_triad_2: "purple"}
+abandoned_jrttl_walker.info_xk490x{c003: "green", c003_triad_1: "orange", c003_triad_2: "purple"}
 ```
 
 ### EZ_21
@@ -424,7 +424,7 @@ this when you're done:
 ...
 ```
 
-### CON_SPEC
+### cON_SPEC
 
 When you first encounter a `CON_SPEC` lock, pass it an empty string:
 
