@@ -14,7 +14,15 @@ in the game.
   * [l0cket](#l0cket)
   * [DATA_CHECK](#data-check)
     + [Answers](#answers)
+- [Tier 2](#tier-2)
+  * [acct_nt](#acct_nt)
+  * [CON_SPEC](#con_spec)
+  * [l0ckbox](#l0ckbox)
+  * [magnara](#magnara)
 - [Helpful scripts](#helpful-scripts)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 
 ## Tier 1
 
@@ -313,6 +321,239 @@ outta_juice
 
 poetry
 
+## Tier 2
+
+### acct_nt
+
+The `acct_nt` lock is by far one of the most difficult T2 locks to crack. It
+requires you to run `accts.transactions`, review the deposits and withdrawls and
+then provide whatever amount it's asking for as the answer.
+
+Possible `acct_nt` puzzles are:
+
+```
+What was the net GC between <start> and <end>
+Need to know the total earned on transactions without memos between <start> and <end>
+Need to know the total earned on transactions without memos between <start> and <end>
+Get me the amount of a large deposit near <date>
+Get me the amount of a large withdrawal near <date>
+```
+
+For example:
+
+```
+What was the net GC between 220515.0118 and 220518.0517
+Need to know the total earned on transactions without memos between 220515.0118 and 220518.1457
+Need to know the total earned on transactions without memos between 220515.0118 and 220518.1457
+Get me the amount of a large deposit near 220518.1458
+Get me the amount of a large withdrawal near 220519.1910
+```
+
+All dates will be in `YYMMDD.HHMM` format.
+
+To this day, there is still much speculation about how, exactly, the `acct_nt`
+lock works. Here's what is known so far:
+  - The most transactions that a lock can look at is the last 16
+  - If there are duplicate transactions on the same date, it could be 
+    referencing any of them to create the answer
+  - "near" can mean any transaction +/- 5 from the chosen date
+  - The number of transactions it reviews is based on the `acct_nt_min` 
+    property of the lock
+
+Research has shown that `acct_nt` uses one of the following formulas to choose
+the range of indexes it's going to use when building the answer:
+
+ - `startDateIndex` to `endDateIndex`
+ - `startDateIndex` + 1 to `endDateIndex`
+ - `startDateIndex` to `endDateIndex` - 1 
+ - `startDateIndex` + 1 to `endDateIndex` -1
+
+The best way for you to break this lock is to:
+  - Keep a 0GC balance on your account
+  - flood your transaction list
+
+To flood your transaction list, transfer 1GC back and forth between your
+accounts until you have 16 _total_ transactions (8 deposits and 8 withdrawls,
+one after the other). By doing this, you'll guarantee that the answer for the
+`acct_nt` lock will always be either `0GC` or `1GC`. It'll look a little like
+this when you're done:
+
+```json
+{
+  "time": "220520.2246",
+  "amount": "1GC",
+  "sender": "account1",
+  "recipient": "account2",
+  "script": null
+},
+{
+  "time": "220520.2246",
+  "amount": "1GC",
+  "sender": "account2",
+  "recipient": "acount1",
+  "script": null
+}
+{
+  "time": "220520.2246",
+  "amount": "1GC",
+  "sender": "account1",
+  "recipient": "account2",
+  "script": null
+},
+{
+  "time": "220520.2246",
+  "amount": "1GC",
+  "sender": "account2",
+  "recipient": "acount1",
+  "script": null
+}
+{
+  "time": "220520.2246",
+  "amount": "1GC",
+  "sender": "account1",
+  "recipient": "account2",
+  "script": null
+},
+{
+  "time": "220520.2246",
+  "amount": "1GC",
+  "sender": "account2",
+  "recipient": "acount1",
+  "script": null
+}
+...
+```
+
+### CON_SPEC
+
+When you first encounter a `CON_SPEC` lock, pass it an empty string:
+
+```javascript
+<scriptname>.<loc>{CON_SPEC: ""}
+```
+
+The `CON_SPEC` lock comes in two flavors: weaver and wolf. What version you face
+depends on your class. If you're a weaver, you'll be asked to solve a logic
+puzzle. If you're a wolf, you'll be asked to host a public script. See the
+[README section on classes][02] for more info.
+
+For the weaver puzzle, you'll see something like this:
+
+```
+ACEGIKM
+Provide the next three letters in the sequence
+```
+
+To solve it, you'll need to guess the next three letters in the sequence. The possible patterns are:
+
+| Pattern                                         | Example                                             |
+| ----------------------------------------------- | --------------------------------------------------- |
+| Full alphabet, forwards                         | A	B	C	D	E	F	G	H	I	J	K	L	M	N	O	P	Q	R	S	T	U	V	W	X	Y	Z |
+| Full alphabet, backwards                        | Z	Y	X	W	V	U	T	S	R	Q	P	O	N	M	L	K	J	I	H	G	F	E	D	C	B	A |
+| Skip every other letter, forwards               | A C E G I K M O Q S U W Y                           |
+| Skip every other letter (offset), forwards      | B D F H J L N P R T V X Z                           |
+| Skip every other letter, backwards              | Z X V T R P N L J H F D B                           |
+| Skip every other letter (offset), backwards     | Y W U S Q O M K I G E C A                           |
+| Skip every other two letters, forwards          | A	B	E	F	I	J	M	N	Q	R	U	V	Y	Z                         |
+| Skip every two letters (offset by 1), forwards  | B	C	F	G	J	K	N	O	R	S	V	W	Z                           |
+| Skip every two letters (offset by 2), forwards  | C	D	G	H	K	L	O	P	S	T	W	X                             |
+| Skip every two letters (offset by 3), forwards  | A	D	E	H	I	L	M	P	Q	T	U	X	Y                           |
+| Skip every other two letters, backwards         | Z	Y	V	U	R	Q	N	M	J	I	F	E	B	A                         |
+| Skip every two letters (offset by 1), backwards | Y	X	U	T	Q	P	M	L	I	H	E	D	A                           |
+| Skip every two letters (offset by 2), backwards | X	W	T	S	P	O	L	K	H	G	D	C                             |
+| Skip every two letters (offset by 3), backwards | Z	W	V	S	R	O	N	K	J	G	F	C	B                           |
+
+In the example, the answer would be OQS
+
+### l0ckbox
+
+The l0ckbox lock requires that you have a certain `k3y_v[1,2,3,4]` upgrade
+loaded in order to break it. When you encounter a `l0ckbox` lock, it will
+generate a message like: 
+
+```
+To unlock, please load the appropriate k3y: i874y3
+```
+
+In order to break this lock, you'll need to have a `k3y_v<n>` upgrade that has a
+`k3y` property equal to the one it's requesting. To see what `k3ys` you have
+loaded, run:
+
+```javascript
+sys.upgrades: {full: true}
+```
+
+You'll see something like this for any `k3y_v<n>` upgrades:
+
+```
+{
+  rarity: "kiddie",
+  name: "k3y_v1",
+  type: "tool",
+  up_class: "infiltrator",
+  tier: 1,
+  loaded: true,
+  k3y: "i874y3",
+  sn: "627818e01be6dd3a49a52a27",
+  description: "Keep your nuutec l0cket safe with a security k3y",
+  i: 12
+}
+```
+
+In order to unlock the lock, this upgrade will need to be loaded on your system:
+
+```javascript
+sys.manage{load: 12}
+```
+
+Unlike most locks, `l0ckbox` doesn't announce itself with a traditional "Denied
+access by" message, making it harder to detect using standard regular
+expressions. Instead, check the lock response for `k3y:` and attempt to capture
+what comes after the colon.
+
+Any script cracker you write will have to be `lowsec` or lower in order to
+manage what upgrades are available on the caller's system.
+
+### magnara
+
+The `mangara` lock requires you to guess the correct anagram (hence the name) in
+order to break it. An example output looks like this:
+
+```
+recinroct magnara ulotnois orf: fuso
+```
+
+This translates to "incorrect anagram solution for: fuso". Your job is to take
+the characters after the colon ("fuso") and rearrange them until you break the
+lock. In this case possible solutions are:
+  - fuso
+  - ufso
+  - sfuo
+  - fsuo
+  - usfo
+  - sufo
+  - oufs
+  - uofs
+  - fous
+  - ofus
+  - ufos
+  - fuos
+  - fsou
+  - sfou
+  - ofsu
+  - fosu
+  - sofu
+  - osfu
+  - osuf
+  - souf
+  - uosf
+  - ousf
+  - suof
+  - usof
+
+But you'll want to focus on results that are _actual_ words, first. Those are
+more likely to be the correct answer. In this example, that would be "ufos".
+
 ## Helpful scripts
 
 `lore.data_check` can be used to answer `DATA_CHECK`:
@@ -326,3 +567,4 @@ This would return `outta_juice`. You can pass in multiple answers separated by a
 in any answers, it will ask if you want to print out all possible answers.
 
 [01]: https://hackmud.fandom.com/wiki/Lore
+[02]: ./README.md#class
