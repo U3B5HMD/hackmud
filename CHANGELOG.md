@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
   - Updated _Upgrade Rarity_ and added details around how rarity level affects
     the stats of the upgrade.
+  - Updated _Asking for Help_ and added a note about the `flying_shuttle`
+    channel.
 
 ## [1.3.0] - 2022-05-23
 
