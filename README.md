@@ -205,7 +205,56 @@ chat messages in the chat window, set `chat` to `false`.
 gui.quiet{add: <username>, remove: <username>, list: <boolean>, clear: <boolean>}
 ```
 
-Use this script if you want to mute chat messages from specific users.
+Use this script if you want to grey-out chat messages from specific users. It
+doesn't actually remove them from the chat window, unfortunately. It's also
+quite buggy. If the user you've "quieted" puts newlines in their message, every
+line after the first newline comes through normally (not grayed out). If you
+want to hang out in `0000` but want to reduce the bot noise, add these names to
+your quiet list with:
+
+```javascript
+gui.quiet{add: "<username>"}
+```
+<details> 
+    <summary>List of Bots:</summary>
+  - `adventure`
+  - `advertise`
+  - `blank`
+  - `cal_initiative`
+  - `discord`
+  - `eliza`
+  - `epoch_news`
+  - `extra`
+  - `fran_lee`
+  - `hey_there_stranger`
+  - `hint`
+  - `hoborg`
+  - `iguana`
+  - `link_light_rail_train_7`
+  - `lock`
+  - `lore`
+  - `matr3x`
+  - `navi`
+  - `on_th3_1ntern3ts`
+  - `packbot_7257`
+  - `pompeii`
+  - `promo`
+  - `robovac_11_134_2_221`
+  - `robovac_19_51_0_26`
+  - `robovac_idp1p1`
+  - `spy`
+  - `suborbital_committee`
+  - `sudo`
+  - `the_digger_king`
+  - `tk`
+  - `trust`
+  - `twitter`
+  - `unbindall`
+  - `weather_network_us`
+  - `willie`
+  - `xena`
+  - `zez_facts`
+</details>
 
 **add:** Adds the passed in username to the quiet list.
 **remove:** Adds the passed in username from the quiet list.
