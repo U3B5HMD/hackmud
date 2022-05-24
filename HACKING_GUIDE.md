@@ -96,6 +96,9 @@ Public commands are "strategy" "latest",
 -- access directory with command:"employees"
 ```
 
+<details>
+    <summary>Spoilers:</summary>
+
 Now we know two important pieces of information:
 
 1. The `key` we need to use is `command`.
@@ -106,6 +109,7 @@ Run `<corpname>.public{command: "employees"}`:
 ```
 No password specified
 ```
+</details>
 
 ### Get the Password
 
@@ -121,11 +125,15 @@ User-Obsessive Design for Hypertargete© Applications-- EMU-CORP
 We are calling this strategy endtheworld and we will continue to strive to deliver.
 ```
 
-In this exmaple, the password is `endtheworld`. Run: 
+<details>
+    <summary>Spoilers:</summary>
+
+In this example, the password is `endtheworld`. Run: 
 
 ```javascript
 <corpname>.public{command: "employees", password: "endtheworld"}
 ```
+</details>
 
 If the password is wrong, you will see
 
@@ -140,12 +148,17 @@ No password specified.
 ```
 
 If you see this even after providing a `password` parameter, it means you're not
-using the correct parameter. Tier 1 corps can have three possible password keys:
+using the correct parameter. 
+<details>
+    <summary>Spoilers:</summary>
+
+Tier 1 corps can have three possible password keys:
   - `password`
   - `pass`
   - `p`
 
-Try each one to see what works.
+Try each one to see what works.  
+</details>
 
 If the password is correct, you will see:
 
@@ -176,21 +189,23 @@ Protein Prevention Pa¨ty internal devel¡pment team has announced the release d
 'We've got the bad guys on the run!' -- rey_tr4cer when being asked about new developments on delete_me_first progress
 ```
 
+<details>
+    <summary>Spoilers:</summary>
 This is a _heavily_ truncated example of a corporation blog. To find projects,
 you'll need to read each entry for context clues. In this example, the project
 names are `W3rla3NDER` and `delete_me_first`.
+</details>
 
 ### Search the Projects for Locs
 
 Take each project name and apply it to the corp script:
 
 ```javascript
-<corpname>.public{command: "employees", password: "endtheworld", project: "delete_me_first"}
-<corpname>.public{command: "employees", password: "endtheworld", project: "W3rla3NDER"}
+<corpname>.public{command: "employees", password: "mypass", project: "myprojectname"}
 ```
 
-Each time you run these commands, you'll receive a list of NPC [locs][03] and
-your system's autocompletes will be updated.
+Each time you run this command, you'll receive a list of NPC [locs][03] for each
+project and your system's autocompletes will be updated.
 
 ```
 anonym_jrttl_znx87h.public_fftgy3
@@ -309,6 +324,10 @@ This NPC has a `junkrack` rating, and is classed as a `turtle`.
 ## A List of Corporations
 
   Here is a list of Tier 1 corporations you can get Tier 1 NPC locs from:
+
+  <details>
+    <summary>Spoilers:</summary>
+
   - `amal_robo.public`,
   - `aon.public`,
   - `archaic.public`,
@@ -355,6 +374,7 @@ This NPC has a `junkrack` rating, and is classed as a `turtle`.
   - `welsh_measles_info.public`,
   - `weyland.public`,
   - `world_pop.public`
+</details>
 
 ## Quickly Farm GC from Tier 1 NPCs
 

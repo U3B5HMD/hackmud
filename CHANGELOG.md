@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Reordered lock list in LOCKS.md so locks are ordered by perceived
     difficulty.
   - Made LOCKS.md safer to read by collapsing spoilers
+  - Made HACKING_GUIDE.md safer to read by collapsing spoilers
 
 ## [1.2.0] - 2022-05-22
 
