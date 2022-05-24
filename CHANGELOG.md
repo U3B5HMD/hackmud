@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     the stats of the upgrade.
   - Updated _Asking for Help_ and added a note about the `flying_shuttle`
     channel.
+  - Updated _Tier_ and clarified how PVP vulnerabilities are shared between
+    tiers.
 
 ## [1.3.0] - 2022-05-23
 
