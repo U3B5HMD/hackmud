@@ -702,6 +702,13 @@ helping new players. In game, channels like `c00lest_kats` and `town` are good
 places for folks to ask questions, but they're also full of spam and bots. Your
 best bet for getting questions answered is to join the [Discord Server][11].
 
+If you have questions about this guide or scripting in general (or just want to
+chat with other weavers), join `flying_shuttle`:
+
+```javascript
+chats.join{channel: "flying_shuttle"}
+```
+
 ## Helpful Scripts
 
 These are scripts that might be helpful to you as you poke around the network.
