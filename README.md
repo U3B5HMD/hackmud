@@ -217,6 +217,7 @@ gui.quiet{add: "<username>"}
 ```
 <details> 
     <summary>List of Bots:</summary>
+    
   - `adventure`
   - `advertise`
   - `blank`
