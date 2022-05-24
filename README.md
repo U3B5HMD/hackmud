@@ -419,6 +419,19 @@ upgrade. For example, a `char_count_v1` upgrade that's got a rarity of `h4x0r`
 is going to have a greater character count than the same upgrade with a rarity
 of `noob`.
 
+grey and white (`noob`, `kiddie`) upgrades have fixed stats - they'll always be
+the same/ For example, a grey `char_count_v1` will always add 500 characters to
+your total character count.
+
+Upgrades that are green (`h4x0r`) and  above have randomized stats that differ
+per upgrade, per tier. So, make sure you examine your upgrades by running:
+
+```javascript
+sys.upgrades:{i: <index>, full: true}
+```
+
+Before deciding what to cull or sell.
+
 ### Scripts
 
 Scripts are how players interact with the Hackmud environment. Nearly everything
