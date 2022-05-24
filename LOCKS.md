@@ -19,6 +19,7 @@ in the game.
   * [magnara](#magnara)
   * [l0ckbox](#l0ckbox)    
   * [acct_nt](#acct_nt)
+  * [sn_w_glock](#sn_w_glock)
 - [Helpful scripts](#helpful-scripts)
 
 ## Tier 1
@@ -634,7 +635,66 @@ this when you're done:
 }
 ...
 ```
-</description>
+</details>
+
+### sn_w_glock
+
+When you discover an `sn_w_glock`, the first thing you should do is set your
+account balance to 0. If you provide it with an incorrect answer, it will take
+money from your account. The higher tier versions of the lock will take more
+money than lower tiers. There is a good chance you could lose everything.
+
+To set your account balance to zero, first run:
+
+```javascript
+accts.balance{}
+```
+
+Then, transfer that balance to your alt account:
+
+```javascript
+accts.xfer_gc_to{to: "<alt username>", amount: "<amount as number or GC string>"}
+```
+
+Next, call the lock with an empty string:
+
+```javascript
+abandoned_jrttl_walker.info_xk490x{sn_w_glock: ""}
+```
+
+You'll receive a response that contains one of the following key words:
+
+  - `beast`
+  - `elite`
+  - `hunter`
+  - `magician`
+  - `meaning`
+  - `monolithic`
+  - `secret`
+  - `secure`
+  - `special`
+
+The lock wants you to have a specific balance in your account. If you have a
+balance other than the one it wants **it will steal GC from your account.**
+
+<details> 
+    <summary>Spoilers:</summary>
+
+Based on the keyword, here's the balance that's required.
+
+| String     | Amount  | Reference                                         |
+| ---------- | ------- | ------------------------------------------------- |
+| beast      | 666GC   | Mark of the beast                                 |
+| elite      | 1337GC  | leet                                              |
+| hunter     | 3K006GC | 30.06 hunting rifle caliber                       |
+| magician   | 1K89GC  | Magic number                                      |
+| meaning    | 42GC    | Hitch Hiker's Guide to the Galaxy                 | 
+| monolithic | 2K1GC   | 2001 Space Odyssey                                |
+| secret     | 7GC     | 007 Secret Agent                                  |
+| secure     | 443GC   | 443 is SSL/HTTPS (which is more secure than HTTP) |
+| special    | 38GC    | .38 Special                                       |
+</details>
+
 
 ## Helpful scripts
 

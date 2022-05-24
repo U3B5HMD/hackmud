@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
   - List of bots to add to your `quiet` list
+  - `sn_w_glock` to LOCKS.md
 
 ### Changed
   - Reordered lock list in LOCKS.md so locks are ordered by perceived
