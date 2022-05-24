@@ -186,7 +186,7 @@ Don't let anyone tell you you're playing a game with no structure or goals
 **Usage:**
 
 ```
-gui.chat{shell: <boolean>, chat: <boolean>}
+gui.chats{shell: <boolean>, chat: <boolean>}
 ```
 
 By default, chat messages are sent to the shell (the main part of the screen)
