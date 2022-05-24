@@ -26,7 +26,13 @@ in the game.
 ### EZ_21
 
 To break an `EZ_21` lock, you need to provide one of three possible unlock
-commands: `open`, `release`, or `unlock`. 
+commands:   
+
+<details> 
+    <summary>Spoilers:</summary>
+
+    `open`, `release`, or `unlock`. 
+</details>
 
 An attempt at breaking an `EZ_21` lock might look something like this:
 
@@ -37,42 +43,71 @@ abandoned_jrttl_walker.info_xk490x{EZ_21: "unlock"}
 ### EZ_35
 
 To break an `EZ_35` lock, you need to provide one of three possible unlock
-commands: `open`, `release`, or `unlock`. The lock also requires a `digit`
-parameter with a value between 0 and 9 (inclusive).
+commands: 
+
+<details> 
+    <summary>Spoilers:</summary>
+
+    `open`, `release`, or `unlock`. 
+</details>
+
+The lock also requires a `digit` parameter with a value between 0 and 9
+(inclusive).
 
 An attempt at breaking an `EZ_35` lock might look something like this:
 
 ```javascript
-abandoned_jrttl_walker.info_xk490x{EZ_35: "open", digit: 5}
+abandoned_jrttl_walker.info_xk490x{EZ_35: "unlock", digit: 5}
 ```
 
 ### EZ_40
 
- To break an `EZ_40` lock, you need to provide one of three possible unlock
-commands: `open`, `release`, or `unlock`. The lock also requires an `ez_prime`
-parameter with a value being a prime number between 2 and 97 (inclusive).
+To break an `EZ_40` lock, you need to provide one of three possible unlock
+commands: 
+
+<details> 
+    <summary>Spoilers:</summary>
+
+    `open`, `release`, or `unlock`. 
+</details>
+
+The lock also requires an `ez_prime` parameter with a value being a prime number
+between 2 and 97 (inclusive).
 
 An attempt at breaking an `EZ_40` lock might look something like this:
 
 ```javascript
-abandoned_jrttl_walker.info_xk490x{EZ_40: "release", ez_prime: 31}
+abandoned_jrttl_walker.info_xk490x{EZ_40: "unlock", ez_prime: 31}
 ```
 
-The complete list of possible prime numbers is: 2, 3, 5, 7, 11, 13, 17, 19, 23,
-29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, and 97.
+Possible prime numbers are: 
+
+<details> 
+    <summary>Spoilers:</summary>
+
+    2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 
+    73, 79, 83, 89, and 97.
+</details>
 
 ### c001
 
 To break a `c001` lock, you need to provide the correct color from the Hackmud
 color wheel:
-  - red
-  - orange
-  - yellow
-  - lime
-  - green
-  - cyan
-  - blue
-  - purple
+
+<details> 
+    <summary>Spoilers:</summary>
+
+    ```    
+    0 red
+    1 orange
+    2 yellow
+    3 lime
+    4 green
+    5 cyan
+    6 blue
+    7 purple
+    ```
+</details>
 
 Please note that the order of these colors is important. The lock also requires
 a `color_digit` parameter with a value equal to the number of characters in the
@@ -88,14 +123,21 @@ abandoned_jrttl_walker.info_xk490x{c001: "red", color_digit: 3}
 
 To break a `c002` lock, you need to provide the correct color from the Hackmud
 color wheel:
-  - red
-  - orange
-  - yellow
-  - lime
-  - green
-  - cyan
-  - blue
-  - purple
+
+<details> 
+    <summary>Spoilers:</summary>
+
+    ```    
+    0 red
+    1 orange
+    2 yellow
+    3 lime
+    4 green
+    5 cyan
+    6 blue
+    7 purple
+    ```
+</details>
 
 Please note that the order of these colors is important. The lock also requires
 a `c002_complement` parameter that equals the complementary color of the `c002`
@@ -103,14 +145,17 @@ lock.
 
 To calculate the value of `c002_complement`, use the following formula:
 
-```javascript
-(colorIndex + 4) % 8;
-```
+<details> 
+    <summary>Spoilers:</summary>
 
-`colorIndex` is the index of the correct color for the `c002` parameter.
+    ```javascript
+    (colorIndex + 4) % 8;
+    ```
 
-If `red` has an index of 0, `green` has an index of 4. `(4+4) % 8` equals `0`
-which means the complementary color of `green` is `red`.
+    `colorIndex` is the index of the correct color for the `c002` parameter. 
+    If `red` has an index of 0, `green` has an index of 4. `(4+4) % 8` equals 
+    `0`, which means the complementary color of `green` is `red`.
+</details>
 
 An attempt at breaking an `c002` lock might look something like this:
 
@@ -122,14 +167,21 @@ abandoned_jrttl_walker.info_xk490x{c002: "green", c002_complement: "red"}
 
 To break a `c003` lock, you need to provide the correct color from the Hackmud
 color wheel:
-  - red
-  - orange
-  - yellow
-  - lime
-  - green
-  - cyan
-  - blue
-  - purple
+
+<details> 
+    <summary>Spoilers:</summary>
+
+    ```    
+    0 red
+    1 orange
+    2 yellow
+    3 lime
+    4 green
+    5 cyan
+    6 blue
+    7 purple
+    ```
+</details>
 
 Please note that the order of these colors is important. The lock also requires
 a `c003_triad_1` parameter and a `c003_triad_2` parameter.
@@ -137,19 +189,24 @@ lock.
 
 To calculate the value of `c003_triad_1`, use the following formula.
 
-```javascript
-(colorIndex + 5) % 8;
-```
+<details> 
+    <summary>Spoilers:</summary>
 
-To calculate the value of `c003_triad_2`, use the following formula.
+    ```javascript
+    (colorIndex + 5) % 8;
+    ```
 
-```javascript
-(colorIndex + 3) % 8;
-```
+    To calculate the value of `c003_triad_2`, use the following formula.
 
-If `red` has an index of 0, `green` has an index of 4. `(4+5) % 8` equals `1`
-and `(4+3) % 8` equals `7` which means the complementary colors of `green`
-are `orange` and `purple`.
+    ```javascript
+    (colorIndex + 3) % 8;
+    ```    
+
+    If `red` has an index of 0, `green` has an index of 4. `(4+5) % 8` equals 
+    `1` and `(4+3) % 8` equals `7` which means the complementary colors of 
+    `green` are `orange` and `purple`.
+
+</details>
 
 An attempt at breaking an `c003` lock might look something like this:
 
@@ -188,14 +245,20 @@ This will show you all the fields stored in the security k3y upgrade, including
 any passwords.
 
 Here are all the possible passwords for a Tier 1 `l0cket` lock:
-  - `vc2c7q`
-  - `cmppiq`
-  - `tvfkyq`
-  - `uphlaw`
-  - `6hh8xw`
-  - `xwz7ja`
-  - `sa23uw`
-  - `72umy0`
+
+<details> 
+    <summary>Spoilers:</summary>
+    <ul>
+        <li>vc2c7q</li>
+        <li>cmppiq</li>
+        <li>tvfkyq</li>
+        <li>uphlaw</li>
+        <li>6hh8xw</li>
+        <li>xwz7ja</li>
+        <li>sa23uw</li>
+        <li>72umy0</li>
+    </ul>
+</details>
 
 An attempt at breaking a `l0cket` lock might look something like this:
 
@@ -209,7 +272,7 @@ The `DATA_CHECK` lock is by far the most frustrating Tier 1 lock available. To
 break a `DATA_CHECK` lock, you'll need to be well versed in the [lore of
 Hackmud][01]. 
 
-When you encounter a `DATA_CHECK` lock, you'll receive the standareds "Denied
+When you encounter a `DATA_CHECK` lock, you'll receive the standard "Denied
 Access" message like any other lock. First, pass in an empty string:
 
 ```javascript
@@ -238,6 +301,9 @@ abandoned_jrttl_walker.info_xk490x{DATA_CHECK: "fran_leerobovacsentience"}
 #### Answers
 
 Here are all the possible questions and answers for a Tier 1 `DATA_CHECK` lock:
+
+<details> 
+    <summary>Spoilers:</summary>
 
 **Did you know is a communication pattern common to user ++++++**
 
@@ -318,6 +384,7 @@ outta_juice
 **users gather in channel CAFE to share ++++++**
 
 poetry
+</details>
 
 ## Tier 2
 
@@ -326,7 +393,7 @@ poetry
 When you first encounter a `CON_SPEC` lock, pass it an empty string:
 
 ```javascript
-<scriptname>.<loc>{CON_SPEC: ""}
+abandoned_jrttl_walker.info_xk490x{CON_SPEC: ""}
 ```
 
 The `CON_SPEC` lock comes in two flavors: weaver and wolf. What version you face
@@ -341,26 +408,31 @@ ACEGIKM
 Provide the next three letters in the sequence
 ```
 
-To solve it, you'll need to guess the next three letters in the sequence. The possible patterns are:
+To solve it, you'll need to guess the next three letters in the sequence. The
+possible patterns are:
 
+<details> 
+    <summary>Spoilers:</summary>
+    
 | Pattern                                         | Example                                             |
 | ----------------------------------------------- | --------------------------------------------------- |
-| Full alphabet, forwards                         | A	B	C	D	E	F	G	H	I	J	K	L	M	N	O	P	Q	R	S	T	U	V	W	X	Y	Z |
-| Full alphabet, backwards                        | Z	Y	X	W	V	U	T	S	R	Q	P	O	N	M	L	K	J	I	H	G	F	E	D	C	B	A |
+| Full alphabet, forwards                         | A B C D E F G H I J K L M N O P Q R S T U V W X Y Z |
+| Full alphabet, backwards                        | Z Y X W V U T S R Q P O N M L K J I H G F E D C B A |
 | Skip every other letter, forwards               | A C E G I K M O Q S U W Y                           |
 | Skip every other letter (offset), forwards      | B D F H J L N P R T V X Z                           |
 | Skip every other letter, backwards              | Z X V T R P N L J H F D B                           |
 | Skip every other letter (offset), backwards     | Y W U S Q O M K I G E C A                           |
-| Skip every other two letters, forwards          | A	B	E	F	I	J	M	N	Q	R	U	V	Y	Z                         |
-| Skip every two letters (offset by 1), forwards  | B	C	F	G	J	K	N	O	R	S	V	W	Z                           |
-| Skip every two letters (offset by 2), forwards  | C	D	G	H	K	L	O	P	S	T	W	X                             |
-| Skip every two letters (offset by 3), forwards  | A	D	E	H	I	L	M	P	Q	T	U	X	Y                           |
-| Skip every other two letters, backwards         | Z	Y	V	U	R	Q	N	M	J	I	F	E	B	A                         |
-| Skip every two letters (offset by 1), backwards | Y	X	U	T	Q	P	M	L	I	H	E	D	A                           |
-| Skip every two letters (offset by 2), backwards | X	W	T	S	P	O	L	K	H	G	D	C                             |
-| Skip every two letters (offset by 3), backwards | Z	W	V	S	R	O	N	K	J	G	F	C	B                           |
+| Skip every other two letters, forwards          | A B E F I J M N Q R U V Y Z                         |
+| Skip every two letters (offset by 1), forwards  | B C F G J K N O R S V W Z                           |
+| Skip every two letters (offset by 2), forwards  | C D G H K L O P S T W X                             |
+| Skip every two letters (offset by 3), forwards  | A D E H I L M P Q T U X Y                           |
+| Skip every other two letters, backwards         | Z Y V U R Q N M J I F E B A                         |
+| Skip every two letters (offset by 1), backwards | Y X U T Q P M L I H E D A                           |
+| Skip every two letters (offset by 2), backwards | X W T S P O L K H G D C                             |
+| Skip every two letters (offset by 3), backwards | Z W V S R O N K J G F C B                           |
+</details>
 
-In the example, the answer would be OQS
+In the example, the answer would be `OQS`.
 
 ### magnara
 
@@ -399,8 +471,12 @@ lock. In this case possible solutions are:
   - suof
   - usof
 
+<details> 
+    <summary>Spoilers:</summary>
+
 But you'll want to focus on results that are _actual_ words, first. Those are
 more likely to be the correct answer. In this example, that would be "ufos".
+</details>
 
 ### l0ckbox
 
@@ -412,9 +488,12 @@ generate a message like:
 To unlock, please load the appropriate k3y: i874y3
 ```
 
-In order to break this lock, you'll need to have a `k3y_v<n>` upgrade that has a
-`k3y` property equal to the one it's requesting. To see what `k3ys` you have
-loaded, run:
+<details> 
+    <summary>Spoilers:</summary>
+
+In order to break this lock, you'll need to have a `k3y_v<n>` upgrade that 
+has a `k3y` property equal to the one it's requesting. To see what `k3ys` 
+you have loaded, run:
 
 ```javascript
 sys.upgrades: {full: true}
@@ -422,20 +501,21 @@ sys.upgrades: {full: true}
 
 You'll see something like this for any `k3y_v<n>` upgrades:
 
-```
+```javascript
 {
-  rarity: "kiddie",
-  name: "k3y_v1",
-  type: "tool",
-  up_class: "infiltrator",
-  tier: 1,
-  loaded: true,
-  k3y: "i874y3",
-  sn: "627818e01be6dd3a49a52a27",
-  description: "Keep your nuutec l0cket safe with a security k3y",
-  i: 12
+rarity: "kiddie",
+name: "k3y_v1",
+type: "tool",
+up_class: "infiltrator",
+tier: 1,
+loaded: true,
+k3y: "i874y3",
+sn: "627818e01be6dd3a49a52a27",
+description: "Keep your nuutec l0cket safe with a security k3y",
+i: 12
 }
 ```
+</details>
 
 In order to unlock the lock, this upgrade will need to be loaded on your system:
 
@@ -496,7 +576,10 @@ the range of indexes it's going to use when building the answer:
  - `startDateIndex` to `endDateIndex` - 1 
  - `startDateIndex` + 1 to `endDateIndex` -1
 
-The best way for you to break this lock is to:
+<details> 
+    <summary>Spoilers:</summary>
+
+The best way for you to break this lock by hand is to:
   - Keep a 0GC balance on your account
   - flood your transaction list
 
@@ -508,49 +591,50 @@ this when you're done:
 
 ```json
 {
-  "time": "220520.2246",
-  "amount": "1GC",
-  "sender": "account1",
-  "recipient": "account2",
-  "script": null
+"time": "220520.2246",
+"amount": "1GC",
+"sender": "account1",
+"recipient": "account2",
+"script": null
 },
 {
-  "time": "220520.2246",
-  "amount": "1GC",
-  "sender": "account2",
-  "recipient": "acount1",
-  "script": null
+"time": "220520.2246",
+"amount": "1GC",
+"sender": "account2",
+"recipient": "acount1",
+"script": null
 }
 {
-  "time": "220520.2246",
-  "amount": "1GC",
-  "sender": "account1",
-  "recipient": "account2",
-  "script": null
+"time": "220520.2246",
+"amount": "1GC",
+"sender": "account1",
+"recipient": "account2",
+"script": null
 },
 {
-  "time": "220520.2246",
-  "amount": "1GC",
-  "sender": "account2",
-  "recipient": "acount1",
-  "script": null
+"time": "220520.2246",
+"amount": "1GC",
+"sender": "account2",
+"recipient": "acount1",
+"script": null
 }
 {
-  "time": "220520.2246",
-  "amount": "1GC",
-  "sender": "account1",
-  "recipient": "account2",
-  "script": null
+"time": "220520.2246",
+"amount": "1GC",
+"sender": "account1",
+"recipient": "account2",
+"script": null
 },
 {
-  "time": "220520.2246",
-  "amount": "1GC",
-  "sender": "account2",
-  "recipient": "acount1",
-  "script": null
+"time": "220520.2246",
+"amount": "1GC",
+"sender": "account2",
+"recipient": "acount1",
+"script": null
 }
 ...
 ```
+</description>
 
 ## Helpful scripts
 
