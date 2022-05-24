@@ -17,6 +17,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Made HACKING_GUIDE.md safer to read by collapsing spoilers
   - Made the description of `gui.quiet` more clear regarding what it actually
     does
+  - Updated `magnara` description to no longer advocate for a brute-force
+    approach
 
 ### Fixed 
   - Typo in command under _Configure Chat Message Display_

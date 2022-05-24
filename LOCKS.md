@@ -446,36 +446,17 @@ recinroct magnara ulotnois orf: fuso
 
 This translates to "incorrect anagram solution for: fuso". Your job is to take
 the characters after the colon ("fuso") and rearrange them until you break the
-lock. In this case possible solutions are:
-  - fuso
-  - ufso
-  - sfuo
-  - fsuo
-  - usfo
-  - sufo
-  - oufs
-  - uofs
-  - fous
-  - ofus
-  - ufos
-  - fuos
-  - fsou
-  - sfou
-  - ofsu
-  - fosu
-  - sofu
-  - osfu
-  - osuf
-  - souf
-  - uosf
-  - ousf
-  - suof
-  - usof
+lock.
+
+The number of letters you get from the lock depends on what tier the lock is, so
+brute forcing the answer (trying every possible combination) doesn't scale. A
+three character lock may only have 6 possible combinations but a 4 character
+lock has 24 possible combinations.
 
 <details> 
     <summary>Spoilers:</summary>
 
-But you'll want to focus on results that are _actual_ words, first. Those are
+You'll want to focus on results that are _actual_ words. Those are
 more likely to be the correct answer. In this example, that would be "ufos".
 </details>
 
@@ -707,6 +688,8 @@ lore.data_check{lookup: "user ++++++ uses the port epoch environment to request 
 This would return `outta_juice`. You can pass in multiple answers separated by a
 `\n` and it will return the combined answers as a single word. If you don't pass
 in any answers, it will ask if you want to print out all possible answers.
+
+`dictionary.lookup` and `ast.magnara_solver` can be used to solve magnara locks.
 
 [01]: https://hackmud.fandom.com/wiki/Lore
 [02]: ./README.md#class
