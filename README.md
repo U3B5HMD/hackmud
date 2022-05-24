@@ -548,8 +548,10 @@ locks that will behave differently based on what class you are.
 
 ### Tier
 
-What system your tier has been initialized at. Your system's tier determines
-how much money you can have, and how many upgrades you can store and load.
+What system your tier has been initialized at. Your system's tier determines how
+much money you can have, how many upgrades you can store and load, and what PVP
+scripts you are vulnerable to. Each tier is vulnerable to a specific set of PVP
+scripts _plus_ all vulnerabilities listed under the previous tiers.
 
 #### Tier 0 (Uninitialized)
 
