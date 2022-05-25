@@ -426,7 +426,7 @@ documents that match the query. `first` returns the first document that matches
 the query. See[`db.collection.update`][08] for more info. 
 
 ```javascript
-#db.update({_id: "names"}, {$set: {value: ["john", "jacob"]}})
+#db.u({_id: "names"}, {$set: {value: ["john", "jacob"]}})
 ```
 
 `#db.u1(query, command)` functions just like `#db.u`, except only update the
