@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Added
+  - How to use the market to README.md
+
 ### Changed
   - Updated _Upgrade Rarity_ and added details around how rarity level affects
     the stats of the upgrade.
