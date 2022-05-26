@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
   - How to use the market to README.md
+  - How to reset your autocompletes to README.md
 
 ### Changed
   - Updated _Upgrade Rarity_ and added details around how rarity level affects
@@ -20,7 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.3.0] - 2022-05-23
 
 ### Added
-  - List of bots to add to your `quiet` list
+  - List of bots to add to your `quiet` list to README.md
   - `sn_w_glock` to LOCKS.md
 
 ### Changed

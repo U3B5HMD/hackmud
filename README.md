@@ -310,6 +310,18 @@ gui.vol {sfx:<0-11>, bgm:<0-11>}
 
 Use this script to change the volume of the sound effects and background music.
 
+### Reset Autocompletes
+
+To reset the scripts included in your autocomplete list:
+
+```
+autos.reset
+```
+
+This will remove any scripts from your autocompletes (including those listend in
+`trust`). After running this command, run `scripts.trust` to restore the trust
+scripts to your autocompletes.
+
 ## Getting Started - Prove your Sentience
 
 The best thing you can do for yourself is to work through the (multi-hour long)
