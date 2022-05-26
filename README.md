@@ -851,9 +851,9 @@ based on your system's tier:
 Hardline caused by a BINMAT defense do not subtract from your hardline count.
 Only one system can be connected to per hardline connection, but each successful
 breach grants an extra connection attempt up to a maximum of three bonus
-connections. So,A Tier 4 user who is successful in all of their breach attempts,
-can potentially breach 48 systems using their 12 available hardlines in a
-12-hour period.
+connections. So, A Tier 4 user who is successful in all of their breach
+attempts, can potentially breach 48 systems using their 12 available hardlines
+in a 12-hour period.
 
 In the early days of the game, higher tier users were farming all of the
 low-tier NPCs, making it nearly impossible for new users to gain GC. Limiting
