@@ -225,6 +225,120 @@ anonym_jrttl_znx87h.public_fftgy3
 con.pubinfo_eoej39
 ```
 
+## How to Hack a Tier 2 Corporations
+
+Once you've found a corporation to hack, run the script without any parameters.
+You'll see something like this:
+
+```
+EMU-Corp member panel
+
+EMU-Corp: the fastest delivery on Earth, guaranteed.  If you don't like it, tell your friends.
+
+enter in your username to continue.
+```
+
+This is the splash page of the corporation. Every Tier 2 corporation has a
+similar layout. In order to proceed, you'll need to provide a `username` of a 
+user on the system. In order to get that username, you'll need to run the `.public` side of the corporation and look through the news updates for usernames. Usually, it looks something like this:
+
+```
+troy_cole of project Ap_calypse has come clean about the cancellation of her product.  'We just can't justify the cost.' she said.
+
+We've got the bad guys on the run!' -- jamesb when being asked about new developments on dr8cii progress.
+
+Anyone know what's up with knowdb? been acting weird lately. r0bertm4rley
+```
+
+Possible usernames are `r0bertm4rley`, `troy_cole`, and `jamesb`. If none of
+these usernames work, you may need to go looking through other corp's `.public`
+scripts for usernames. I recommend you keep a list of usernames from each corp
+and try them all.
+
+Once you find a working username, you'll see something like this:
+
+```
+Emu-corp member panel
+---
+navigation
+---
+account
+settings
+orders
+faq
+cust_service
+```
+
+Run the `faq` command:
+
+```javascript
+emucorp.members{username: "troy_cole", navigation: "faq"}
+```
+
+You'll see a list of questions and answers. Look for a command (cyan-colored
+text) that contains the phrase `qr` or `qrs`. Run that comamnd:
+
+```javascript
+emucorp.members{username: "troy_cole", navigation: "order_qrs"}
+```
+
+You'll see a bunch of QR codes that look like this:
+
+```
+█▀▀▀▀▀█¨▄▄▄  ▄  ▀▄█▀ █  █  ▄█▄▀▄ ▀▄▄ █▄▄█ █▀▀▀▀▀█
+█ ███ █   ▄█▀▀▀▄▄▀█ ▀██▄ █ █ █▀█ ▀▄ ▀▄ █▀ █ ███ █
+█ ▀▀▀ █ ▄ █▄▄█  █ █ ███▀▀▀██▄▀▄▄█▀▄▀▄▄▄   █ ▀▀▀ █
+▀▀▀▀▀▀▀ █▄█▄█▄█ █▄█ ▀▄█ ▀ █ █▄▀▄█▄█▄▀ █Ã█ ▀▀▀▀▀▀▀
+  ▄▄██▀▀ ▄  ▄▄█ ▀██§▀▄▀████  ▄█▀▄█▀▄██▄ ▀▄█▀▄  ▀ 
+▄▄▀█▀ ▀▀▄  ███Ã█▀█▄  █▀▄ █ ███ ▄█▀ ▄█▄▀█▄▄▀▀▄█▄▄▄
+▀▄▄ █▀▀██▄▄▄▀▄▄▄▀ ▄ ▀▀▄▄██▄ ▄ ▀▄▄   ▀ ▄ ▀███▀ ▀▀ 
+▄███ █▀▀▄█▄▄█▄▀▄▄▀ █▀█▄  ▄▀ ▄▄▀▀ ▀ █▄ ▀█ ██▄▄█▄ ▄
+▄▄▄ ▄ ▀█  ▄ ▄ ▀▀▄▀  ▄█ ▄▄▀███▀█▄▀▄█▀▀ ██▀██ █▀█ ▀
+█  ▀█▄▀▄▄ ▀█▄ ▀ ▄▀█§▄ ▄▄█©█ ▀█▄▄▄▀█▄█▀▀█▀▀▀▀▄▄▄█▄
+▀█ª██▄▀█▀▀█▄▄███▀▄▄▄▄▀▀██ █▄▄█▀█▄  █▀▀▄ ▀ ª █▄█▄▀
+  ▄ █▀▀▀█▄▄██ ▀▄▀▀ ▄▄▀█▀▀▀█▀▀ ▄▄   ██▀▀ █▀▀▀███▄ 
+ ▄ ▀█ ▀ █▀██▀▀  ▄ ▀██▄█ ▀ █▀▀ ▄▀██▀▀▀█▄▄█ ▀ █▄▀ ▀
+▄ █ ▀▀▀███▄▄▄▀█▄▀█▄████▀▀█▀▀█▄█ ▄  █▄▀▀ ███▀█ █▀ 
+█▀ █▄▄▀  █ ▄▀█▀ ▄▀███ ▄▀▀  ██ █ █▄▀▀▀ █▄ ▄▀▀▄▄██ 
+▀ ▄█▄█▀█▀▄▀█▀▀ ▀▄▄▄█▄█▀█▀█ █▀██▀ ▀▄ ▄ ¨▀ ▄▄ ▀ ▄  
+█▀▄▄█▀▀▀█ ███▀▀▀▀▄ █▀▀█ ▀▀ ▄▄█ ▄ ▀ ▀▀▀▄▄ ▀▄▀▄▀▀  
+▀▄ ██▄▀▄ ▄ ▀▄ ▀██▀▄▄   ▄███ ▄ ▀▀██▄█▄▄▀▀ █▄  ▀█ ▄
+▄█▀██▀▀▄  ▀█ █▄▄▄▄   ▀ ██ ¢  ▀▄▄█▄▀ ███ █▄▀▀▄▀██¢
+ █▄▄ ▀▀█ █▄  ▀▄▄█▀▄▄██  █▄▀▄▀▀█▄█▄▄▄█ █▀▄█▄▄ █▄  
+▀▀▀   ▀ ██▀██ ▄▀▄█ ▄  █▀▀▀█▀ ▀▄▄█▀ █▀▄█ █▀▀▀█ ▀▀▀
+█▀▀▀▀▀█ ██▀ ▀  █▄ ▀█▄▀█ ▀ █ ▀▄█▄ ▄▀▄█ █▄█ ▀ █▀▄▀ 
+█ ███ █ ▀▄▀▀▄▀ ▀ ▀█ ▀ ███▀██    ▀█ Ã▀ █ █▀██▀ ▀▄▄
+█ ▀▀▀ █  █  █▄▀▄▀▄ ██▄ ██ ▀ █ ▄█▄ ▄█▄▀█ ▀ ▀  ▀▄▄ 
+▀▀▀▀▀▀▀  ▀▀▀▀ §  ▀▀▀  © ▀▀▀  ▀▀ ▀   ▀▀  ▀   ▀▀▀▀▀
+```
+
+Scan each of these with your phone and you'll receive a JSON object for each QR
+code:
+
+```json
+{"id":"yvct9y","user":"notused","packing_notes":"once yr pack'd,","xem":"ikhqy"}
+```
+
+The most important field is `id`. That's the ID of the order. Use it to contact
+customer service:
+
+```javascript
+emucorp.members{username: "troy_cole", navigation: "cust_service", order_id: "yvct9y"}
+```
+
+You'll receive some text along with a couple of Tier 2 NPC locs. If the loc
+names are corrupted, keep running the script until they become clear.
+
+```
+We cannot accept returns or refunds for this item.
+This order was placed on NaN.N¤N, from a combination of the following locs: anonymous_jrttl_43tu32.info_dk34j2
+xu1pyv anon_jrttl_32v32v.access_dk34j2
+```
+
+### Helpful Scripts
+
+`dtr.qr` can be used to automatically decode a QR code.
+
 ## How to Breach an NPC
 
 **Note:** There is a time limit on how long you can take to breach a loc. Read

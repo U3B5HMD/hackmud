@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Added
+  - _How to Hack a Tier 2 Corporations_ to HACKING_GUIDE.md
+
 ### Changed
   - Reorganized the _How to Find Tier 1 Corporations in a Sector_ section in
     HACKING_GUIDE.md
