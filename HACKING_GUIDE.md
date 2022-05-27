@@ -8,12 +8,17 @@ review the instructions in the README.
 
 ## Table of Contents
 - [Sectors](#sectors)
+  * [Overview](#overview)
+  * [How to Search a Sector](#how-to-search-a-sector)
 - [How to Find Tier 1 Corporations in a Sector](#how-to-find-tier-1-corporations-in-a-sector)
+- [How to Find Tier 2 Corporations in a Sector](#how-to-find-tier-2-corporations-in-a-sector)
 - [How to Hack a Tier 1 Corporation](#how-to-hack-a-tier-1-corporation)
   * [Get the Key and Secret Page](#get-the-key-and-secret-page)
   * [Get the Password](#get-the-password)
   * [Get a List of Projects](#get-a-list-of-projects)
   * [Search the Projects for Locs](#search-the-projects-for-locs)
+- [How to Hack a Tier 2 Corporations](#how-to-hack-a-tier-2-corporations)
+  * [Helpful Scripts](#helpful-scripts)
 - [How to Breach an NPC](#how-to-breach-an-npc)
 - [How to Determine NPC Difficulty and Upgrades](#how-to-determine-npc-difficulty-and-upgrades)
 - [A List of Corporations](#a-list-of-corporations)
@@ -22,6 +27,7 @@ review the instructions in the README.
   * [Prepare the Commands](#prepare-the-commands)
   * [Initialize a Hardline](#initialize-a-hardline)
   * [Run the Commands](#run-the-commands)
+- [How to Crack A Specific Lock](#how-to-crack-a-specific-lock)
 
 ## Sectors
 
