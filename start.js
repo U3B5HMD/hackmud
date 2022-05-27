@@ -42,7 +42,7 @@ const run = async () => {
                     write(chalk.blueBright(`Linking ${userPath}`));
                 } catch (/** @type {any} */ e) {
                     if (e.stderr.includes("File exists")) {
-                        write(chalk.blueBright(`${userPath} already exists`));
+                        write(chalk.blueBright(`A link to ${userPath} already exists`));
                     } else {
                         throw e;
                     }
