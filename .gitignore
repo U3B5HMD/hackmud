@@ -5,3 +5,4 @@ docs
 .DS_STORE
 dist/
 offline/
+.env
