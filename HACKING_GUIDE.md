@@ -25,21 +25,32 @@ review the instructions in the README.
 
 ## Sectors
 
+### Overview 
+
 A sector is essentially a folder that contains one or more scripts. Each script
 in a sector will have the same sec level. For example, when you run
 `scripts.fullsec` each script in the listed sectors will have a sec level of
-`FULLSEC`. Sectors contain both (public) user scripts and NPC corporation
-scripts. Sectors do not contain locs.
+`FULLSEC`, `scripts.midsec` will only list sectors with `MIDSEC` scripts, etc.
+Sectors contain both (public) user scripts and NPC corporation scripts. Sectors
+do not contain locs. A sector only contains scripts with a sec level equal to
+its own. So, a `FULLSEC` sector will not contain `MIDSEC` scripts and vice
+versa. 
 
 In order to hack a corporation, you must first find it's script inside of a
 sector.
 
-## How to Find Tier 1 Corporations in a Sector
+### How to Search a Sector
 
 In order to list all the scripts in a sector, you have to join it first:
 
 ```javascript
 chats.join{channel: "<sector>"}
+```
+
+To list out all FULLSEC scripts in a sector:
+
+```javascript
+scripts.fullsec{sector: "<sector>"}
 ```
 
 Sectors count against the max numbers of channels you can join at a time. To
@@ -49,20 +60,22 @@ leave a sector:
 chats.leave{channel: "<sector>"}
 ```
 
-Tier 1 corporation scripts are always FULLSEC. To list out all FULLSEC scripts
-in a sector:
-
-```javascript
-scripts.fullsec{sector: "<sector>"}
-```
+## How to Find Tier 1 Corporations in a Sector
 
 Look for scripts that end in `.public`. Those are most likely going to be
 corporations.
 
+## How to Find Tier 2 Corporations in a Sector
+
+Tier2 corporations exist in `HIGHSEC` or `MIDSEC` sectors. Look for scripts that
+end in `.members`, `.members_only` or `.members_access`. Those are most likely
+going to be corporations. Keep in mind that `MIDSEC` scripts are capable of
+stealing GC.
+
 ## How to Hack a Tier 1 Corporation
 
-Once you've found a corporation to hack, run the  without any parameters. You'll
-see something like this:
+Once you've found a corporation to hack, run the script without any parameters.
+You'll see something like this:
 
 ```
 #   /$$$$$$$$ /$$      /$$ /$$   /$$          /$$$$$$   /$$$$$$  /$$$$$$$  /$$$$$$$

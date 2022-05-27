@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Changed
+  - Reorganized the _How to Find Tier 1 Corporations in a Sector_ section in
+    HACKING_GUIDE.md
+  - Clarified what scripts can be found in a given sector in HACKING_GUIDE.md
+
 ### Fixed
   - Typos in examples in SCRIPTING_GUIDE.md
   - Sector Scraper returning duplicate scripts if a script was found in multiple
