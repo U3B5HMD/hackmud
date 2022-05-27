@@ -2,7 +2,7 @@
  * Removes the function name from scripts
  * 'function foo()' becomes 'function ()'
  */
-function plugin () {
+export default function plugin () {
     return {
         visitor: {
             FunctionDeclaration (path) {
@@ -13,5 +13,3 @@ function plugin () {
         }
     };
 }
-
-module.exports = plugin;

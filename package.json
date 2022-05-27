@@ -3,6 +3,7 @@
   "version": "1.5.1",
   "description": "",
   "main": "start.js",
+  "type": "module",
   "engines": {
     "node": ">=16.13.1"
   },

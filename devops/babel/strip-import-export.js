@@ -2,7 +2,7 @@
  * Removes `export default` from scripts.
  * 'export default function foo()' becomes 'function foo()'.
  */
-function plugin ({ types }) {
+export default function plugin ({ types }) {
     return {
         visitor: {
             ImportDeclaration (path) {
@@ -19,5 +19,3 @@ function plugin ({ types }) {
         }
     };
 }
-
-module.exports = plugin;

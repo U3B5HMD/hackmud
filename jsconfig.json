@@ -9,7 +9,7 @@
             "dom",
             "es2018"
         ],
-        "module": "commonjs",
+        "module": "es2022",
         "moduleResolution": "node",
         "noImplicitAny": false,
         "noImplicitReturns": true,

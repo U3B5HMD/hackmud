@@ -1,6 +1,10 @@
-const { readdir, readFile, writeFile } = require("fs/promises");
-const babel = require("@babel/core");
-const path = require("path");
+import { readdir, readFile, writeFile } from "fs/promises";
+import babel from "@babel/core";
+import path from "path";
+import {fileURLToPath} from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Babel config
 const config = {

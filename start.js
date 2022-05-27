@@ -1,8 +1,10 @@
-const fs = require("fs/promises");
-const inquirer = require("inquirer");
-const path = require("path");
-const util = require("util");
-const exec = util.promisify(require("child_process").exec);
+import fs from "fs/promises"
+import inquirer from "inquirer";
+import path from "path";
+import util from "util";
+import {exec as execAsync} from "child_process";
+
+const exec = util.promisify(execAsync);
 
 const {
     log: {
