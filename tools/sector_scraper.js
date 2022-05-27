@@ -27,7 +27,7 @@ export default function (context, args) {
             Hackmud.ms.chats.leave({ channel: sector });
         }
 
-        return [ ...new Set(scriptList) ].sort();
+        return scriptList;
     };
 
     if (tier == 1) {
@@ -39,8 +39,9 @@ export default function (context, args) {
     if (tier == 2) {
         results = results.concat(
             runSectors(params => Hackmud.fs.scripts.highsec(params)),
-            runSectors(params => Hackmud.fs.scripts.midsec(params))
+            runSectors(params => Hackmud.fs.scripts.midsec(params)),
         );
     }
-    return results;
+
+    return [...new Set(results)].sort();
 }

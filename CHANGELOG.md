@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
   - Typos in examples in SCRIPTING_GUIDE.md
+  - Sector Scraper returning duplicate scripts if a script was found in multiple
+    sectors
 
 ## [1.4.0] - 2022-05-26
 
