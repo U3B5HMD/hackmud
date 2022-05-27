@@ -284,7 +284,7 @@ Instead of:
 
 ```javascript
 function (context, args) {
-    const lib = #.fs.lib();
+    const lib = #fs.lib();
 }
 ```
 
@@ -370,7 +370,7 @@ the answers you don't already have:
 ```javascript
 function cracker(context, args) {
     let answers = {},
-    lib = #fs.sys.lib(),
+    lib = #fs.lib(),
     prevAnswers = #db.f(_id: "prev_answers").first();
 
     if(prevAnswers) {
