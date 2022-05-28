@@ -5,6 +5,7 @@ in the game.
 
 ## Table of Contents
 - [Tier 1](#tier-1)
+  * [CON_TELL](#con_tell)
   * [EZ_21](#ez_21)
   * [EZ_35](#ez_35)  
   * [EZ_40](#ez_40)  
@@ -25,6 +26,22 @@ in the game.
 - [Helpful scripts](#helpful-scripts)
 
 ## Tier 1
+
+### CON_TELL
+
+The `CON_TELL` lock isn't a lock in the tranditional sense. You can't break a
+`CON_TELL` lock, you can only move past it.
+
+When you encounter a `CON_TELL` lock, the lock will send a `chats.tell` to the
+owner of the lock and alert them that a breach is in progress.
+
+In order to get past a `CON_TELL` lock, simply call the system you're trying to
+breach again.
+
+The main purpose of this lock (and others like it) is to eat up the execution
+time of any automated scripts that are attempting to breach the system. The more
+time the script wastes getting past these locks, the less time it has to attempt
+to breach the _real_ locks guarding the system.
 
 ### EZ_21
 
