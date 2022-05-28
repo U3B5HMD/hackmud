@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
   - Updated `sn_w_glock` description in LOCKS.md to include a list of helpful
     macros that will let you transfer money between accounts faster.
+  - Migrated from `istanbul` to `c8` for code coverage.
 
 ### Fixed
   - Broken eslint config
