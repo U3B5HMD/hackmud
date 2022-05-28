@@ -15,9 +15,11 @@ in the game.
   * [DATA_CHECK](#data_check)
     + [Answers](#answers)
 - [Tier 2](#tier-2)
+  * [DATA_CHECK](#data_check-1)
+    + [Answers](#answers-1)
   * [CON_SPEC](#con_spec)
   * [magnara](#magnara)
-  * [l0ckbox](#l0ckbox)    
+  * [l0ckbox](#l0ckbox)
   * [acct_nt](#acct_nt)
   * [sn_w_glock](#sn_w_glock)
 - [Helpful scripts](#helpful-scripts)
@@ -215,7 +217,6 @@ An attempt at breaking an `c003` lock might look something like this:
 abandoned_jrttl_walker.info_xk490x{c003: "green", c003_triad_1: "orange", c003_triad_2: "purple"}
 ```
 
-
 ### l0cket
 
 To break a `l0cket` lock, you'll need a list of passwords. These passwords can
@@ -388,6 +389,124 @@ poetry
 </details>
 
 ## Tier 2
+
+### DATA_CHECK
+
+To break a Tier 2 `DATA_CHECK` lock, you'll need to be well versed in the [lore
+of Hackmud][01]. 
+
+When you encounter a `DATA_CHECK` lock, you'll receive the standard "Denied
+Access" message like any other lock. First, pass in an empty string:
+
+```javascript
+abandoned_jrttl_walker.info_xk490x{DATA_CHECK: ""}
+```
+
+This will trigger the lock and cause it to return the three questions it wants
+you to answer:
+
+```
+**according to skimmerite pattern-seekers, the calibration initiative indicates that humans are ++++++**
+**a person called anja has lost her ++++++**
+**conditions are clear above ++++++ and the city is within operational radius**
+```
+
+Don't be fooled by the number of `+` in each blank: they're the same length
+regardless of how many characters are in the answer. When answers
+to a `DATA_CHECK` lock, combine each answer into a single word. 
+
+An attempt at breaking a `DATA_CHECK` lock might look something like this:
+
+```javascript
+abandoned_jrttl_walker.info_xk490x{DATA_CHECK: "fran_leerobovacsentience"}
+``` 
+
+#### Answers
+
+Here are all the possible questions and answers for a Tier 2 `DATA_CHECK` lock:
+
+<details> 
+    <summary>Spoilers:</summary>
+    
+**a person called anja has lost her ++++++**
+
+blazer
+
+**according to skimmerite pattern-seekers, the calibration initiative indicates that humans are ++++++**
+
+dead
+
+**according to the calibration initiative, humans are expected to be ++++++ by the content**
+
+engaged
+
+**according to the suborbital bulletin, flight ++++++ is en route to ho chi min**
+
+a2231
+
+**archaic labs specialises in user-++++++ design**
+
+obsessive
+
+**conditions are clear above ++++++ and the city is within operational radius**
+
+atlanta
+
+**data does not contain truth is the first part of an idiom spread by the ++++++ assembly**
+
+skimmerite
+
+**drones from ++++++ may be instructed to perform their task with excessive urgency**
+
+goodfellow
+
+**item_id py6874 contains a grand ++++++**
+piano
+
+**robovac_++++++, moreso than most of its kind, has a tendency to become stuck**
+
+idp1p1
+
+**robovac_idk3w2 is stuck in a ++++++**
+
+well
+
+**sheriff nub holds sway over the town of ol' ++++++**
+
+nubloopstone
+
+**sheriff nub's first name is ++++++**
+
+sheriff
+
+**the ascent of ++++++ does not concern itself with usefulness**
+
+nowhere
+
+**the fourth hidden theme is ++++++**
+
+executives
+
+**the listed components of the breakfast galleon are inside, outside, and ++++++**
+
+crowsnest
+
+**this council of 'revolutionary' robovac-patterns call themselves the ++++++**
+
+thirteen
+
+**trust has a diagnostic system. a functioning version can be found at erajbhandari.++++++**
+
+diagalpha
+
+**user ++++++ would leave no stars for the sqrz 480 if they could**
+
+bnnyhunter
+
+**user le_mon_squeezy's new s:o ref is ++++++**
+
+unvarnishedpygmyumbrella
+</details>
 
 ### CON_SPEC
 
@@ -679,15 +798,15 @@ To make it easier to quickly transfer money between accounts, set up the
 following macros on your alt. Set `<username>` to the user that you use to hack:
 
 ```
-/beast = accts.xfer_gc_to { to:"<username>", amount:"666GC" }	
-/elites = accts.xfer_gc_to { to:"<username>", amount:1337 }	
-/hunter = accts.xfer_gc_to { to:"<username>", amount:3006 }	
-/magician = accts.xfer_gc_to { to:"<username>", amount:"1K89GC" }	
-/meaning = accts.xfer_gc_to { to:"<username>", amount:"42GC" }	
-/monolithic = accts.xfer_gc_to { to:"<username>", amount:"2K1GC" }	
-/secret = accts.xfer_gc_to { to:"<username>", amount:7 }	
-/secure = accts.xfer_gc_to { to:"<username>", amount:"443GC" }	
-/special = accts.xfer_gc_to { to:"<username>", amount:38 }	
+/beast = accts.xfer_gc_to { to:"<username>", amount:"666GC" }
+/elites = accts.xfer_gc_to { to:"<username>", amount:1337 }
+/hunter = accts.xfer_gc_to { to:"<username>", amount:3006 }
+/magician = accts.xfer_gc_to { to:"<username>", amount:"1K89GC" }
+/meaning = accts.xfer_gc_to { to:"<username>", amount:"42GC" }
+/monolithic = accts.xfer_gc_to { to:"<username>", amount:"2K1GC" }
+/secret = accts.xfer_gc_to { to:"<username>", amount:7 }
+/secure = accts.xfer_gc_to { to:"<username>", amount:"443GC" }
+/special = accts.xfer_gc_to { to:"<username>", amount:38 }
 ```
 </details>
 

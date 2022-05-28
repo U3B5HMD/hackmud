@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
   - src/data for storing commonly used data in scripts (e.g., usernames, corp
     lists, etc)
+  - Description and answers to Tier 2 `DATA_CHECK` locks in LOCKS.md
 
 ### Changed
   - Updated `sn_w_glock` description in LOCKS.md to include a list of helpful
