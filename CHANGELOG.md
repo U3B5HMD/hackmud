@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - src/data for storing commonly used data in scripts (e.g., usernames, corp
     lists, etc)
 
+### Changed
+  - Updated `sn_w_glock` description in LOCKS.md to include a list of helpful
+    macros that will let you transfer money between accounts faster.
+
 ### Fixed
   - Broken eslint config
   - Bugs in Sector Scraper causing it to not find all T2 NPC corps

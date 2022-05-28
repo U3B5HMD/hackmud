@@ -674,8 +674,22 @@ Based on the keyword, here's the balance that's required.
 | secret     | 7GC     | 007 Secret Agent                                  |
 | secure     | 443GC   | 443 is SSL/HTTPS (which is more secure than HTTP) |
 | special    | 38GC    | .38 Special                                       |
-</details>
 
+To make it easier to quickly transfer money between accounts, set up the
+following macros on your alt. Set `<username>` to the user that you use to hack:
+
+```
+/beast = accts.xfer_gc_to { to:"<username>", amount:"666GC" }	
+/elites = accts.xfer_gc_to { to:"<username>", amount:1337 }	
+/hunter = accts.xfer_gc_to { to:"<username>", amount:3006 }	
+/magician = accts.xfer_gc_to { to:"<username>", amount:"1K89GC" }	
+/meaning = accts.xfer_gc_to { to:"<username>", amount:"42GC" }	
+/monolithic = accts.xfer_gc_to { to:"<username>", amount:"2K1GC" }	
+/secret = accts.xfer_gc_to { to:"<username>", amount:7 }	
+/secure = accts.xfer_gc_to { to:"<username>", amount:"443GC" }	
+/special = accts.xfer_gc_to { to:"<username>", amount:38 }	
+```
+</details>
 
 ## Helpful scripts
 
