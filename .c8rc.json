@@ -2,6 +2,8 @@
     "all": true,
     "branches": 100,
     "include": [
+        "crackers/**/*.js",
+        "devops/**/*.js",
         "emulators/**/*.js",
         "src/**/*.js",
         "tools/**/*.js"
