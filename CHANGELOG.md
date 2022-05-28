@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
   - Broken eslint config
+  - Bugs in Sector Scraper causing it to not find all T2 NPC corps
 
 ## [1.5.1] - 2022-05-27
 
