@@ -1,5 +1,5 @@
-const { expect } = require("chai");
-const { default: Corporation } = require("../emulators/corp");
+import { expect } from "chai";
+import Corporation from "../emulators/corp.js";
 
 describe("Corp", () => {
     const corp = new Corporation();

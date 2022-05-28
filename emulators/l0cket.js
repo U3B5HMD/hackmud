@@ -1,5 +1,5 @@
-import Lock from "../src/lock";
-import { l0ckets } from "../src/constants";
+import Lock from "../src/lock.js";
+import { l0ckets } from "../src/constants.js";
 
 /**
  * @classdesc Emulates a L0cket lock

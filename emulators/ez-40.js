@@ -1,5 +1,5 @@
-import Lock from "../src/lock";
-import { unlockCommands, primes } from "../src/constants";
+import Lock from "../src/lock.js";
+import { unlockCommands, primes } from "../src/constants.js";
 
 /**
  * @classdesc Emulates an EZ_40 lock

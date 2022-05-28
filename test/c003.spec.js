@@ -1,6 +1,6 @@
 import { expect } from "chai";
-import C003 from "../emulators/c003";
-import { colors } from "../src/constants";
+import C003 from "../emulators/c003.js";
+import { colors } from "../src/constants.js";
 
 describe("C003 Lock", () => {
     const lock = new C003({

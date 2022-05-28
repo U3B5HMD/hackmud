@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import Lock from "../src/lock";
+import Lock from "../src/lock.js";
 
 const buildLockError = msg => [ Lock.LOCK_ERROR, msg ];
 

@@ -1,6 +1,6 @@
 import { expect } from "chai";
-import Hackmud, { sectors, scripts } from "../src/hackmud";
-import { securityLevelNames } from "../src/constants";
+import Hackmud, { sectors, scripts } from "../src/hackmud.js";
+import { securityLevelNames } from "../src/constants.js";
 
 
 describe("Hackmud", () => {

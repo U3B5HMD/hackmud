@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { securityLevelNames } from "../src/constants";
+import { securityLevelNames } from "../src/constants.js";
 
 const noop = () => {};
 

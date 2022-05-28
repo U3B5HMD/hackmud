@@ -1,6 +1,6 @@
 import { expect } from "chai";
-import EZ_21 from "../emulators/ez-21";
-import { unlockCommands } from "../src/constants";
+import EZ_21 from "../emulators/ez-21.js";
+import { unlockCommands } from "../src/constants.js";
 
 describe("EZ_21 Lock", () => {
     const lock = new EZ_21({

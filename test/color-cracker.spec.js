@@ -1,8 +1,8 @@
-import Loc from "../emulators/loc";
-import C001 from "../emulators/c001";
-import C002 from "../emulators/c002";
-import C003 from "../emulators/c003";
-import colorCracker from "../crackers/under-500-characters/color-cracker";
+import Loc from "../emulators/loc.js";
+import C001 from "../emulators/c001.js";
+import C002 from "../emulators/c002.js";
+import C003 from "../emulators/c003.js";
+import colorCracker from "../crackers/under-500-characters/color-cracker.js";
 import { expect } from "chai";
 
 describe("Color Lock Cracker", () => {

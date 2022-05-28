@@ -1,5 +1,5 @@
-import Lock from "../src/lock";
-import { unlockCommands } from "../src/constants";
+import Lock from "../src/lock.js";
+import { unlockCommands } from "../src/constants.js";
 
 /**
  * @classdesc Emulates an EZ_21 lock

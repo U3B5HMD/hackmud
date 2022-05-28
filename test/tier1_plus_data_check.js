@@ -1,7 +1,7 @@
-import Loc from "../emulators/loc";
-import C001 from "../emulators/c001";
-import C002 from "../emulators/c002";
-import C003 from "../emulators/c003";
+import Loc from "../emulators/loc.js";
+import C001 from "../emulators/c001.js";
+import C002 from "../emulators/c002.js";
+import C003 from "../emulators/c003.js";
 import EZ_21 from "../emulators/ez-21";
 import EZ_35 from "../emulators/ez-35";
 import EZ_40 from "../emulators/ez-40";
@@ -11,7 +11,7 @@ import chai, { expect } from "chai";
 import sinon from "sinon";
 import sinonChai from "sinon-chai";
 import Hackmud from "../src/hackmud";
-import { l0ckets, colors, unlockCommands, primes } from "../src/constants";
+import { l0ckets, colors, unlockCommands, primes } from "../src/constants.js";
 
 chai.use(sinonChai);
 

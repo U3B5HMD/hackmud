@@ -1,6 +1,6 @@
 import { expect } from "chai";
-import L0cket from "../emulators/l0cket";
-import { l0ckets } from "../src/constants";
+import L0cket from "../emulators/l0cket.js";
+import { l0ckets } from "../src/constants.js";
 
 describe("L0cket Lock", () => {
     const lock = new L0cket({

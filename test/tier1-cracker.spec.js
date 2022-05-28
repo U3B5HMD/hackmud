@@ -1,13 +1,13 @@
-import Loc from "../emulators/loc";
-import C001 from "../emulators/c001";
-import C002 from "../emulators/c002";
-import C003 from "../emulators/c003";
-import EZ_21 from "../emulators/ez-21";
-import EZ_35 from "../emulators/ez-35";
-import EZ_40 from "../emulators/ez-40";
-import L0cket from "../emulators/l0cket";
+import Loc from "../emulators/loc.js";
+import C001 from "../emulators/c001.js";
+import C002 from "../emulators/c002.js";
+import C003 from "../emulators/c003.js";
+import EZ_21 from "../emulators/ez-21.js";
+import EZ_35 from "../emulators/ez-35.js";
+import EZ_40 from "../emulators/ez-40.js";
+import L0cket from "../emulators/l0cket.js";
 
-import tier1Cracker from "../crackers/under-500-characters/tier1-cracker";
+import tier1Cracker from "../crackers/under-500-characters/tier1-cracker.js";
 import { expect } from "chai";
 
 

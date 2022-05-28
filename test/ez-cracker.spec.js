@@ -1,10 +1,10 @@
-import Loc from "../emulators/loc";
-import EZ_21 from "../emulators/ez-21";
-import EZ_35 from "../emulators/ez-35";
-import EZ_40 from "../emulators/ez-40";
-import ezCracker from "../crackers/under-500-characters/ez-cracker";
+import Loc from "../emulators/loc.js";
+import EZ_21 from "../emulators/ez-21.js";
+import EZ_35 from "../emulators/ez-35.js";
+import EZ_40 from "../emulators/ez-40.js";
+import ezCracker from "../crackers/under-500-characters/ez-cracker.js";
 import { expect } from "chai";
-import L0cket from "../emulators/l0cket";
+import L0cket from "../emulators/l0cket.js";
 
 describe("EZ Cracker", () => {
     const ez21 = new EZ_21();

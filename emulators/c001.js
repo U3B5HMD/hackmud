@@ -1,5 +1,5 @@
-import Lock from "../src/lock";
-import { colors } from "../src/constants";
+import Lock from "../src/lock.js";
+import { colors } from "../src/constants.js";
 
 /**
  * @classdesc Emulates a C001 lock

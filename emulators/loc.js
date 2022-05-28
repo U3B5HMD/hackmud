@@ -1,4 +1,4 @@
-import Lock from "../src/lock";
+import Lock from "../src/lock.js";
 /**
  * @classdesc Emulates a loc.
  * @memberof emulators
