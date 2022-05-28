@@ -6,6 +6,7 @@ in the game.
 ## Table of Contents
 - [Tier 1](#tier-1)
   * [CON_TELL](#con_tell)
+  * [w4rn_er and w4rn](#w4rn_er-and-w4rn)
   * [EZ_21](#ez_21)
   * [EZ_35](#ez_35)  
   * [EZ_40](#ez_40)  
@@ -42,6 +43,20 @@ The main purpose of this lock (and others like it) is to eat up the execution
 time of any automated scripts that are attempting to breach the system. The more
 time the script wastes getting past these locks, the less time it has to attempt
 to breach the _real_ locks guarding the system.
+
+### w4rn_er and w4rn
+
+The `w4rn_er` and `w4rn` locks aren't a lock in the tranditional sense. You
+can't break them, you can only move past them.
+
+When you encounter one of these locks, the lock will display a warning message
+to the attacking system. The content of the message can be changed by loading
+the `w4rn_message` upgrade.
+
+The main purpose of these locks (and others like them) is to eat up the
+execution time of any automated scripts that are attempting to breach the
+system. The more time the script wastes getting past these locks, the less time
+it has to attempt to breach the _real_ locks guarding the system.
 
 ### EZ_21
 

@@ -5,12 +5,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## Unreleased
+
 ### Added
   - src/data for storing commonly used data in scripts (e.g., usernames, corp
     lists, etc)
   - Description and answers to Tier 2 `DATA_CHECK` locks in LOCKS.md
   - Descriptions of locs get exposed/leaked in README.md
   - `CON_TELL` to LOCKS.md
+  - `w4rn` to LOCKS.md
+  - `w4rn_er` to LOCKS.md
 
 ### Changed
   - Updated `sn_w_glock` description in LOCKS.md to include a list of helpful
