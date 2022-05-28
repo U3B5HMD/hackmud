@@ -50,6 +50,9 @@
     + [Removing an Item For Sale](#removing-an-item-for-sale)
     + [Cold Storage](#cold-storage)
   * [Locs (NPCs and Players)](#locs-npcs-and-players)
+      - [Exposing your Loc Via Hacks](#exposing-your-loc-via-hacks)
+      - [Exposing Your Locs Via Scam Scripts](#exposing-your-locs-via-scam-scripts)
+      - [Loc Leaking](#loc-leaking)  
   * [Avoiding Scams](#avoiding-scams)
 - [Writing Your First Script](#writing-your-first-script)
 - [Hacking NPCs](#hacking-npcs)
@@ -695,6 +698,30 @@ token.
 [Locs][03] (short for location, pronounced "lokes") are the "address" of an
 initialized system. With this address, you can break into a system (player or
 NPC). To see your own loc (after you've initialized your system), run `sys.loc`.
+
+#### Exposing your Loc Via Hacks
+
+Every time you attempt to hack a player loc (PVP) or certain NPC locs (PVE), the
+loc of the account you used to make the hack gets written to the access logs of
+the defending system. The owner of the defending system will know you attempted
+to breach them and will be able to attack your system using your loc.
+
+There is no current way of hiding your loc during a hacking attempt.
+
+#### Exposing Your Locs Via Scam Scripts
+
+If you run a script that has a sec level of `LOWSEC` or lower, that script can
+access your loc via `sys.loc`. From there, it could log your loc to the script
+owner's database or even force your account to shout it out in the `0000`
+channel.
+
+#### Loc Leaking
+
+Even if you never hack anyone and don't run shady scripts, there's a chance your
+loc will leak out to the public via an NPC corp. When an NPC corp is hacked, it
+releases a list of locs. _Most_ of the locs it releases are going to be NPC locs
+that a player can then hack for GC. But there's also a small chance that one or
+more player locs will get included in that list (including yours).
 
 ### Avoiding Scams
 
