@@ -32,7 +32,7 @@
     "docs": "jsdoc -c .jsdocrc.json",
     "prestart": "npm ci",
     "start": "node ./start.js",
-    "lint": "eslint src/**/* test/**/*",
+    "lint": "eslint ./ --ignore-path .gitignore --fix",
     "prepublish": "rm -rf dist/**/scripts/*",
     "publish": "node ./devops/publish",
     "test": "mocha"

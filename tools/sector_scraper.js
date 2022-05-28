@@ -39,9 +39,9 @@ export default function (context, args) {
     if (tier == 2) {
         results = results.concat(
             runSectors(params => Hackmud.fs.scripts.highsec(params)),
-            runSectors(params => Hackmud.fs.scripts.midsec(params)),
+            runSectors(params => Hackmud.fs.scripts.midsec(params))
         );
     }
 
-    return [...new Set(results)].sort();
+    return [ ...new Set(results) ].sort();
 }

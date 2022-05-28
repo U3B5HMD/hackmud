@@ -1,7 +1,7 @@
 import { readdir, readFile, writeFile } from "fs/promises";
 import babel from "@babel/core";
 import path from "path";
-import {fileURLToPath} from "url";
+import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -39,8 +39,8 @@ const run = async () => {
     const userFolders = (
         await readdir(path.resolve(publishPath), { withFileTypes: true })
     )
-    .filter((file) => !file.isFile())
-    .map(file => file.name)
+        .filter(file => !file.isFile())
+        .map(file => file.name);
 
 
     // Stores stats about the files to be printed out after the script runs.

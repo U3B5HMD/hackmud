@@ -13,8 +13,8 @@ export default function omniCracker (context, args) {
 
     while (!/nn/.exec(response)) {
         [ , key = key ] = /.*`N(.*?)`.*$/.exec(response) || [];
-        
-        if((Date.now() - _START) >= 4750) {
+
+        if (Date.now() - _START >= 4750) {
             return response;
         }
 

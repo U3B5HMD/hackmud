@@ -1,8 +1,8 @@
-import fs from "fs/promises"
+import fs from "fs/promises";
 import inquirer from "inquirer";
 import path from "path";
 import util from "util";
-import {exec as execAsync} from "child_process";
+import { exec as execAsync } from "child_process";
 
 const exec = util.promisify(execAsync);
 
