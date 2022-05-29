@@ -22,15 +22,15 @@ describe("writeLineToEnv", () => {
     before(() => {
         sandbox = sinon.createSandbox();
 
-        readFile = sandbox.stub().returns([
+        readFile = sandbox.stub().returns(Promise.resolve([
             "FIELD_1=field1",
             "FIELD_2=field2",
             "FIELD_3=field3"
-        ].join(os.EOL));
+        ].join(os.EOL)));
 
         exec = sandbox.stub();
 
-        writeFile = sandbox.stub();
+        writeFile = sandbox.stub().returns(Promise.resolve(true));
         writeLineToEnv = appendLineToEnvWith(readFile, writeFile, exec);
     });
 
