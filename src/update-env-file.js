@@ -18,7 +18,9 @@ export const appendLineToEnvWith = (readFile, writeFile, exec) => async data => 
 
     await exec(`touch ${envFilePath}`);
 
-    const envData = readFile(envFilePath).split(os.EOL);
+    const envData = (await readFile(envFilePath, "utf8"))
+        .split(os.EOL)
+        .filter(line => line.length);
 
     const [ key ] = data.split("=");
 
