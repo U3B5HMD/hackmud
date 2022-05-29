@@ -1,127 +1,149 @@
-import fs from "fs/promises";
+import { access, readdir } from "fs/promises";
+import { exec as execAsync } from "child_process";
+import { fileURLToPath } from "url";
+import { linkUserDirectory } from "./src/lib.js";
+import { writeLineToEnv } from "./src/update-env-file.js";
+import chalk from "chalk";
+import dotEnv from "dotenv";
 import inquirer from "inquirer";
+import os from "os";
 import path from "path";
 import util from "util";
-import { exec as execAsync } from "child_process";
 
 const exec = util.promisify(execAsync);
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const {
     log: {
         write
     }
 } = new inquirer.ui.BottomBar();
 
-const run = async () => {
-    const { default: chalk } = await import("chalk");
-
-    const linkUsers = async (directory, users) => {
-        const { linkedUsers } = await inquirer.prompt([ {
-            type: "checkbox",
-            name: "linkedUsers",
-            message: "Which user accounts do you want to publish scripts to?",
-            choices: users
-        } ]);
-
-        if (linkedUsers.length > 0) {
-            const distPath = path.resolve(process.cwd(), `./dist/`);
+const configureEnvironment = async () => {
+    const { directory } = await inquirer.prompt([ {
+        type: "input",
+        name: "directory",
+        message: "Where is your Hackmud config directory?",
+        default: process.env.configDirectory,
+        async validate (directory) {
+            if (!directory) {
+                return false;
+            }
 
             try {
-                await exec(`mkdir ${distPath}`);
-            } catch (e) {}
-
-            for (let user of linkedUsers) {
-                const userPath = path.resolve(distPath, user);
-
-                try {
-                    await fs.access(userPath);
-                } catch (e) {
-                    await exec(`mkdir -p ${userPath}`);
-                }
-
-                try {
-                    await exec(`ln -s ${directory}/${user}/scripts ${userPath}`);
-                    write(chalk.blueBright(`Linking ${userPath}`));
-                } catch (/** @type {any} */ e) {
-                    if (e.stderr.includes("File exists")) {
-                        write(chalk.blueBright(`A link to ${userPath} already exists`));
-                    } else {
-                        throw e;
-                    }
-                }
+                await access(directory);
+            } catch (e) {
+                return `Unable to find ${directory}`;
             }
 
-            write(chalk.greenBright("Environment setup complete"));
+            const files = await readdir(directory);
+
+            if (!files.some(file => file.includes(".key"))) {
+                return `Unable to find users in ${directory}`;
+            }
+
+            return true;
         }
+    } ]);
 
-        return await start();
-    };
+    await writeLineToEnv(`configDirectory=${directory}`);
 
-    const configureDirectory = async () => {
-        const { directory } = await inquirer.prompt([
-            {
-                type: "input",
-                name: "directory",
-                message: "Where is your Hackmud config directory?",
-                async validate (directory) {
-                    if (!directory) {
-                        return false;
-                    }
+    return directory;
+};
 
-                    try {
-                        await fs.access(directory);
-                    } catch (e) {
-                        return `Unable to find ${directory}`;
-                    }
+const linkUsers = async configDirectory => {
+    const results = [];
 
-                    const files = await fs.readdir(directory);
+    const files = await readdir(configDirectory, { withFileTypes: true });
+    const users = files
+        .filter(file => file.isDirectory());
 
-                    if (!files.some(file => file.includes(".key"))) {
-                        return `Unable to find users in ${directory}`;
-                    }
+    const { chosenUsers } = await inquirer.prompt([ {
+        type: "checkbox",
+        name: "chosenUsers",
+        message: "Which user accounts do you want to publish scripts to?",
+        choices: users
+    } ]);
 
-                    return true;
-                }
+    if (chosenUsers.length === 0) {
+        write(chalk.red("No users selected."));
+
+        await linkUsers(configDirectory);
+    }
+
+    for (let i = 0; i < chosenUsers.length; i++) {
+        try {
+            await linkUserDirectory(configDirectory, chosenUsers[i]);
+
+            results.push(`${chosenUsers[i]}: ${chalk.green("\u2713")}`);
+        } catch (/** @type any */e) {
+            if (e.stderr.includes("File exists")) {
+                results.push(`${chosenUsers[i]}: ${chalk.blueBright("Skipped - already linked")}`);
+            } else {
+                results.push(`${chosenUsers[i]}: ${chalk.red("Error - " + e.message)}`);
             }
-        ]);
-
-        const files = await fs.readdir(directory);
-        const users = files
-            .filter(file => file.includes(".key"))
-            .map(user => user.split(".")[0]);
-
-        return { directory, users };
-    };
-
-    const start = async () => {
-        const { choice } = await inquirer.prompt([
-            {
-                type: "list",
-                name: "choice",
-                message: "Welcome Hackmud! What would you like to do?",
-                choices: [
-                    {
-                        name: "Set up my scripting environment",
-                        value: "setup"
-
-                    },
-                    new inquirer.Separator(),
-                    {
-                        name: "Exit",
-                        value: "exit"
-                    }
-                ]
-            }
-        ]);
-
-        switch (choice) {
-            case "setup":
-                const { directory, users } = await configureDirectory();
-                await linkUsers(directory, users);
         }
-    };
+    }
 
-    await start();
+    return results;
+};
+
+const run = async () => {
+    dotEnv.config();
+
+    const distPath = path.resolve(__dirname, "./dist");
+    try {
+        await access(distPath);
+    } catch (/** @type any */e) {
+        try {
+            await exec(`mkdir ${distPath}`);
+        } catch (/** @type any */e) {
+            return `Unable to set up environment ${e.message}`;
+        }
+    }
+
+
+    let configureDirectory = process.env.configDirectory;
+
+    if (!configureDirectory) {
+        configureDirectory = await configureEnvironment();
+    }
+
+    const { choice } = await inquirer.prompt([
+        {
+            type: "list",
+            name: "choice",
+            message: "Welcome Hackmud! What would you like to do?",
+            choices: [
+                {
+                    name: "Reconfigure my scripting environment",
+                    value: "reconfigure"
+
+                },
+                {
+                    name: "Link my Hackmud users to the scripting environment",
+                    value: "link"
+
+                },
+                new inquirer.Separator(),
+                {
+                    name: "Exit",
+                    value: "exit"
+                }
+            ]
+        }
+    ]);
+
+    switch (choice) {
+        case "reconfigure":
+            await configureEnvironment();
+            break;
+        case "link":
+            write((await linkUsers(configureDirectory)).join(os.EOL));
+    }
+
+    return true;
 };
 
 run();
