@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Added
+  - How to use `chats` scripts and the chat window to README.md
+
 ### Changed
   - Updated _Life After VLAN_ and added a note about how to skip the tutorial
 

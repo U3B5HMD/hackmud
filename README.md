@@ -17,6 +17,14 @@
   * [Change the Size of the UI](#change-the-size-of-the-ui)
   * [Change The Levels of Visual Effects](#change-the-levels-of-visual-effects)
   * [Change the Volume of Sound Effects and Background Music](#change-the-volume-of-sound-effects-and-background-music)
+- [Chatting With Other Users](#chatting-with-other-users)
+  * [Joining and Leaving a Channel](#joining-and-leaving-a-channel)
+  * [Listing Joined Channels](#listing-joined-channels)
+  * [Sending and Receiving Messages](#sending-and-receiving-messages)
+  * [Muting Users](#muting-users)
+  * [How to Use the Chat Window](#how-to-use-the-chat-window)
+    + [Target a Specific Channel](#target-a-specific-channel)
+    + [Target a Specific User](#target-a-specific-user)
 - [Getting Started - Prove your Sentience](#getting-started---prove-your-sentience)
 - [Life after VLan](#life-after-vlan)
   * [Upgrades](#upgrades)
@@ -287,6 +295,99 @@ autos.reset
 This will remove any scripts from your autocompletes (including those listend in
 `trust`). After running this command, run `scripts.trust` to restore the trust
 scripts to your autocompletes.
+
+## Chatting With Other Users
+
+### Joining and Leaving a Channel
+
+When you first exit the VLAN, you'll be dropped into the `0000` chat channel. To
+join a chat channel, run:
+
+```javascript
+chats.leave{channel: "<channel>"}
+```
+
+To join another channel run:
+
+```javascript
+chats.join{channel: "<channel>"}
+```
+
+Each channel you join counts against the total `channel_count` allowed on your
+system.
+
+### Listing Joined Channels
+
+To see what channels you are currently in, run:
+
+```javascript
+chats.channels
+```
+
+### Sending and Receiving Messages
+
+Depending on how you've [configured your UI][15] chat messages will either show
+up in the main part of the screen (shell) or in the chat window on the right.
+
+Every message from every channel you have joined will be visible (unless you've
+quieted the user) as well as any tells (direct messages) sent to you.
+
+To send message to a channel, run:
+
+```javascript
+chats.send{channel: "<channel>", msg: "<message>"}
+```
+
+To send message to a single user, run:
+
+```javascript
+chats.send{to: "<username>", msg: "<message>"}
+```
+
+### Muting Users
+
+See [_Mute Messages from Users_][16] under _Configuring the UI_
+
+### How to Use the Chat Window
+
+The fastest way to chat with a person or channel in Hackmud is to use the chat
+window (vs writing out individual `chats.tell` or `chats.send` commands).
+
+By default, it will send a message to whatever channel you last ran `chats.send`
+against. 
+
+#### Target a Specific Channel
+
+To switch your messages to a different channel, type the following into the chat
+window and press enter:
+
+```javascript
+%<channel>
+```
+
+For example: 
+
+```javacript
+%town
+```
+
+Defaults all your messages sent via the chat window to the `town` channel. If
+you attempt to send messages to a channel you are not currently in or that
+doesn't exist, you will receive an error message.
+
+#### Target a Specific User
+
+If you want to use the chat window to chat to a specific user, type the
+following into the chat window and press enter:
+
+```javascript
++<username>
+```
+
+Now all of your messages will be sent via `chats.tell` to the specified user:
+
+If you attempt to send messages to a user that doesn't exist, you will receive
+an error message.
 
 ## Getting Started - Prove your Sentience
 
@@ -955,3 +1056,5 @@ These are scripts that might be helpful to you as you poke around the network.
 [12]: ./HACKING_GUIDE.md
 [13]: https://www.mongodb.com/docs/manual/reference/operator/query-comparison/
 [14]: #upgrade-rarity
+[15]: #configuring-the-ui
+[16]: #mute-messages-from-users
