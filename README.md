@@ -26,7 +26,7 @@
   * [How to Use the Chat Window](#how-to-use-the-chat-window)
     + [Target a Specific Channel](#target-a-specific-channel)
     + [Target a Specific User](#target-a-specific-user)
-    + [How to Change the Color of Your Chat Message Text](#how-to-change-the-color-of-your-chat-message-text)
+  * [How to Change the Color of Your Chat Message Text](#how-to-change-the-color-of-your-chat-message-text)
 - [Getting Started - Prove your Sentience](#getting-started---prove-your-sentience)
 - [Life after VLan](#life-after-vlan)
   * [Upgrades](#upgrades)
@@ -392,7 +392,7 @@ Now all of your messages will be sent via `chats.tell` to the specified user:
 If you attempt to send messages to a user that doesn't exist, you will receive
 an error message.
 
-#### How to Change the Color of Your Chat Message Text
+### How to Change the Color of Your Chat Message Text
 
 To change the color of your chat message text, wrap the word(s) or letter(s) you
 want to change in backticks (`) followed by the letter code of the color you
