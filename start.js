@@ -1,8 +1,7 @@
 import { access, readdir } from "fs/promises";
 import { exec as execAsync } from "child_process";
 import { fileURLToPath } from "url";
-import { linkUserDirectory } from "./src/lib.js";
-import { writeLineToEnv } from "./src/update-env-file.js";
+import { linkUserDirectory, writeLineToEnv } from "./src/lib.js";
 import chalk from "chalk";
 import dotEnv from "dotenv";
 import inquirer from "inquirer";
