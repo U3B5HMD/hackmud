@@ -42,6 +42,10 @@
             "property"
         ],
         "func-call-spacing": "error",
+        "eol-last": [
+            "error",
+            "always"
+        ],
         "generator-star-spacing": "error",
         "import/imports-first": "error",
         "import/newline-after-import": "error",
