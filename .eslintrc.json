@@ -15,7 +15,6 @@
         "import"
     ],
     "rules": {
-        "no-unused-vars": "error",
         "array-bracket-spacing": [
             "error",
             "always"
@@ -41,11 +40,11 @@
             "error",
             "property"
         ],
-        "func-call-spacing": "error",
         "eol-last": [
             "error",
             "always"
         ],
+        "func-call-spacing": "error",
         "generator-star-spacing": "error",
         "import/imports-first": "error",
         "import/newline-after-import": "error",
@@ -63,12 +62,13 @@
         "newline-per-chained-call": "off",
         "no-extra-parens": "warn",
         "no-multi-spaces": "error",
+        "no-multiple-empty-lines": "error",
         "no-path-concat": "error",
         "no-process-exit": "error",
         "no-sync": "warn",
-        "no-multiple-empty-lines": "error",
         "no-trailing-spaces": "error",
         "no-undef": "error",
+        "no-unused-vars": "error",
         "no-whitespace-before-property": "error",
         "object-curly-newline": "error",
         "object-curly-spacing": [
