@@ -41,9 +41,10 @@ breach again.
 
 The main purpose of this lock (and others like it) is to eat up the execution
 time of any automated scripts that are attempting to breach the system. In this
-case, `CON_TELL`'s use of `chats.tell` takes up around 30ms of execution time.
-The more time the script wastes getting past these locks, the less time it has
-to attempt to breach the _real_ locks guarding the system.
+case, `CON_TELL`'s use of `chats.tell` takes up several ms of execution time
+(depending on server load). The more time the script wastes getting past these
+locks, the less time it has to attempt to breach the _real_ locks guarding the
+system.
 
 ### w4rn_er and w4rn
 
