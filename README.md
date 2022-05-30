@@ -25,6 +25,7 @@
   * [How to Use the Chat Window](#how-to-use-the-chat-window)
     + [Target a Specific Channel](#target-a-specific-channel)
     + [Target a Specific User](#target-a-specific-user)
+    + [How to Change the Color of Your Chat Message Text](#how-to-change-the-color-of-your-chat-message-text)
 - [Getting Started - Prove your Sentience](#getting-started---prove-your-sentience)
 - [Life after VLan](#life-after-vlan)
   * [Upgrades](#upgrades)
@@ -388,6 +389,96 @@ Now all of your messages will be sent via `chats.tell` to the specified user:
 
 If you attempt to send messages to a user that doesn't exist, you will receive
 an error message.
+
+#### How to Change the Color of Your Chat Message Text
+
+To change the color of your chat message text, wrap the word(s) or letter(s) you
+want to change in backticks (`) followed by the letter code of the color you
+want to use. For example, to make your entire message red:
+
+```javascript
+chats.send{channel: "0000", msg: "`DHello world`"}
+```
+
+To only make a single character red and leave the rest the default color
+(#7AB2F4 or S):
+
+```javascript
+chats.send{channel: "0000", msg: "`DH`ello world"}
+```
+
+<details>
+
+<summary>
+    Here is a complete list of all Hackmud color codes and their corresponding
+    colors:
+</summary>
+
+| Color Code | Hex Code |
+| ---------- | -------- |
+| 0          | #CACACA  |
+| 1          | #FFFFFF  |
+| 2          | #1EFF00  |
+| 3          | #0070DD  |
+| 4          | #B035EE  |
+| 5          | #FF8000  |
+| 6          | #FF8000  |
+| 7          | #FF8000  |
+| 8          | #FF8000  |
+| 9          | #FF8000  |
+| a          | #000000  |
+| b          | #3F3F3F  |
+| c          | #676767  |
+| d          | #7D0000  |
+| e          | #8E3434  |
+| f          | #A34F00  |
+| g          | #725437  |
+| h          | #A88600  |
+| i          | #B2934A  |
+| j          | #939500  |
+| k          | #495225  |
+| l          | #299400  |
+| m          | #23381B  |
+| n          | #00535B  |
+| o          | #324A4C  |
+| p          | #0073A6  |
+| q          | #385A6C  |
+| r          | #010067  |
+| s          | #507AA1  |
+| t          | #601C81  |
+| u          | #43314C  |
+| v          | #8C0069  |
+| w          | #973984  |
+| x          | #880024  |
+| y          | #762E4A  |
+| z          | #101215  |
+| A          | #FFFFFF  |
+| B          | #CACACA  |
+| C          | #9B9B9B  |
+| D          | #FF0000  |
+| E          | #FF8383  |
+| F          | #FF8000  |
+| G          | #F3AA6F  |
+| H          | #FBC803  |
+| I          | #FFD863  |
+| J          | #FFF404  |
+| K          | #F3F998  |
+| L          | #1EFF00  |
+| M          | #B3FF9B  |
+| N          | #00FFFF  |
+| O          | #8FE6FF  |
+| P          | #0070DD  |
+| Q          | #A4E3FF  |
+| R          | #0000FF  |
+| S          | #7AB2F4  |
+| T          | #B035EE  |
+| U          | #E6C4FF  |
+| V          | #FF00EC  |
+| W          | #FF96E0  |
+| X          | #FF0070  |
+| Y          | #FF6A98  |
+| Z          | #0C112B  |
+</details>
 
 ## Getting Started - Prove your Sentience
 

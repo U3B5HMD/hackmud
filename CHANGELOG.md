@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
   - How to use `chats` scripts and the chat window to README.md
+  - How to change the color of your chat message text
 
 ### Changed
   - Updated _Life After VLAN_ and added a note about how to skip the tutorial
