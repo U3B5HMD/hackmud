@@ -234,47 +234,10 @@ your quiet list with:
 ```javascript
 gui.quiet{add: "<username>"}
 ```
-<details> 
-    <summary>List of Bots:</summary>
-    
-  - `adventure`
-  - `advertise`
-  - `blank`
-  - `cal_initiative`
-  - `discord`
-  - `eliza`
-  - `epoch_news`
-  - `extra`
-  - `fran_lee`
-  - `hey_there_stranger`
-  - `hint`
-  - `hoborg`
-  - `iguana`
-  - `link_light_rail_train_7`
-  - `lock`
-  - `lore`
-  - `matr3x`
-  - `navi`
-  - `on_th3_1ntern3ts`
-  - `packbot_7257`
-  - `pompeii`
-  - `promo`
-  - `robovac_11_134_2_221`
-  - `robovac_19_51_0_26`
-  - `robovac_idp1p1`
-  - `spy`
-  - `suborbital_committee`
-  - `sudo`
-  - `the_digger_king`
-  - `tk`
-  - `trust`
-  - `twitter`
-  - `unbindall`
-  - `weather_network_us`
-  - `willie`
-  - `xena`
-  - `zez_facts`
-</details>
+
+A full list of bots can be found in `src/data/quiet-list.json`. You can also
+update your existing quiet list by running the `start` command and choosing
+"Update my quiet list with a list of known bots"
 
 **add:** Adds the passed in username to the quiet list.
 **remove:** Adds the passed in username from the quiet list.
