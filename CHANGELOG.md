@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
   - Start script prompts you to configure your environment if you haven't
-    already.
+    already
   - Start script remembers your Hackmud configuration directory between runs
 
 ### Fixed
