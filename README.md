@@ -17,6 +17,7 @@
   * [Change the Size of the UI](#change-the-size-of-the-ui)
   * [Change The Levels of Visual Effects](#change-the-levels-of-visual-effects)
   * [Change the Volume of Sound Effects and Background Music](#change-the-volume-of-sound-effects-and-background-music)
+  * [Reset Autocompletes](#reset-autocompletes)
 - [Chatting With Other Users](#chatting-with-other-users)
   * [Joining and Leaving a Channel](#joining-and-leaving-a-channel)
   * [Listing Joined Channels](#listing-joined-channels)
@@ -59,9 +60,9 @@
     + [Removing an Item For Sale](#removing-an-item-for-sale)
     + [Cold Storage](#cold-storage)
   * [Locs (NPCs and Players)](#locs-npcs-and-players)
-      - [Exposing your Loc Via Hacks](#exposing-your-loc-via-hacks)
-      - [Exposing Your Locs Via Scam Scripts](#exposing-your-locs-via-scam-scripts)
-      - [Loc Leaking](#loc-leaking)  
+    + [Exposing your Loc Via Hacks](#exposing-your-loc-via-hacks)
+    + [Exposing Your Locs Via Scam Scripts](#exposing-your-locs-via-scam-scripts)
+    + [Loc Leaking](#loc-leaking)
   * [Avoiding Scams](#avoiding-scams)
 - [Writing Your First Script](#writing-your-first-script)
 - [Hacking NPCs](#hacking-npcs)
@@ -81,6 +82,7 @@
   * [Script Space](#script-space)
 - [Asking for Help](#asking-for-help)
 - [Helpful Scripts](#helpful-scripts)
+
 
 ## About this Repository
 

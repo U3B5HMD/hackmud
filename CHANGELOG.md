@@ -13,6 +13,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
   - Updated _Life After VLAN_ and added a note about how to skip the tutorial
 
+### Fixed
+  - Missing/badly formatted TOC entries
+
 ## [1.7.0] - 2022-05-29
 
 ### Added
