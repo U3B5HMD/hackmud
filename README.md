@@ -294,6 +294,21 @@ The best thing you can do for yourself is to work through the (multi-hour long)
 tutorial. Yes, it's a lot to take in, but I promise you'll be glad you did once
 you make it out of of the VLAN.
 
+If you really don't want to do the tutorial (this repo's guides pretty much
+covers everything it does), you can skip it by running:
+
+<details> 
+    <summary>Spoilers:</summary>
+
+    ```javascript
+    sys.migrate{}
+    ```
+</details>
+
+This will immediately migrate your user out of the VLAN and into the main game.
+This script is also helpful if you retire a user and want to make a new user
+without going through the tutorial.
+
 ## Life after VLan
 
 Once you've escaped the VLAN and made your way to the main game, the first thing
