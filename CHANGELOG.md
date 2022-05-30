@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Added
+  - Ability to update your in-game "quiet" list with a list of known bots
+
 ### Changed
   - Start script prompts you to configure your environment if you haven't
     already

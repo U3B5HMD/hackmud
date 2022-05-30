@@ -1,4 +1,4 @@
-import { access, readdir } from "fs/promises";
+import { access, readdir, readFile, writeFile } from "fs/promises";
 import { exec as execAsync } from "child_process";
 import { fileURLToPath } from "url";
 import { linkUserDirectory, writeLineToEnv } from "./src/lib.js";
@@ -8,6 +8,10 @@ import inquirer from "inquirer";
 import os from "os";
 import path from "path";
 import util from "util";
+import { createRequire } from "module";
+
+const require = createRequire(import.meta.url);
+const quietList = require("./src/data/quiet-list.json");
 
 const exec = util.promisify(execAsync);
 
@@ -88,6 +92,22 @@ const linkUsers = async configDirectory => {
     return results;
 };
 
+const updateQuietList = async configureDirectory => {
+    const currentSettingsFile = path.resolve(configureDirectory, "settings");
+    const currentSettings = JSON.parse(
+        await readFile(currentSettingsFile, "utf8")
+    );
+
+    currentSettings.gui_quiet = [
+        ...new Set(currentSettings.gui_quiet.concat(quietList))
+    ].sort();
+
+    await writeFile(
+        currentSettingsFile,
+        JSON.stringify(currentSettings), "utf8"
+    );
+};
+
 const run = async () => {
     dotEnv.config();
 
@@ -125,6 +145,11 @@ const run = async () => {
                     value: "link"
 
                 },
+                {
+                    name: "Update my quiet list with a list of known bots",
+                    value: "quiet"
+
+                },
                 new inquirer.Separator(),
                 {
                     name: "Exit",
@@ -140,6 +165,11 @@ const run = async () => {
             break;
         case "link":
             write((await linkUsers(configureDirectory)).join(os.EOL));
+            break;
+        case "quiet":
+            await updateQuietList(configureDirectory);
+            write(chalk.blueBright("Quiet list updated successfully"));
+            break;
     }
 
     return true;
