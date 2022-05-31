@@ -29,12 +29,6 @@
   * [How to Change the Color of Your Chat Message Text](#how-to-change-the-color-of-your-chat-message-text)
 - [Getting Started - Prove your Sentience](#getting-started---prove-your-sentience)
 - [Life after VLan](#life-after-vlan)
-  * [Upgrades](#upgrades)
-    + [View Upgrades](#view-upgrades)
-    + [Loading/Unloading Upgrades](#loadingunloading-upgrades)
-    + [Reordering Upgrades](#reordering-upgrades)
-    + [Deleting Upgrades](#deleting-upgrades)
-    + [Upgrade Rarity](#upgrade-rarity)
   * [Scripts](#scripts)
       - [Script Levels](#script-levels)
       - [FULLSEC](#fullsec)
@@ -80,9 +74,14 @@
   * [GC Max](#gc-max)
   * [Upgrade Space](#upgrade-space)
   * [Script Space](#script-space)
+  * [Upgrades](#upgrades)
+    + [View Upgrades](#view-upgrades)
+    + [Loading/Unloading Upgrades](#loadingunloading-upgrades)
+    + [Reordering Upgrades](#reordering-upgrades)
+    + [Deleting Upgrades](#deleting-upgrades)
+    + [Upgrade Rarity](#upgrade-rarity)
 - [Asking for Help](#asking-for-help)
 - [Helpful Scripts](#helpful-scripts)
-
 
 ## About this Repository
 
@@ -509,131 +508,6 @@ Once you've escaped the VLAN and made your way to the main game, the first thing
 you should do is run the tutorial script `teach_si_x80d.each_other`. This will
 guide you through the basics of how to find and break into systems, collect GC
 (the in-game currency), and eventually initialize your system.
-
-### Upgrades
-
-Upgrades are software that you install on your system. An upgrade does one of
-the following:
-  - Defend your system against intrusion (lock)
-  - Increase storage space (script character count, script slots, etc.,)
-  - Allow you to attack other players
-  - Display trophies you've won during events (see: [Glam][02])
-
-Upgrades fall into one of the following categories:
-
-- Locks: Used to defend your system.
-- Architect: Used for writing and publishing scripts.
-- Infiltrator: Used for stealing information from a target.
-- Scavenger: Used to stealing upgrades from a target.
-- Executive: Used for managing how many chat channels you can join.
-
-#### View Upgrades
-
-To view upgrades currently saved on your system, run `sys.upgrades`:
-
-<pre>
-full:true for upgrade details
-i:<index or array> to pre-filter on index(es)
-
-000 tier_1 lock         DATA_CHECK_V1
-001 tier_1 lock         l0cket
-002 tier_1 lock         ez_40
-003 tier_1 lock         c003
-004 tier_1 script_space char_count_v1
-005 tier_1 script_space char_count_v1
-006 tier_1 script       expose_access_log_v1
-007 tier_1 script_space script_slot_v1
-008 tier_1 script_space char_count_v1
-009 tier_1 script_space script_slot_v1
-010 tier_1 script_space char_count_v1
-011 tier_1 script_space char_count_v1
-012 tier_1 script_space script_slot_v1
-013 tier_1 script       w4rn_message
-014 tier_1 lock         ez_21
-015 tier_1 tool         k3y_v1
-016 tier_1 script       log_writer_v1
-017 tier_1 script_space public_script_v1
-</pre>
-
-Indexes that are in cyan are upgrades that
-are loaded. To learn more about an upgrade, run: 
-
-```
-sys.upgrades{i: <index>, full: true}
-```
-
-#### Loading/Unloading Upgrades
-
-In order for an upgrade to work on your system, it needs to be loaded. To load
-an upgrade:
-
-```
-sys.manage{load: <index or array>}
-```
-
-For example, to load upgrade 13:
-
-```
-sys.manage{load: 13}
-```
-
-You can unload an upgrade the same way:
-
-```
-sys.manage{unload: 13}
-```
-
-#### Reordering Upgrades
-
-The order that locks are listed and loaded in your system is the order that
-intruders will have to break them in. To reorder upgrades:
-
-```
-sys.manage{reorder: [{from: 10, to: 2}]}
-```
-
-In this example, we're moving `char_count_v1` from index 10 to index 2.
-
-#### Deleting Upgrades
-
-To delete one or more upgrades:
-
-```
-sys.cull{i: <index or array>, confirm: true}
-```
-
-You cannot delete loaded upgrades.
-
-#### Upgrade Rarity
-
-An upgrade can have one of the following rarity levels:
-
-<pre>
-0 noob (grey)
-1 kiddie (white)
-2 h4x0r (green)
-3 h4rdc0r3 (blue)
-4 |_|b3|2 (purple)
-5 31337 (orange)
-</pre>
-
-All upgrades have a rarity level. The higher the rarity level, the better the
-upgrade. For example, a `char_count_v1` upgrade that's got a rarity of `h4x0r`
-is going to have a greater character count than the same upgrade with a rarity
-of `noob`.
-
-grey and white (`noob`, `kiddie`) upgrades have fixed stats - they'll always be
-the same/ For example, a grey `char_count_v1` will always add 500 characters to
-your total character count.
-
-Upgrades that are green (`h4x0r`) and  above have randomized stats that differ
-per upgrade, per tier. So, make sure you examine your upgrades by running:
-
-```javascript
-sys.upgrades:{i: <index>, full: true}
-```
-
-Before deciding what to cull or sell.
 
 ### Scripts
 
@@ -1111,6 +985,132 @@ characters a script is allowed to have.
 (default is 1).
 **chars** The max number of characters allowed in a single script 
 (default is 500).
+
+### Upgrades
+
+Upgrades are software that you install on your system. An upgrade does one of
+the following:
+  - Defend your system against intrusion (lock)
+  - Increase storage space (script character count, script slots, etc.,)
+  - Allow you to attack other players
+  - Display trophies you've won during events (see: [Glam][02])
+
+Upgrades fall into one of the following categories:
+
+- Locks: Used to defend your system.
+- Architect: Used for writing and publishing scripts.
+- Infiltrator: Used for stealing information from a target.
+- Scavenger: Used to stealing upgrades from a target.
+- Executive: Used for managing how many chat channels you can join.
+
+#### View Upgrades
+
+To view upgrades currently saved on your system, run `sys.upgrades`:
+
+<pre>
+full:true for upgrade details
+i:<index or array> to pre-filter on index(es)
+
+000 tier_1 lock         DATA_CHECK_V1
+001 tier_1 lock         l0cket
+002 tier_1 lock         ez_40
+003 tier_1 lock         c003
+004 tier_1 script_space char_count_v1
+005 tier_1 script_space char_count_v1
+006 tier_1 script       expose_access_log_v1
+007 tier_1 script_space script_slot_v1
+008 tier_1 script_space char_count_v1
+009 tier_1 script_space script_slot_v1
+010 tier_1 script_space char_count_v1
+011 tier_1 script_space char_count_v1
+012 tier_1 script_space script_slot_v1
+013 tier_1 script       w4rn_message
+014 tier_1 lock         ez_21
+015 tier_1 tool         k3y_v1
+016 tier_1 script       log_writer_v1
+017 tier_1 script_space public_script_v1
+</pre>
+
+Indexes that are in cyan are upgrades that
+are loaded. To learn more about an upgrade, run: 
+
+```
+sys.upgrades{i: <index>, full: true}
+```
+
+#### Loading/Unloading Upgrades
+
+In order for an upgrade to work on your system, it needs to be loaded. To load
+an upgrade:
+
+```
+sys.manage{load: <index or array>}
+```
+
+For example, to load upgrade 13:
+
+```
+sys.manage{load: 13}
+```
+
+You can unload an upgrade the same way:
+
+```
+sys.manage{unload: 13}
+```
+
+#### Reordering Upgrades
+
+The order that locks are listed and loaded in your system is the order that
+intruders will have to break them in. To reorder upgrades:
+
+```
+sys.manage{reorder: [{from: 10, to: 2}]}
+```
+
+In this example, we're moving `char_count_v1` from index 10 to index 2.
+
+#### Deleting Upgrades
+
+To delete one or more upgrades:
+
+```
+sys.cull{i: <index or array>, confirm: true}
+```
+
+You cannot delete loaded upgrades.
+
+#### Upgrade Rarity
+
+An upgrade can have one of the following rarity levels:
+
+<pre>
+0 noob (grey)
+1 kiddie (white)
+2 h4x0r (green)
+3 h4rdc0r3 (blue)
+4 |_|b3|2 (purple)
+5 31337 (orange)
+</pre>
+
+All upgrades have a rarity level. The higher the rarity level, the better the
+upgrade. For example, a `char_count_v1` upgrade that's got a rarity of `h4x0r`
+is going to have a greater character count than the same upgrade with a rarity
+of `noob`.
+
+grey and white (`noob`, `kiddie`) upgrades have fixed stats - they'll always be
+the same/ For example, a grey `char_count_v1` will always add 500 characters to
+your total character count.
+
+Upgrades that are green (`h4x0r`) and  above have randomized stats that differ
+per upgrade, per tier. So, make sure you examine your upgrades by running:
+
+```javascript
+sys.upgrades:{i: <index>, full: true}
+```
+
+Before deciding what to cull or sell.
+
 
 ## Asking for Help
 
