@@ -105,7 +105,7 @@ describe("EZ_35 Lock", () => {
         context("When EZ_35 is not defined in the answer key", () => {
             const result = lock.buildAnswerKey();
 
-            it("should choose a random color for 'EZ_35'", () => {
+            it("should choose a random unlock command for 'EZ_35'", () => {
                 expect(result.EZ_35).to.be.oneOf(unlockCommands);
             });
         });
