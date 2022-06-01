@@ -25,7 +25,7 @@
  * A C001 answer key.
  * @typedef {Object} C001AnswerKey
  * @property {Color} c001 The color used to unlock the lock.
- * @property {String} color_digit The number of characters in c001.
+ * @property {Number} color_digit The number of characters in c001.
  */
 
 /**
