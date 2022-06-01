@@ -16,6 +16,8 @@ class C003 extends Lock {
             company: "CORE",
             type: "c003"
         });
+
+        this.answerKey = this.buildAnswerKey(answerKey);
     }
     /**
      * Takes in the passed in answers object and returns an answer key that the

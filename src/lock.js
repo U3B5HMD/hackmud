@@ -10,19 +10,17 @@ class Lock {
      * @constructor
      * @param {Object} configuration Configuration options for the lock.
      * @param {String} configuration.type The type of lock.
-     * @param {String} configuration.company The name of lock company.
+     * @param {String} [configuration.company] The name of lock company.
      * @param {Object} [configuration.answerKey] Answers used to unlock the lock.
      */
     constructor (configuration) {
         const {
             type,
-            company,
-            answerKey
+            company
         } = configuration;
 
         this.type = type;
         this.company = company;
-        this.answerKey = this.buildAnswerKey(answerKey);
     }
     /**
      * @static

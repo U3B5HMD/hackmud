@@ -16,6 +16,8 @@ class L0cket extends Lock {
             company: "NUUTEC",
             type: "l0cket"
         });
+
+        this.answerKey = this.buildAnswerKey(answerKey);
     }
     /**
      * Takes in the passed in answers object and returns an answer key that the

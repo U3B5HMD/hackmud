@@ -16,6 +16,8 @@ class EZ_35 extends Lock {
             company: "HALPERYON SYSTEMS",
             type: "EZ_35"
         });
+
+        this.answerKey = this.buildAnswerKey(answerKey);
     }
     /**
      * Takes in the passed in answers object and returns an answer key that the

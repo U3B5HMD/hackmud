@@ -16,6 +16,8 @@ class C001 extends Lock {
             company: "CORE",
             type: "c001"
         });
+
+        this.answerKey = this.buildAnswerKey(answerKey);
     }
 
     /**
