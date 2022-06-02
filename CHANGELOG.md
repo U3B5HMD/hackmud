@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Added
+  - Emulator for Tier 1 DATA_CHECK lock
+
 ### Changed
   - Moved _Upgrades_ section from _Life after VLAN_ to _Understanding Your
     System_
