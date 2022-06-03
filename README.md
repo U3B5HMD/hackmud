@@ -30,7 +30,7 @@
 - [Getting Started - Prove your Sentience](#getting-started---prove-your-sentience)
 - [Life after VLan](#life-after-vlan)
   * [Scripts](#scripts)
-      - [Script Levels](#script-levels)
+    + [Script Levels](#script-levels)
       - [FULLSEC](#fullsec)
       - [HIGHSEC](#highsec)
       - [MIDSEC](#midsec)
@@ -515,7 +515,7 @@ Scripts are how players interact with the Hackmud environment. Nearly everything
 you will interact with as a player (e.g., locks, upgrades, corps) either comes
 from or is a script.
 
-##### Script Levels
+#### Script Levels
 
 Every script has a security level. You can learn the security level of a given
 script by running `scripts.get_level{name: "<script>"}`.
