@@ -598,7 +598,7 @@ In the example, the answer would be `OQS`.
 
 ### magnara
 
-The `mangara` lock requires you to guess the correct anagram (hence the name) in
+The `magnara` lock requires you to guess the correct anagram (hence the name) in
 order to break it. An example output looks like this:
 
 ```
