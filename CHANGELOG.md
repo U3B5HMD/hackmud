@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
   - Typo in `magnara` lock description in LOCKS.md
+  - Typos and ambiguities in HACKING_GUIDE.md
 
 ## 1.9.0 - 2022-06-02
 

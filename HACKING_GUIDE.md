@@ -17,7 +17,7 @@ review the instructions in the README.
   * [Get the Password](#get-the-password)
   * [Get a List of Projects](#get-a-list-of-projects)
   * [Search the Projects for Locs](#search-the-projects-for-locs)
-- [How to Hack a Tier 2 Corporations](#how-to-hack-a-tier-2-corporations)
+- [How to Hack a Tier 2 Corporation](#how-to-hack-a-tier-2-corporation)
   * [Helpful Scripts](#helpful-scripts)
 - [How to Breach an NPC](#how-to-breach-an-npc)
 - [How to Determine NPC Difficulty and Upgrades](#how-to-determine-npc-difficulty-and-upgrades)
@@ -231,7 +231,7 @@ anonym_jrttl_znx87h.public_fftgy3
 con.pubinfo_eoej39
 ```
 
-## How to Hack a Tier 2 Corporations
+## How to Hack a Tier 2 Corporation
 
 Once you've found a corporation to hack, run the script without any parameters.
 You'll see something like this:
@@ -417,8 +417,8 @@ The name will always be one of the following:
   - `unidentified`
   - `unknown`
 
-  Keep in mind that it is possible for non-NPC users to choose usernames
-  designed to look like an NPC account.
+  Keep in mind that it is possible for users to choose usernames designed to
+  look like an NPC account.
 
 **Rating**
 
@@ -589,7 +589,7 @@ to 4 locs before you have to disconnect your hardline and start again.
 
 ## How to Crack A Specific Lock
 
-For a guide to all Tier 1 locks, see [the lock guide][06].
+To learn how to hack a specific lock, see [the lock guide][06].
 
 [01]: https://hackmud.fandom.com/wiki/GC
 [02]: https://hackmud.fandom.com/wiki/Security_Levels
