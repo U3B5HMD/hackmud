@@ -37,6 +37,7 @@
       - [LOWSEC](#lowsec)
       - [NULLSEC](#nullsec)
   * [Quests](#quests)
+  * [Events](#events)
   * [The Market](#the-market)
     + [Browsing](#browsing)
       - [By Tier](#by-tier)
@@ -561,6 +562,13 @@ running). Plus, they're fun!
   - `skimmerite.learn_to_read, `
   - `suborbital_airlines.bulletin, `
   - `vacuum_rescue.responder`
+
+### Events
+
+The story of Hackmud is progressed through [in-game events][17]. In-game events
+can consist of PvP challenges, PvE, or puzzles. In the past, rewards for
+completing in game events include access to unique titles, avatars, glams, and
+even scripts.
 
 ### The Market
 
@@ -1162,3 +1170,4 @@ These are scripts that might be helpful to you as you poke around the network.
 [14]: #upgrade-rarity
 [15]: #configuring-the-ui
 [16]: #mute-messages-from-users
+[17]: https://hackmud.fandom.com/wiki/Category:Events

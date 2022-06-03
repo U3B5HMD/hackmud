@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
   - List of quests to _Life After VLAN_ in the README.md
+  - Documentation for Events in README.md
 
 ### Changed
   - Updated quiet list
