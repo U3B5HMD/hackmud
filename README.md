@@ -51,7 +51,6 @@
       - [View Item Details](#view-item-details)
     + [Buying](#buying)
     + [Selling](#selling)
-      - [Selling Multiple Items at Once](#selling-multiple-items-at-once)
     + [Removing an Item For Sale](#removing-an-item-for-sale)
     + [Cold Storage](#cold-storage)
   * [Locs (NPCs and Players)](#locs-npcs-and-players)
@@ -717,7 +716,7 @@ market.sell{i: 1, cost: "1KGC", description: "my fave upgrade", no_notify: false
 Putting an item up for sale costs 1000 GC or 5 percent of the asking price
 (whichever is larger).
 
-##### Selling Multiple Items at Once
+**Selling Multiple Items at Once:**
 
 If you have multiple items of the same tier and rarity you want to sell, you can
 specify a count:
