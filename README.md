@@ -1130,7 +1130,6 @@ sys.upgrades:{i: <index>, full: true}
 
 Before deciding what to cull or sell.
 
-
 ## Asking for Help
 
 Hackmud has a robust and active community supporting it and they don't mind
