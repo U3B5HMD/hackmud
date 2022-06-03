@@ -551,6 +551,17 @@ play BINMAT sessions automatically, your `users.inspect` profile can be modified
 with `users.config` and `sys.breach` can immediately breach one's system,
 bypassing all locks and BINMAT. 
 
+### Quests
+
+Quests are a type of script. They are puzzles designed to help you learn the
+basics of the game, find NPCs, and (potentially) start game events (if any are
+running). Plus, they're fun!
+  - `aon.memb3rs_only`
+  - `pica.nubloops `
+  - `skimmerite.learn_to_read, `
+  - `suborbital_airlines.bulletin, `
+  - `vacuum_rescue.responder`
+
 ### The Market
 
 The market is where users can buy and sell upgrades (including locks) for GC.
