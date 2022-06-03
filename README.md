@@ -36,6 +36,7 @@
       - [MIDSEC](#midsec)
       - [LOWSEC](#lowsec)
       - [NULLSEC](#nullsec)
+  * [Quests](#quests)
   * [The Market](#the-market)
     + [Browsing](#browsing)
       - [By Tier](#by-tier)
