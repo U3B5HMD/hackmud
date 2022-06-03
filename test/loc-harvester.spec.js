@@ -19,7 +19,6 @@ describe("Loc Harvester", () => {
         sandbox.restore();
     });
 
-
     for (let project of corp.projects) {
         it(`should get the locs for the '${project}' project`, () => {
             expect(corp.call).to.have.been.calledWith(sinon.match({

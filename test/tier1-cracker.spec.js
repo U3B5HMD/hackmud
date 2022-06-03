@@ -10,7 +10,6 @@ import L0cket from "../emulators/l0cket.js";
 import tier1Cracker from "../crackers/under-500-characters/tier1-cracker.js";
 import { expect } from "chai";
 
-
 describe("Tier 1 Cracker", () => {
     const c001 = new C001();
     const c002 = new C002();

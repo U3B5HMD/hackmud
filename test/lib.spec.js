@@ -143,7 +143,6 @@ describe("writeLineToEnv", () => {
         });
     });
 
-
     after(() => {
         sandbox.restore();
     });

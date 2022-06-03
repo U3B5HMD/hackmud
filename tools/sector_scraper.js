@@ -22,7 +22,6 @@ export default function (context, args) {
         runMidSec = params => Hackmud.fs.scripts.midsec(params),
         i;
 
-
     const runSectors = sectorFunction => {
         i = 0;
         sectorList = sectorFunction().slice(sectorStart, sectorStart + 11);

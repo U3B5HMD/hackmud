@@ -42,7 +42,6 @@ const run = async () => {
         .filter(file => !file.isFile())
         .map(file => file.name);
 
-
     // Stores stats about the files to be printed out after the script runs.
     const results = [];
 

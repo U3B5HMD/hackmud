@@ -2,7 +2,6 @@ import { expect } from "chai";
 import Hackmud, { sectors, scripts } from "../src/hackmud.js";
 import { securityLevelNames } from "../src/constants.js";
 
-
 describe("Hackmud", () => {
     it("should have an 'fs' property", () => {
         expect(Hackmud.fs).to.be.an("object");

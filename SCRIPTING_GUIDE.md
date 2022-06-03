@@ -281,7 +281,6 @@ part of a class. To avoid syntax errors while calling a scriptor, import the
 
 Instead of:
 
-
 ```javascript
 function (context, args) {
     const lib = #fs.lib();

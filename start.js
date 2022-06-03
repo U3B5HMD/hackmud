@@ -122,7 +122,6 @@ const run = async () => {
         }
     }
 
-
     let configureDirectory = process.env.configDirectory;
 
     if (!configureDirectory) {
@@ -176,4 +175,3 @@ const run = async () => {
 };
 
 run();
-
