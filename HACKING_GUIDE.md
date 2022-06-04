@@ -28,6 +28,14 @@ review the instructions in the README.
   * [Initialize a Hardline](#initialize-a-hardline)
   * [Run the Commands](#run-the-commands)
 - [How to Crack A Specific Lock](#how-to-crack-a-specific-lock)
+- [How to Hack Other Players (PvP)](#how-to-hack-other-players-pvp)
+  * [Finding Player Locs](#finding-player-locs)
+    + [In a Corporation](#in-a-corporation)
+    + [In NPC Access Logs](#in-npc-access-logs)
+    + [In Your Access Logs](#in-your-access-logs)
+    + [By Running a Scam](#by-running-a-scam)
+  * [Breaching Player Defenses](#breaching-player-defenses)
+  * [Extracting Resources](#extracting-resources)
 
 ## Sectors
 
@@ -591,9 +599,85 @@ to 4 locs before you have to disconnect your hardline and start again.
 
 To learn how to hack a specific lock, see [the lock guide][06].
 
+## How to Hack Other Players (PvP)
+
+To hack another player:
+  - Find and connect to their loc
+  - Breach their defenses
+  - Use PvP scripts to extract resource and information
+
+### Finding Player Locs
+
+#### In a Corporation
+
+Player locs will often "leak" into loc lists returned by breached corporations.
+See [_Loc Leaking_][07] for more information. Note: You will never find locs
+(NPC or player) listed in a sector. Anything that looks like a loc in a sector
+is likely a scam script.
+
+#### In NPC Access Logs
+
+When a player attempts to hack an NPC, their loc is recorded in that NPC's
+access logs. Usually, this isn't an issue because most NPCs script disappear
+after they're breached. However, that's not always the case (especially at
+higher tiers). If you happen to find an NPC that doesn't disappear after you've
+breached it, you can run:
+
+```javascript
+sys.expose_access_log{target: "<loc>"}
+```
+
+To see that access logs for that NPC and the locs of anyone who recently tried
+to breach it. Note: `sys.expose_access_log` is only available to systems that
+have the `expose_access_log_v<n>` upgrade loaded.
+
+#### In Your Access Logs
+
+Just like an NPC, _your_ system's access log contain the locs of any NPC or PC
+that recently tried to breach you. To view your access logs, run:
+
+```javascript
+sys.access_log{}
+```
+
+#### By Running a Scam
+
+You can grab the loc of anyone running a script you own. Just add:
+
+```javascript
+const loc = #ls.sys.loc();
+```
+
+To your script somewhere and `loc` will contain the loc of the player (or NPC)
+running your script. From there, you can store the loc in your database for
+later hacking.
+
+Keep in mind that you can force a system to do whatever you want from a script.
+So, there's really no reason to go through the trouble of stealing and storing
+someone's loc via a script just so you can hack _back_ into their system later
+to steal their GC and upgrades. You're better off just forcing their system to
+give you everything you want for free. Also, stealing via a script means _your_
+loc won't be exposed to your victim. At most, they'll only see your username in
+the transfer logs of their system.
+
+### Breaching Player Defenses
+
+Generally speaking, players have the same primary defenses as their NPC
+counterparts: locks. Breaching a player system means bypassing the same types of
+locks you'll find on any NPC system. However, unlike NPCs, players can actively
+attempt to defend their system during a breach attempt.
+
+### Extracting Resources
+
+Unlike NPCs, player locs don't automatically surrender their GC and upgrades
+when breached. In order to extract resources from a PC system, you'll need to
+use `scavenger` class upgrades like `sys.transfer_balance_v1` or
+`sys.xfer_upgrade_from`.
+
 [01]: https://hackmud.fandom.com/wiki/GC
 [02]: https://hackmud.fandom.com/wiki/Security_Levels
 [03]: https://hackmud.fandom.com/wiki/Loc
 [04]: ./README.md#system-rating
 [05]: ./README.md#class
 [06]: ./LOCKS.md#class
+[07]: ./README.md#loc-leaking
