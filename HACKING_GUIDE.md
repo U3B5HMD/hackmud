@@ -464,7 +464,7 @@ This NPC has a `junkrack` rating, and is classed as a `turtle`.
 
 ## A List of Corporations
 
-  Here is a list of Tier 1 corporations you can get Tier 1 NPC locs from:
+Here is a list of Tier 1 corporations you can get Tier 1 NPC locs from:
 
   <details>
     <summary>Spoilers:</summary>
@@ -516,6 +516,25 @@ This NPC has a `junkrack` rating, and is classed as a `turtle`.
   - `weyland.public`,
   - `world_pop.public`
 </details>
+
+Here is a list of Tier 2 corporations you can get Tier 2 NPCs locs from:
+
+  <details>
+    <summary>Spoilers:</summary>
+
+  - `bunnybat_hut`
+  - `cyberdine`
+  - `ellingson`
+  - `setec_gas`
+  - `soylentbean`
+  - `suborbital_airlines`
+  - `tandoori`
+  - `tyrell`
+  - `weyland`
+
+  Note: Tier 2 corporation extensions rotate between `members_only`,
+  `memberlogin`, and `memberaccess`. If you aren't able to find a script with
+  one extension, try another.
 
 ## Quickly Farm GC from Tier 1 NPCs
 

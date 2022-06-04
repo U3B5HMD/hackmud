@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - List of quests to _Life After VLAN_ in the README.md
   - Documentation for Events in README.md
   - Basic PvP guide to HACKING_GUIDE.md
+  - List of Tier 2 corporations to HACKING_GUIDE.md
 
 ### Changed
   - Updated quiet list
