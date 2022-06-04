@@ -4,6 +4,11 @@ import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 const dataCheck = require("../src/data/data-check.json");
 
+/**
+ * @classdesc Emulates a DATA_CHECK lock
+ * @memberof emulators
+ * @extends Lock
+ */
 export default class DATA_CHECK extends Lock {
     constructor ({ tier = 1, questions = [] } = {}) {
         super({
@@ -16,7 +21,14 @@ export default class DATA_CHECK extends Lock {
 
         this.answerKey = this.buildAnswerKey(questions);
     }
-
+    /**
+     * Takes in the passed in array of questions and returns an answer key that
+     * the lock will use when determining if it has been unlocked. If no answers
+     * are passed in, random questions are chosen based on the lock's tier.
+     * @param {String[]} [questions=[]] The questions used generate the answer.
+     *
+     * @returns {Object} Answer key.
+     */
     buildAnswerKey (questions = []) {
         let answer = "";
         const fullQuestionList = { ...dataCheck[`tier${this.tier}`] };
@@ -27,9 +39,15 @@ export default class DATA_CHECK extends Lock {
             }
         } else {
             for (let i = 0; i < 3; i++) {
-                const [ question ] = this.getRandomAnswerFromArray(Object.keys(fullQuestionList));
+                const [ question ] = this.getRandomAnswerFromArray(
+                    Object.keys(fullQuestionList)
+                );
+
                 this.questions.push(question);
+
                 answer += fullQuestionList[fullQuestionList[question]];
+
+                // prevent duplicate questions from being chosen
                 delete fullQuestionList[question];
             }
         }
