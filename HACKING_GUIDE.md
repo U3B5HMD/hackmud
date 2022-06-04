@@ -21,6 +21,10 @@ review the instructions in the README.
   * [Helpful Scripts](#helpful-scripts)
 - [How to Breach an NPC](#how-to-breach-an-npc)
 - [How to Determine NPC Difficulty and Upgrades](#how-to-determine-npc-difficulty-and-upgrades)
+- [How to Determine the Difficulty of a Loc](#how-to-determine-the-difficulty-of-a-loc)
+  * [FULLSEC](#fullsec)
+  * [MIDSEC](#midsec)
+  * [LOWSEC/NULLSEC](#lowsec-nullsec)
 - [A List of Corporations](#a-list-of-corporations)
 - [Quickly Farm GC from Tier 1 NPCs](#quickly-farm-gc-from-tier-1-npcs)
   * [Harvest the Locs](#harvest-the-locs)
@@ -461,6 +465,28 @@ unknown_jrttl_yn0hlo.pubinfo_00bcts
 ```
 
 This NPC has a `junkrack` rating, and is classed as a `turtle`.
+
+## How to Determine the Difficulty of a Loc
+
+While there's no way to determine the exact makeup of a loc's defenses, you can
+get a general idea by running: 
+
+```javascript
+scripts.get_access_level{name: "<loc>"}
+```
+
+### FULLSEC
+
+FULLSEC locs have either already been breached or are defended by only Tier 1
+locks.
+
+### MIDSEC
+
+MIDSEC locs are defended by a `sn_w_glock` (at a minimum).
+
+### LOWSEC/NULLSEC
+
+NULLSEC locs are defended by locks capable of stealing your upgrades or worse.
 
 ## A List of Corporations
 
