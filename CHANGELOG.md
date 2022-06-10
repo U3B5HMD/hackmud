@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
   - `CON_SPEC` lock cracker
 
+### Changed
+  - Updated _Locs (NPCs and Players)_ and added a section about loc rotation in
+    README.md
+
 ## 1.10.0 - 2022-06-04
 
 ### Added
