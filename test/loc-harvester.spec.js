@@ -1,5 +1,5 @@
 import chai, { expect } from "chai";
-import locHarvester from "../tools/loc-harvester.js";
+import locHarvester from "../tools/loc-harvester_v1.js";
 import sinonChai from "sinon-chai";
 import sinon from "sinon";
 import Corp from "../emulators/corp.js";
