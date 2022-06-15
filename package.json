@@ -33,7 +33,7 @@
     "prestart": "npm ci",
     "start": "node ./start.js",
     "lint": "eslint ./ --ignore-path .gitignore --fix",
-    "prepublish": "rm -rf dist/**/scripts/*",
+    "prepublish": "rm -rf hackmud/**/scripts/*",
     "publish": "node ./devops/publish",
     "test": "mocha"
   },

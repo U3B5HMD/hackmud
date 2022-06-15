@@ -1,5 +1,7 @@
 import { exec as execAsync } from "child_process";
 import { fileURLToPath } from "url";
+import { configDirectory } from "../src/constants.js";
+
 import {
     readFile as nodeReadFile,
     writeFile as nodeWriteFile,
@@ -16,9 +18,8 @@ const __dirname = path.dirname(__filename);
 
 export const linkUserDirectoryWith = (accessFile, exec) =>
     async (gameConfigPath, username) => {
-        const distPath = path.resolve(__dirname, "../dist");
 
-        const userPath = path.resolve(distPath, username);
+        const userPath = path.resolve(configDirectory, username);
 
         try {
             await accessFile(userPath);

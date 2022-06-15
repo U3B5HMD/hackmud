@@ -3,6 +3,7 @@ import chai, { expect } from "chai";
 import path from "path";
 import sinon from "sinon";
 import sinonChai from "sinon-chai";
+import { configDirectory } from "../src/constants.js";
 import os from "os";
 
 import {
@@ -20,7 +21,6 @@ describe("linkUserDirectory", () => {
     let accessFile;
     let sandbox;
     let linkUserDirectories;
-    let distPath = path.resolve(__dirname, "../dist");
     let configPath = "/configPath";
     let userPath = "user1";
 
@@ -47,13 +47,13 @@ describe("linkUserDirectory", () => {
 
         it("should create the user directory", () => {
             expect(exec.getCall(0).args).to.deep.equal(
-                [ `mkdir ${distPath}/user1` ]
+                [ `mkdir ${configDirectory}/user1` ]
             );
         });
 
         it("should create a symlink for the user directory", () => {
             expect(exec.getCall(1).args).to.deep.equal(
-                [ `ln -s ${configPath}/${userPath}/scripts ${distPath}/user1` ]
+                [ `ln -s ${configPath}/${userPath}/scripts ${configDirectory}/user1` ]
             );
         });
     });
@@ -66,12 +66,12 @@ describe("linkUserDirectory", () => {
         });
 
         it("should not try to create the user directory", () => {
-            expect(exec).to.not.have.been.calledWith(`mkdir ${distPath}/user1`);
+            expect(exec).to.not.have.been.calledWith(`mkdir ${configDirectory}/user1`);
         });
 
         it("should create a symlink for the user directory", () => {
             expect(exec.getCall(0).args).to.deep.equal(
-                [ `ln -s ${configPath}/${userPath}/scripts ${distPath}/user1` ]
+                [ `ln -s ${configPath}/${userPath}/scripts ${configDirectory}/user1` ]
             );
         });
     });

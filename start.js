@@ -1,6 +1,5 @@
 import { access, readdir, readFile, writeFile } from "fs/promises";
 import { exec as execAsync } from "child_process";
-import { fileURLToPath } from "url";
 import { linkUserDirectory, writeLineToEnv } from "./src/lib.js";
 import chalk from "chalk";
 import dotEnv from "dotenv";
@@ -9,14 +8,12 @@ import os from "os";
 import path from "path";
 import util from "util";
 import { createRequire } from "module";
+import { configDirectory } from "./src/constants.js";
 
 const require = createRequire(import.meta.url);
 const quietList = require("./src/data/quiet-list.json");
 
 const exec = util.promisify(execAsync);
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 const {
     log: {
         write
@@ -111,12 +108,11 @@ const updateQuietList = async configureDirectory => {
 const run = async () => {
     dotEnv.config();
 
-    const distPath = path.resolve(__dirname, "./dist");
     try {
-        await access(distPath);
+        await access(configDirectory);
     } catch (/** @type any */e) {
         try {
-            await exec(`mkdir ${distPath}`);
+            await exec(`mkdir ${configDirectory}`);
         } catch (/** @type any */e) {
             return `Unable to set up environment ${e.message}`;
         }

@@ -1,4 +1,5 @@
 import { readdir, readFile, writeFile } from "fs/promises";
+import { configDirectory } from "../src/constants.js";
 import babel from "@babel/core";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -35,9 +36,8 @@ const run = async () => {
         path.resolve(__dirname, "../crackers/")
     ];
 
-    const publishPath = path.resolve(__dirname, "../dist/");
     const userFolders = (
-        await readdir(path.resolve(publishPath), { withFileTypes: true })
+        await readdir(path.resolve(configDirectory), { withFileTypes: true })
     )
         .filter(file => !file.isFile())
         .map(file => file.name);
@@ -81,7 +81,7 @@ const run = async () => {
             for (let userFolder of userFolders) {
                 try {
                     await writeFile(
-                        `${publishPath}/${userFolder}/scripts/${finalFilename}`,
+                        `${configDirectory}/${userFolder}/scripts/${finalFilename}`,
                         transformedCode
                     );
 

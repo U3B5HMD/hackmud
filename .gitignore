@@ -4,5 +4,6 @@ node_modules
 docs
 .DS_STORE
 dist/
+hackmud/
 offline/
 .env
