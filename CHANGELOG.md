@@ -14,8 +14,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Updated _Locs (NPCs and Players)_ and added a section about loc rotation in
     README.md 
   - Renamed `tools/loc_harvester` to `tools/loc_harvester_v1` (Breaking Change)
+  - Renamed `tier1_plus_data_check.js` to `omni-cracker-v1.js` (Breaking Change)
   - Moved `under-500-character` crackers to root `crackers/` folder (Breaking
     Change)
+
+### Removed
+  - Deleted `crackers/tier1-cracker.js` (Breaking Change)
 
 ## 1.10.0 - 2022-06-04
 
