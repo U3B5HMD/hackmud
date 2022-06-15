@@ -2,7 +2,7 @@ import Loc from "../emulators/loc.js";
 import EZ_21 from "../emulators/ez-21.js";
 import EZ_35 from "../emulators/ez-35.js";
 import EZ_40 from "../emulators/ez-40.js";
-import ezCracker from "../crackers/under-500-characters/ez-cracker.js";
+import ezCracker from "../crackers/ez-cracker.js";
 import { expect } from "chai";
 import L0cket from "../emulators/l0cket.js";
 

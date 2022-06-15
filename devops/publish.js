@@ -32,7 +32,6 @@ const run = async () => {
     // Only scripts in these directories get minified.
     const scriptDirectories = [
         path.resolve(__dirname, "../tools"),
-        path.resolve(__dirname, "../crackers/under-500-characters"),
         path.resolve(__dirname, "../crackers/")
     ];
 

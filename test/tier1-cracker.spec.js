@@ -7,7 +7,7 @@ import EZ_35 from "../emulators/ez-35.js";
 import EZ_40 from "../emulators/ez-40.js";
 import L0cket from "../emulators/l0cket.js";
 
-import tier1Cracker from "../crackers/under-500-characters/tier1-cracker.js";
+import tier1Cracker from "../crackers/tier1-cracker.js";
 import { expect } from "chai";
 
 describe("Tier 1 Cracker", () => {
