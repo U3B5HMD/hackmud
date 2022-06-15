@@ -48,6 +48,10 @@ export const l0ckets = [
     "72umy0"
 ];
 
+/**
+ * @memberof constants
+ * @type {String[]}
+ */
 export const securityLevelNames = [
     "FULLSEC",
     "HIGHSEC",
