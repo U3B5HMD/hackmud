@@ -18,6 +18,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Moved `under-500-character` crackers to root `crackers/` folder (Breaking
     Change)
 
+### Fixed
+  - `DATA_CHECK` lock not returning questions when called
+
 ### Removed
   - Deleted `crackers/tier1-cracker.js` (Breaking Change)
 

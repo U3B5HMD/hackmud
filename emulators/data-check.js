@@ -52,6 +52,8 @@ export default class DATA_CHECK extends Lock {
             }
         }
 
+        this.prompt = this.questions.join("\n");
+
         return {
             [this.type]: answer
         };

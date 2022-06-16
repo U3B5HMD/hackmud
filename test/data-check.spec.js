@@ -17,13 +17,13 @@ describe("DATA_CHECK Lock", () => {
     describe("unlock", () => {
         context("when 'DATA_CHECK' is missing", () => {
             it("should return the list of three questions", () => {
-                expect(lock.unlock({})).to.deep.equal(lock.prompt);
+                expect(lock.unlock({})).to.deep.equal(lock.questions.join("\n"));
             });
         });
 
         context("when called without parameters", () => {
             it("should return the list of three questions", () => {
-                expect(lock.unlock()).to.deep.equal(lock.prompt);
+                expect(lock.unlock()).to.deep.equal(lock.questions.join("\n"));
             });
         });
 
@@ -32,7 +32,7 @@ describe("DATA_CHECK Lock", () => {
 
             it("should return the list of three questions", () => {
                 expect(lock.unlock({ DATA_CHECK: answer })).to.deep
-                    .equal(lock.prompt);
+                    .equal(lock.questions.join("\n"));
             });
         });
 
