@@ -16,14 +16,14 @@ describe("DATA_CHECK Lock", () => {
 
     describe("unlock", () => {
         context("when 'DATA_CHECK' is missing", () => {
-            it("should return the list of three questions", () => {
-                expect(lock.unlock({})).to.deep.equal(lock.questions.join("\n"));
+            it("should return an 'access denied' error", () => {
+                expect(lock.unlock({})).to.deep.equal(lock.getAccessDeniedMsg());
             });
         });
 
         context("when called without parameters", () => {
-            it("should return the list of three questions", () => {
-                expect(lock.unlock()).to.deep.equal(lock.questions.join("\n"));
+            it("should return an 'access denied' error", () => {
+                expect(lock.unlock({})).to.deep.equal(lock.getAccessDeniedMsg());
             });
         });
 

@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
   - `DATA_CHECK` lock not returning questions when called
+  - `DATA_CHECK` lock not returning an 'access denied' message when called
 
 ### Removed
   - Deleted `crackers/tier1-cracker.js` (Breaking Change)

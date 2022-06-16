@@ -64,6 +64,10 @@ export default class DATA_CHECK extends Lock {
             DATA_CHECK
         } = answers;
 
+        if (DATA_CHECK === undefined) {
+            return this.getAccessDeniedMsg();
+        }
+
         if (DATA_CHECK !== this.answerKey.DATA_CHECK) {
             return this.prompt;
         }
