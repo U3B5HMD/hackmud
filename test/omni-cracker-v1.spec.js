@@ -7,18 +7,30 @@ import EZ_35 from "../emulators/ez-35.js";
 import EZ_40 from "../emulators/ez-40.js";
 import L0cket from "../emulators/l0cket.js";
 
-import tier1Cracker from "../crackers/tier1-cracker.js";
-import { expect } from "chai";
+import Hackmud from "../src/hackmud.js";
+import tier1Cracker from "../crackers/omni-cracker-v1.js";
+import chai, { expect } from "chai";
+import sinon from "sinon";
+import sinonChai from "sinon-chai";
+import { default as DATA_CHECK_V1 } from "../emulators/data-check.js";
 
-describe("Tier 1 Cracker", () => {
+chai.use(sinonChai);
+
+describe("Omni Cracker", () => {
     const c001 = new C001();
     const c002 = new C002();
     const c003 = new C003();
     const ez21 = new EZ_21();
     const ez35 = new EZ_35();
     const ez40 = new EZ_40();
-
     const l0cket = new L0cket();
+    const dataCheckV1 = new DATA_CHECK_V1();
+
+    before(() => {
+        sinon.stub(Hackmud.fs.lore, "data_check").returns({
+            answer: "loremipsum"
+        });
+    });
 
     it("should crack the EZ_21 Lock", () => {
         const loc = new Loc({ locks: [ ez21 ] });
@@ -67,6 +79,16 @@ describe("Tier 1 Cracker", () => {
         const result = tier1Cracker({}, { t: loc });
 
         expect(result).to.include(l0cket.getLockUnlockedMsg());
+    });
+
+    it.skip("should crack the DATA_CHECK_V1 Lock", () => {
+        const loc = new Loc({ locks: [ dataCheckV1 ] });
+        tier1Cracker({}, { t: loc });
+
+        expect({ lookup: dataCheckV1.prompt }).to.deep.equal(Hackmud.fs.lore.data_check.getCall(0).args[0]);
+
+        // expect(Hackmud.fs.lore.data_check).to.have.been
+        //     .calledWith({ lookup: dataCheckV1.prompt });
     });
 
     context("when there are multiple locks", () => {

@@ -60,6 +60,7 @@ class EZ_21 extends Lock {
             return this.getAnswerIsWrongValueMsg(EZ_21, "unlock command");
         }
 
+        this.isBreached = true;
         return this.getLockUnlockedMsg();
 
     }

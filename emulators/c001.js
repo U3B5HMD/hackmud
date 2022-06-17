@@ -82,6 +82,7 @@ class C001 extends Lock {
             return this.getAnswerIsWrongValueMsg(answers.color_digit, "color digit");
         }
 
+        this.isBreached = true;
         return this.getLockUnlockedMsg();
     }
 }

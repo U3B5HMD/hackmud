@@ -73,10 +73,17 @@ describe("C002 Lock", () => {
         });
 
         context("when all <answer> key/value pairs are correct", () => {
+            const response = lock.unlock({
+                c002: "red",
+                c002_complement: "green"
+            });
+
             it("should return a 'lock unlocked' message", () => {
-                expect(
-                    lock.unlock({ c002: "red", c002_complement: "green" })
-                ).to.equal(lock.getLockUnlockedMsg());
+                expect(response).to.equal(lock.getLockUnlockedMsg());
+            });
+
+            it("should mark the locked as breached", () => {
+                expect(lock.isBreached).to.equal(true);
             });
         });
     });

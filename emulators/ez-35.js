@@ -81,6 +81,7 @@ class EZ_35 extends Lock {
             return this.getAnswerIsWrongValueMsg(digit, "digit");
         }
 
+        this.isBreached = true;
         return this.getLockUnlockedMsg();
     }
 }

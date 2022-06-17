@@ -33,13 +33,12 @@ describe("Color Lock Cracker", () => {
 
     context("when there are multiple locks", () => {
         it("should crack all the locks", () => {
-            const loc = new Loc({ locks: [ c001, c002, c003 ] });
-            const result = colorCracker({}, { target: loc });
+            const locks = [ c001, c002, c003 ];
+            const loc = new Loc({ locks });
 
-            expect(result).to.include(c001.getLockUnlockedMsg());
-            expect(result).to.include(c002.getLockUnlockedMsg());
-            expect(result).to.include(c003.getLockUnlockedMsg());
-            expect(result).to.include(loc.CONNECTION_TERMINATED);
+            colorCracker({}, { target: loc });
+
+            expect(locks.every(lock => lock.isBreached)).to.equal(true);
         });
     });
 });

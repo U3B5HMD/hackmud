@@ -21,6 +21,7 @@ class Lock {
 
         this.type = type;
         this.company = company;
+        this.isBreached = false;
     }
     /**
      * @static
@@ -194,6 +195,11 @@ class Lock {
      */
     unlock () {
         throw new Error("Method must be implemented by inheriting class.");
+    }
+
+    rotate () {
+        this.isBreached = false;
+        this.buildAnswerKey();
     }
 }
 

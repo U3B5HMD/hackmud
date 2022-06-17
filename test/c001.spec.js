@@ -97,9 +97,14 @@ describe("C001 Lock", () => {
         });
 
         context("when all <answer> key/value pairs are correct", () => {
+            const response = lock.unlock({ c001: "red", color_digit: 3 });
+
             it("should return a 'lock unlocked' message", () => {
-                expect(lock.unlock({ c001: "red", color_digit: 3 })).to
-                    .equal(lock.getLockUnlockedMsg());
+                expect(response).to.equal(lock.getLockUnlockedMsg());
+            });
+
+            it("should mark the locked as breached", () => {
+                expect(lock.isBreached).to.equal(true);
             });
         });
     });

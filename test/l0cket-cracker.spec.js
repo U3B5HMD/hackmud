@@ -10,18 +10,18 @@ describe("L0cket Cracker", () => {
 
     it("should crack the l0cket Lock", () => {
         const loc = new Loc({ locks: [ lock ] });
-        const result = l0cketCracker({}, { target: loc });
+        l0cketCracker({}, { target: loc });
 
-        expect(result).to.include(lock.getLockUnlockedMsg());
+        expect(lock.isBreached).to.equal(true);
     });
 
     context("When it encounters a non-l0cket lock", () => {
         it("should return the lock message and bail", () => {
-            const loc = new Loc({ locks: [ ez21 ] });
+            const loc = new Loc({ locks: [ ez21, lock ] });
             const result = l0cketCracker({}, { target: loc });
 
+            expect(ez21.isBreached).to.equal(false);
             expect(result).to.include(ez21.getAccessDeniedMsg().join("\n"));
-            expect(result).to.not.include(loc.CONNECTION_TERMINATED);
         });
     });
 });

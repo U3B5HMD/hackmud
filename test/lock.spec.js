@@ -1,5 +1,9 @@
-import { expect } from "chai";
+import chai, { expect } from "chai";
+import sinonChai from "sinon-chai";
+import sinon from "sinon";
 import Lock from "../src/lock.js";
+
+chai.use(sinonChai);
 
 const buildLockError = msg => [ Lock.LOCK_ERROR, msg ];
 
@@ -180,6 +184,23 @@ describe("Lock", () => {
             expect(() => lock.unlock()).to.throw(
                 "Method must be implemented by inheriting class."
             );
+        });
+    });
+
+    describe("rotate", () => {
+        const lock = new Lock(baseLockConfig);
+        lock.isBreached = true;
+
+        sinon.spy(lock, "buildAnswerKey");
+
+        lock.rotate();
+
+        it("should set 'isBreached' to false", () => {
+            expect(lock.isBreached).to.equal(false);
+        });
+
+        it("should generate a new answer key", () => {
+            expect(lock.buildAnswerKey).to.have.been.calledWith();
         });
     });
 });

@@ -72,6 +72,7 @@ export default class DATA_CHECK extends Lock {
             return this.prompt;
         }
 
+        this.isBreached = true;
         return this.getLockUnlockedMsg();
     }
 }

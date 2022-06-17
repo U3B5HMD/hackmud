@@ -86,9 +86,14 @@ describe("EZ_40 Lock", () => {
         });
 
         context("when all <answer> key/value pairs are correct", () => {
+            const response = lock.unlock({ EZ_40: "unlock", ez_prime: 11 });
+
             it("should return 'lock unlocked message", () => {
-                expect(lock.unlock({ EZ_40: "unlock", ez_prime: 11 })).to.deep
-                    .equal(lock.getLockUnlockedMsg());
+                expect(response).to.deep.equal(lock.getLockUnlockedMsg());
+            });
+
+            it("should mark the locked as breached", () => {
+                expect(lock.isBreached).to.equal(true);
             });
         });
     });

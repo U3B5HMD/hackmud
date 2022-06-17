@@ -25,20 +25,19 @@ class Loc {
      */
     call (args) {
         let i = 0;
-        let error = false;
         let lockMsg;
         let result = [];
 
-        do {
+        for (i = 0; i < this.locks.length; i++) {
             lockMsg = this.locks[i].unlock(args);
-            error = lockMsg.includes(Lock.LOCK_ERROR);
-
             result = result.concat(lockMsg);
-            i++;
-        }
-        while (this.locks[i] && !error);
 
-        if (!error) {
+            if (!this.locks[i].isBreached) {
+                break;
+            }
+        }
+
+        if (this.locks.every(lock => lock.isBreached)) {
             result = result.concat(this.CONNECTION_TERMINATED);
         }
 

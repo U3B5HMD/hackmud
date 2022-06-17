@@ -59,6 +59,7 @@ class L0cket extends Lock {
             return this.getAnswerIsWrongValueMsg(l0cket, "security k3y");
         }
 
+        this.isBreached = true;
         return this.getLockUnlockedMsg();
 
     }

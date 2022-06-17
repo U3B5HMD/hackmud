@@ -81,6 +81,7 @@ class EZ_40 extends Lock {
             return this.getAnswerIsWrongValueMsg(ez_prime, "prime");
         }
 
+        this.isBreached = true;
         return this.getLockUnlockedMsg();
     }
 }

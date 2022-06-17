@@ -95,6 +95,7 @@ class C003 extends Lock {
             );
         }
 
+        this.isBreached = true;
         return this.getLockUnlockedMsg();
     }
 }
