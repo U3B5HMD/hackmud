@@ -1,6 +1,8 @@
-/*
- * Removes the function name from scripts
- * 'function foo()' becomes 'function ()'
+/**
+ * Returns a plugin that trips the names from all function declarations in a
+ * script.
+ *
+ * @returns {Object} The plugin.
  */
 export default function plugin () {
     return {

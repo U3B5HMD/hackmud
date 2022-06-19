@@ -1,10 +1,4 @@
 /**
- * @file A lock cracker for V1 l0cket locks.
- *
- * 259 Characters, minified.
- */
-
-/**
  * Cracks l0cket locks.
  * @param {Object} context Context.
  * @param {Object} args Arguments passed to script.

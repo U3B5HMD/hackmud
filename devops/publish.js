@@ -1,3 +1,7 @@
+/**
+ * @filedesc Publishes scripts to the Hackmud game directory.
+ */
+
 import { readdir, readFile, writeFile } from "fs/promises";
 import { configDirectory } from "../src/constants.js";
 import babel from "@babel/core";
@@ -7,8 +11,7 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Babel config
-const config = {
+const babelConfig = {
     plugins: [
         "./devops/babel/strip-import-export.js",
         "./devops/babel/strip-function-name.js"
@@ -37,12 +40,9 @@ const run = async () => {
 
     const userFolders = (
         await readdir(path.resolve(configDirectory), { withFileTypes: true })
-    )
-        .filter(file => !file.isFile())
-        .map(file => file.name);
+    ).filter(file => !file.isFile()).map(file => file.name);
 
-    // Stores stats about the files to be printed out after the script runs.
-    const results = [];
+    const fileStats = [];
 
     for (const scriptDirectory of scriptDirectories) {
         const files = (await readdir(scriptDirectory, { withFileTypes: true }))
@@ -56,7 +56,7 @@ const run = async () => {
             const finalFilename = file.replace(/-/g, "_");
 
             let { code: transformedCode } = await babel.transformAsync(
-                code, config) || {};
+                code, babelConfig) || {};
 
             if (!transformedCode) {
                 continue;
@@ -70,7 +70,7 @@ const run = async () => {
              */
             transformedCode = transformedCode.replace(/Hackmud./g, "#");
 
-            results.push({
+            fileStats.push({
                 "Original File": file,
                 "Original Size (bytes)": code.length,
                 "Final File Size (bytes)": transformedCode.length,
@@ -91,7 +91,7 @@ const run = async () => {
         }
     }
 
-    console.table(results);
+    console.table(fileStats);
 };
 
 run();

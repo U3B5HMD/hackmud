@@ -1,6 +1,6 @@
-/*
- * Removes `export default` from scripts.
- * 'export default function foo()' becomes 'function foo()'.
+/**
+ * Returns a plugin that removes import and export declarations from a script.
+ * @returns {Object} The plugin.
  */
 export default function plugin ({ types }) {
     return {

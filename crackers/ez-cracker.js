@@ -1,10 +1,4 @@
 /**
- * @file A lock cracker for EZ_21, EZ_35, EZ_40 locks.
- *
- * 435 Characters, minified.
- */
-
-/**
  * Cracks EZ_21, EZ_35 and EZ_40 locks.
  * @param {Object} context Context.
  * @param {Object} args Arguments passed to script.

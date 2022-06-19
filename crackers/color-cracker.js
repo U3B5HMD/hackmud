@@ -1,10 +1,4 @@
 /**
- * @file A lock cracker for C001, C002, and C003 locks.
- *
- * 460 Characters, minified.
- */
-
-/**
  * Cracks c001, c002 and c003 locks.
  * @param {Object} context Context.
  * @param {Object} args Arguments passed to script.

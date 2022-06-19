@@ -20,7 +20,6 @@ describe("L0cket Cracker", () => {
             const loc = new Loc({ locks: [ ez21, lock ] });
             const result = l0cketCracker({}, { target: loc });
 
-            expect(ez21.isBreached).to.equal(false);
             expect(result).to.include(ez21.getAccessDeniedMsg().join("\n"));
         });
     });

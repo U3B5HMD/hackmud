@@ -1,6 +1,13 @@
 /* global _START */
 import Hackmud from "../src/hackmud.js";
 
+/**
+ * Cracks all Tier 1 locks.
+ * @param {Object} context Context.
+ * @param {Object} args Arguments passed to script.
+ *
+ * @returns {(String[])} Collection of lock responses.
+ */
 export default function omniCracker (context, args = {}) {
     let scriptor = args.t,
         callLock = params => scriptor.call(params),

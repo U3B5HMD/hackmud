@@ -1,3 +1,7 @@
+/**
+ * @filedesc Updates a user's MongoDB with the data necessary to run various
+ * omni-crackers.
+ */
 import Hackmud from "../src/hackmud";
 
 export default function constants () {
