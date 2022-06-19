@@ -62,7 +62,12 @@
         "newline-per-chained-call": "off",
         "no-extra-parens": "warn",
         "no-multi-spaces": "error",
-        "no-multiple-empty-lines": "error",
+        "no-multiple-empty-lines": [
+            "error",
+            {
+                "max": 1
+            }
+        ],
         "no-path-concat": "error",
         "no-process-exit": "error",
         "no-sync": "warn",

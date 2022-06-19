@@ -6,7 +6,6 @@ import EZ_21 from "../emulators/ez-21.js";
 import colorCracker from "../crackers/color-cracker.js";
 import { expect } from "chai";
 
-
 const singleLockTest = lock => {
     context(`When the loc has a single ${lock.type} lock`, function () {
         let loc;
@@ -22,7 +21,6 @@ const singleLockTest = lock => {
         });
     });
 };
-
 
 describe("Color Lock Cracker", () => {
     singleLockTest(new C001());

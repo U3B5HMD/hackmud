@@ -89,7 +89,6 @@ describe("Omni Cracker", () => {
 
     basicLockTest(DataCheck);
 
-
     context("when there are multiple Tier 1 locks", () => {
         const ez21 = new EZ_21();
         const ez35 = new EZ_35();
