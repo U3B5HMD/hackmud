@@ -41,6 +41,10 @@ export default function cracker (context, args) {
             i++;
         }
 
+        if (key[0] !== "c") {
+            return response;
+        }
+
         answers[key] = colors[i];
         colorIndex = colors.indexOf(answers[key]);
 
@@ -55,8 +59,6 @@ export default function cracker (context, args) {
                 answers[`${key}_triad_1`] = colors[(colorIndex + 5) % 8];
                 answers[`${key}_triad_2`] = colors[(colorIndex + 3) % 8];
                 break;
-            default:
-                return response;
         }
 
         // Call the lock and check the response.
