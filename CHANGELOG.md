@@ -17,6 +17,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Renamed `tier1_plus_data_check.js` to `omni-cracker-v1.js` (Breaking Change)
   - Moved `under-500-character` crackers to root `crackers/` folder (Breaking
     Change)
+  - Moved `under-500-character` crackers to root `crackers/` folder (Breaking
+    Change)
+  - Made Tier 1 lock cracker stateful
 
 ### Fixed
   - `DATA_CHECK` lock not returning questions when called

@@ -1,61 +1,72 @@
-/* global _START*/
-import Hackmud from "../src/hackmud";
+/* global _START */
+import Hackmud from "../src/hackmud.js";
 
-export default function omniCracker (context, args) {
-    let callLock = params => args.t.call(params),
+export default function omniCracker (context, args = {}) {
+    let scriptor = args.t,
+        callLock = params => scriptor.call(params),
         /** @type any */
         key,
-        response = callLock({}),
+        response,
+        colorIndex,
         data,
         answers = {},
         i = 0,
-        constants = Hackmud.db.f({ _id: "constants" }).first();
+        stateId = scriptor.name,
+        constants = Hackmud.db.f({ _id: "constants" }).first(),
+        state = Hackmud.db.f({ _id: stateId }).first();
+
+    if (state) {
+        answers = { ...state };
+    }
+
+    response = callLock({ ...answers });
 
     while (!/nn/.exec(response)) {
         [ , key = key ] = /.*`N(.*?)`.*$/.exec(response) || [];
 
-        if (Date.now() - _START >= 4750) {
+        if (Date.now() - _START >= 4500) {
+            Hackmud.db.us({ _id: stateId }, { $set: { value: answers } });
             return response;
         }
 
-        switch (key) {
-            case "ez_prime":
-            case "digit":
-            case "EZ_21":
-            case "EZ_35":
-            case "EZ_40":
-            case "l0cket":
+        switch (key[0]) {
+            case "e":
+            case "d":
+            case "E":
+            case "l":
                 answers[key] = constants[key[0]][i];
                 break;
-            case "DATA_CHECK":
+            case "D":
                 answers[key] = "";
                 data = Hackmud.fs.lore.data_check({ lookup: callLock(answers) });
                 answers[key] = data.answer;
                 break;
-            case "c001":
+            case "c":
                 answers[key] = constants[key[0]][i];
-                answers.color_digit = answers.c001.length;
-                break;
-            case "c002":
-                answers[key] = constants[key[0]][i];
-                answers.c002_complement = constants.c[
-                    (constants.c.indexOf(answers.c002) + 4) % 8
-                ];
-                break;
-            case "c003":
-                answers[key] = constants[key[0]][i];
-                answers.c003_triad_1 = constants.c[
-                    (constants.c.indexOf(answers.c003) + 5) % 8
-                ];
-                answers.c003_triad_2 = constants.c[
-                    (constants.c.indexOf(answers.c003) + 3) % 8
-                ];
+                colorIndex = key[3];
+
+                if (colorIndex > 2) {
+                    answers.c003_triad_1 = constants.c[
+                        (constants.c.indexOf(answers.c003) + 5) % 8
+                    ];
+                    answers.c003_triad_2 = constants.c[
+                        (constants.c.indexOf(answers.c003) + 3) % 8
+                    ];
+                }
+
+                if (colorIndex > 1) {
+                    answers.c002_complement = constants.c[
+                        (constants.c.indexOf(answers.c002) + 4) % 8
+                    ];
+                } else {
+                    answers.color_digit = answers.c001.length;
+                }
                 break;
             default:
                 return response;
         }
 
-        response = callLock(answers);
+        response = callLock({ ...answers });
 
         i = /th/.exec(response) ? i + 1 : 0;
     }

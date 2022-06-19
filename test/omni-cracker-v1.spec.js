@@ -13,98 +13,246 @@ import chai, { expect } from "chai";
 import sinon from "sinon";
 import sinonChai from "sinon-chai";
 import { default as DATA_CHECK_V1 } from "../emulators/data-check.js";
+import { lockConstants } from "../src/constants.js";
 
 chai.use(sinonChai);
 
-describe("Omni Cracker", () => {
-    const c001 = new C001();
-    const c002 = new C002();
-    const c003 = new C003();
-    const ez21 = new EZ_21();
-    const ez35 = new EZ_35();
-    const ez40 = new EZ_40();
-    const l0cket = new L0cket();
-    const dataCheckV1 = new DATA_CHECK_V1();
+const stubMongo = (sandbox, previousAnswers) => {
+    const stub = sandbox.stub(Hackmud.db, "f")
+        .returns({
+            first: () => {},
+            array: () => [ ]
+        });
 
-    before(() => {
-        sinon.stub(Hackmud.fs.lore, "data_check").returns({
-            answer: "loremipsum"
+    stub.withArgs({ _id: "constants" })
+        .returns({
+            first: () => lockConstants,
+            array: () => [ lockConstants ]
+        });
+
+    if (previousAnswers) {
+        stub
+            .withArgs({ _id: "loc" })
+            .returns({
+                first: () => previousAnswers,
+                array: () => [ previousAnswers ]
+            });
+    }
+
+    return stub;
+};
+
+const basicLockTest = lock => {
+    context(`When the loc has a single ${lock.type} lock`, () => {
+        const loc = new Loc({ locks: [ lock ] });
+        const now = Date.now();
+        let clock;
+        const sandbox = sinon.createSandbox();
+
+        before(() => {
+            clock = sinon.useFakeTimers(now);
+
+            global._START = now;
+            stubMongo(sandbox);
+
+            if (lock.answerKey.DATA_CHECK) {
+                sandbox.stub(Hackmud.fs.lore, "data_check").returns({
+                    answer: lock.answerKey.DATA_CHECK
+                });
+            }
+        });
+
+        after(() => {
+            sandbox.restore();
+            clock.restore();
+        });
+
+        it("should crack it", () => {
+            tier1Cracker({}, { t: loc });
+
+            expect(lock.isBreached).to.equal(true);
+        });
+    });
+};
+
+describe("Omni Cracker", () => {
+    basicLockTest(new EZ_21());
+    basicLockTest(new EZ_35());
+    basicLockTest(new EZ_40());
+    basicLockTest(new C001());
+    basicLockTest(new C002());
+    basicLockTest(new C003());
+    basicLockTest(new L0cket());
+
+    const DataCheck = new DATA_CHECK_V1();
+    DataCheck.answerKey.DATA_CHECK = "test";
+
+    basicLockTest(DataCheck);
+
+
+    context("when there are multiple Tier 1 locks", () => {
+        const ez21 = new EZ_21();
+        const ez35 = new EZ_35();
+        const ez40 = new EZ_40();
+        const c001 = new C001();
+        const c002 = new C002();
+        const c003 = new C003();
+        const dataCheck = new DATA_CHECK_V1();
+        const sandbox = sinon.createSandbox();
+        const now = Date.now();
+        let clock;
+
+        dataCheck.answerKey.DATA_CHECK = "test";
+
+        before(() => {
+            stubMongo(sandbox);
+            clock = sinon.useFakeTimers(now);
+
+            global._START = now;
+            sandbox.stub(Hackmud.fs.lore, "data_check").returns({
+                answer: dataCheck.answerKey.DATA_CHECK
+            });
+        });
+
+        after(() => {
+            sandbox.restore();
+            clock.restore();
+        });
+
+        it("should crack all the locks", () => {
+            const locks = [ ez21, ez35, ez40, c001, c002, c003, dataCheck ];
+            const loc = new Loc({ locks });
+
+            tier1Cracker({}, { t: loc });
+
+            expect(locks.every(lock => lock.isBreached));
         });
     });
 
-    it("should crack the EZ_21 Lock", () => {
-        const loc = new Loc({ locks: [ ez21 ] });
-        const result = tier1Cracker({}, { t: loc });
+    context("When there are answers from previous breach attempts", () => {
+        let locSpy;
+        const ez21 = new EZ_21();
+        const ez35 = new EZ_35();
 
-        expect(result).to.include(ez21.getLockUnlockedMsg());
+        const locks = [ ez21, ez35 ];
+        const loc = new Loc({ locks });
+        const sandbox = sinon.createSandbox();
+
+        before(() => {
+            locSpy = sinon.spy(loc, "call");
+
+            global._START = Date.now();
+            stubMongo(sandbox, ez21.answerKey);
+
+            tier1Cracker({}, { t: loc });
+        });
+
+        after(() => {
+            sandbox.restore();
+        });
+
+        it("should call the lock with those answers", () => {
+            expect(locSpy.getCall(0).args).to.deep.equal([ ez21.answerKey ]);
+        });
     });
 
-    it("should crack the EZ_35 Lock", () => {
-        const loc = new Loc({ locks: [ ez35 ] });
-        const result = tier1Cracker({}, { t: loc });
+    context("when the script runs out of time", () => {
+        const ez21 = new EZ_21();
+        const ez35 = new EZ_35();
+        const ez40 = new EZ_40();
+        const c001 = new C001();
+        const c002 = new C002();
+        const c003 = new C003();
+        const dataCheck = new DATA_CHECK_V1();
+        const sandbox = sinon.createSandbox();
+        const now = Date.now();
+        let clock;
+        let dbSpy;
 
-        expect(result).to.include(ez35.getLockUnlockedMsg());
+        dataCheck.answerKey.DATA_CHECK = "test";
+
+        beforeEach(() => {
+            stubMongo(sandbox);
+            dbSpy = sandbox.spy(Hackmud.db, "us");
+            clock = sinon.useFakeTimers(now);
+            sandbox.stub(Hackmud.fs.lore, "data_check").returns({
+                answer: dataCheck.answerKey.DATA_CHECK
+            });
+
+        });
+
+        afterEach(() => {
+            sandbox.restore();
+            clock.restore();
+        });
+
+        it("should save answers to the database", () => {
+            const locks = [ ez21, ez35, ez40, c001, c002, c003, dataCheck ];
+            const loc = new Loc({ locks });
+
+            c002.unlock = () => {
+                clock.tick(5000);
+                return c002.getAnswerIsWrongTypeMsg("answer", "string");
+            };
+
+            tier1Cracker({}, { t: loc });
+
+            const answers = {
+                ...ez21.answerKey,
+                ...ez35.answerKey,
+                ...ez40.answerKey,
+                ...c001.answerKey
+            };
+
+            expect(dbSpy).to.have.been.calledWith(
+                { _id: loc.name },
+                { $set: { value: answers } }
+            );
+        });
+
+        it("should return the last lock response", () => {
+            const locks = [ ez21, ez35, ez40, c001, c002, c003, dataCheck ];
+            const loc = new Loc({ locks });
+
+            c002.unlock = () => {
+                clock.tick(5000);
+                return c002.getAnswerIsWrongTypeMsg("answer", "string");
+            };
+
+            const response = tier1Cracker({}, { t: loc });
+
+            expect(response).to.be.a("string");
+        });
     });
 
-    it("should crack the EZ_40 Lock", () => {
-        const loc = new Loc({ locks: [ ez40 ] });
-        const result = tier1Cracker({}, { t: loc });
+    context(`When the cracker encounters an unknown lock type`, () => {
+        const lock = new EZ_21();
+        lock.type = "FAKE_LOCK";
 
-        expect(result).to.include(ez40.getLockUnlockedMsg());
-    });
+        const loc = new Loc({ locks: [ lock ] });
+        const now = Date.now();
+        let clock;
+        const sandbox = sinon.createSandbox();
 
-    it("should crack the c001 Lock", () => {
-        const loc = new Loc({ locks: [ c001 ] });
-        const result = tier1Cracker({}, { t: loc });
+        before(() => {
+            clock = sinon.useFakeTimers(now);
 
-        expect(result).to.include(c001.getLockUnlockedMsg());
-    });
+            global._START = now;
+            stubMongo(sandbox);
+        });
 
-    it("should crack the c002 Lock", () => {
-        const loc = new Loc({ locks: [ c002 ] });
-        const result = tier1Cracker({}, { t: loc });
+        after(() => {
+            sandbox.restore();
+            clock.restore();
+        });
 
-        expect(result).to.include(c002.getLockUnlockedMsg());
-    });
+        it("should bail and return the last loc response", () => {
+            const response = tier1Cracker({}, { t: loc });
 
-    it("should crack the c003 Lock", () => {
-        const loc = new Loc({ locks: [ c003 ] });
-        const result = tier1Cracker({}, { t: loc });
+            expect(response).to.equal(
+                lock.getAccessDeniedMsg().join(EZ_21.MSG_LINE_SEPERATOR)
+            );
 
-        expect(result).to.include(c003.getLockUnlockedMsg());
-    });
-
-    it("should crack the l0cket Lock", () => {
-        const loc = new Loc({ locks: [ l0cket ] });
-        const result = tier1Cracker({}, { t: loc });
-
-        expect(result).to.include(l0cket.getLockUnlockedMsg());
-    });
-
-    it.skip("should crack the DATA_CHECK_V1 Lock", () => {
-        const loc = new Loc({ locks: [ dataCheckV1 ] });
-        tier1Cracker({}, { t: loc });
-
-        expect({ lookup: dataCheckV1.prompt }).to.deep.equal(Hackmud.fs.lore.data_check.getCall(0).args[0]);
-
-        // expect(Hackmud.fs.lore.data_check).to.have.been
-        //     .calledWith({ lookup: dataCheckV1.prompt });
-    });
-
-    context("when there are multiple locks", () => {
-        it("should crack all the locks", () => {
-            const loc = new Loc({ locks: [
-                ez21, ez35, ez40, c001, c002, c003
-            ] });
-            const result = tier1Cracker({}, { t: loc });
-
-            expect(result).to.include(ez21.getLockUnlockedMsg());
-            expect(result).to.include(ez35.getLockUnlockedMsg());
-            expect(result).to.include(ez40.getLockUnlockedMsg());
-            expect(result).to.include(c001.getLockUnlockedMsg());
-            expect(result).to.include(c002.getLockUnlockedMsg());
-            expect(result).to.include(c003.getLockUnlockedMsg());
-            expect(result).to.include(loc.CONNECTION_TERMINATED);
         });
     });
 });

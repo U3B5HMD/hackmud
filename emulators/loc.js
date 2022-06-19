@@ -7,13 +7,16 @@ class Loc {
     /**
      * @param {Object} config Configuration for the loc.
      * @param {Array} config.locks The locks that defend the loc.
+     * @param {String} [config.name="loc"] The script name of the loc.
      */
     constructor (config) {
         const {
-            locks
+            locks,
+            name = "loc"
         } = config;
 
         this.locks = locks;
+        this.name = name;
 
         this.CONNECTION_TERMINATED = "`rConnection` Terminated";
     }

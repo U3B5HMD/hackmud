@@ -6,6 +6,9 @@
     ],
     "package": "./package.json",
     "require": "@babel/register",
+    "globals": [
+        "_START"
+    ],
     "sourceMaps": true,
     "spec": [
         "test/**/*.spec.js"

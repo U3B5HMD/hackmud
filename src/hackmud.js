@@ -17,12 +17,18 @@ class Hackmud {
     static D = val => {};
     static db = {
         // eslint-disable-next-line no-unused-vars
-        f: query => ({
+        f: () => ({
             array: () => [],
-            first: () => ({})
-        })
+            first: () => {}
+        }),
+        us: () => {}
     };
     static fs = {
+        lore: {
+            data_check: config => ({
+                answer: "loremipsum"
+            })
+        },
         scripts: {
             /**
              * Returns a list of FULLSEC sectors or FULLSEC scripts

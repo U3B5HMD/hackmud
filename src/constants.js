@@ -67,3 +67,11 @@ export const securityLevelNames = [
 ];
 
 export const configDirectory = path.resolve(__dirname, "../hackmud");
+
+export const lockConstants = {
+    E: unlockCommands,
+    d: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ],
+    e: primes,
+    l: l0ckets,
+    c: colors
+};
