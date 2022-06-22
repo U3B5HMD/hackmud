@@ -722,7 +722,8 @@ market.sell{i: 1, cost: "1KGC", description: "my fave upgrade", no_notify: false
 ```
 
 Putting an item up for sale costs 1000 GC or 5 percent of the asking price
-(whichever is larger).
+(whichever is larger). When the item sells, there's a 10% fee based on the sale
+price.
 
 **Selling Multiple Items at Once:**
 

@@ -20,6 +20,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Moved `under-500-character` crackers to root `crackers/` folder (Breaking
     Change)
   - Made Tier 1 lock cracker stateful
+  - Updated README to cover the comission price of an item when it sells on the
+    market.
 
 ### Fixed
   - `DATA_CHECK` lock not returning questions when called
