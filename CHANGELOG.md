@@ -30,6 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
   - Deleted `crackers/tier1-cracker.js` (Breaking Change)
+  - Type checking via `jsconfig` (Breaking Change)
 
 ## 1.10.0 - 2022-06-04
 
