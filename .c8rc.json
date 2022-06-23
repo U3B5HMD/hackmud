@@ -9,7 +9,8 @@
         "tools/**/*.js"
     ],
     "exclude": [
-        "test/*.js"
+        "test/*.js",
+        "src/types.js"
     ],
     "excludeNodeModules": true,
     "functions": 100,
