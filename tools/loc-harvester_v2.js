@@ -1,5 +1,3 @@
-import Hackmud from "../src/hackmud";
-
 export default function locHarvester (context, args) {
     let call = params => args.t.call(params || {}),
         locs = [],

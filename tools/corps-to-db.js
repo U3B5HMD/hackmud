@@ -2,7 +2,6 @@
 /**
  * @filedesc Updates a user's MongoDB with the list of known corporations.
  */
-import Hackmud from "../src/hackmud";
 
 export default function corporations () {
     Hackmud.db.us(

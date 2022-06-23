@@ -5,9 +5,13 @@
         "node_modules"
     ],
     "package": "./package.json",
-    "require": "@babel/register",
+    "require": [
+        "@babel/register",
+        "./test/hooks.js"
+    ],
     "globals": [
-        "_START"
+        "_START",
+        "Hackmud"
     ],
     "sourceMaps": true,
     "spec": [

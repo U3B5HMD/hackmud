@@ -290,8 +290,7 @@ function (context, args) {
 Do:
 
 ```javascript
-import Hackmud from "../src/hackmud.js";
-
+// Hackmud is a global variable
 function (context, args) {
     const lib = Hackmud.fs.lib();
 }

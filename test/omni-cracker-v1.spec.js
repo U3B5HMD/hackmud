@@ -6,41 +6,15 @@ import EZ_21 from "../emulators/ez-21.js";
 import EZ_35 from "../emulators/ez-35.js";
 import EZ_40 from "../emulators/ez-40.js";
 import L0cket from "../emulators/l0cket.js";
+import { lockConstants } from "../src/constants.js";
 
-import Hackmud from "../src/hackmud.js";
 import tier1Cracker from "../crackers/omni-cracker-v1.js";
 import chai, { expect } from "chai";
 import sinon from "sinon";
 import sinonChai from "sinon-chai";
 import { default as DATA_CHECK_V1 } from "../emulators/data-check.js";
-import { lockConstants } from "../src/constants.js";
 
 chai.use(sinonChai);
-
-const stubMongo = (sandbox, previousAnswers) => {
-    const stub = sandbox.stub(Hackmud.db, "f")
-        .returns({
-            first: () => {},
-            array: () => [ ]
-        });
-
-    stub.withArgs({ _id: "constants" })
-        .returns({
-            first: () => lockConstants,
-            array: () => [ lockConstants ]
-        });
-
-    if (previousAnswers) {
-        stub
-            .withArgs({ _id: "loc" })
-            .returns({
-                first: () => previousAnswers,
-                array: () => [ previousAnswers ]
-            });
-    }
-
-    return stub;
-};
 
 const basicLockTest = lock => {
     context(`When the loc has a single ${lock.type} lock`, () => {
@@ -53,7 +27,16 @@ const basicLockTest = lock => {
             clock = sinon.useFakeTimers(now);
 
             global._START = now;
-            stubMongo(sandbox);
+            sandbox.stub(Hackmud.db, "f")
+                .returns({
+                    first: () => {},
+                    array: () => []
+                })
+                .withArgs({ _id: "constants" })
+                .returns({
+                    first: () => lockConstants,
+                    array: () => [ lockConstants ]
+                });
 
             if (lock.answerKey.DATA_CHECK) {
                 sandbox.stub(Hackmud.fs.lore, "data_check").returns({
@@ -104,7 +87,17 @@ describe("Omni Cracker", () => {
         dataCheck.answerKey.DATA_CHECK = "test";
 
         before(() => {
-            stubMongo(sandbox);
+            sandbox.stub(Hackmud.db, "f")
+                .returns({
+                    first: () => {},
+                    array: () => []
+                })
+                .withArgs({ _id: "constants" })
+                .returns({
+                    first: () => lockConstants,
+                    array: () => [ lockConstants ]
+                });
+
             clock = sinon.useFakeTimers(now);
 
             global._START = now;
@@ -138,10 +131,24 @@ describe("Omni Cracker", () => {
         const sandbox = sinon.createSandbox();
 
         before(() => {
-            locSpy = sinon.spy(loc, "call");
+            locSpy = sandbox.spy(loc, "call");
 
             global._START = Date.now();
-            stubMongo(sandbox, ez21.answerKey);
+            sandbox.stub(Hackmud.db, "f")
+                .returns({
+                    first: () => {},
+                    array: () => []
+                })
+                .withArgs({ _id: "constants" })
+                .returns({
+                    first: () => lockConstants,
+                    array: () => [ lockConstants ]
+                })
+                .withArgs({ _id: loc.name })
+                .returns({
+                    first: () => ez21.answerKey,
+                    array: () => [ ez21.answerKey ]
+                });
 
             tier1Cracker({}, { t: loc });
         });
@@ -166,14 +173,25 @@ describe("Omni Cracker", () => {
         const sandbox = sinon.createSandbox();
         const now = Date.now();
         let clock;
-        let dbSpy;
 
         dataCheck.answerKey.DATA_CHECK = "test";
 
         beforeEach(() => {
-            stubMongo(sandbox);
-            dbSpy = sandbox.spy(Hackmud.db, "us");
-            clock = sinon.useFakeTimers(now);
+            sandbox.stub(Hackmud.db, "us");
+
+            sandbox.stub(Hackmud.db, "f")
+                .returns({
+                    first: () => {},
+                    array: () => []
+                })
+                .withArgs({ _id: "constants" })
+                .returns({
+                    first: () => lockConstants,
+                    array: () => [ lockConstants ]
+                });
+
+            clock = sandbox.useFakeTimers(now);
+
             sandbox.stub(Hackmud.fs.lore, "data_check").returns({
                 answer: dataCheck.answerKey.DATA_CHECK
             });
@@ -203,7 +221,7 @@ describe("Omni Cracker", () => {
                 ...c001.answerKey
             };
 
-            expect(dbSpy).to.have.been.calledWith(
+            expect(Hackmud.db.us).to.have.been.calledWith(
                 { _id: loc.name },
                 { $set: { value: answers } }
             );
@@ -234,10 +252,19 @@ describe("Omni Cracker", () => {
         const sandbox = sinon.createSandbox();
 
         before(() => {
-            clock = sinon.useFakeTimers(now);
-
+            clock = sandbox.useFakeTimers(now);
             global._START = now;
-            stubMongo(sandbox);
+
+            sandbox.stub(Hackmud.db, "f")
+                .returns({
+                    first: () => {},
+                    array: () => []
+                })
+                .withArgs({ _id: "constants" })
+                .returns({
+                    first: () => lockConstants,
+                    array: () => [ lockConstants ]
+                });
         });
 
         after(() => {

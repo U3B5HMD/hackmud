@@ -4,6 +4,10 @@
         "mocha": true,
         "node": true
     },
+    "globals": {
+        "Hackmud": true,
+        "_START": true
+    },
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true

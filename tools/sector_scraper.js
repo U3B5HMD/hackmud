@@ -1,5 +1,3 @@
-import Hackmud from "../src/hackmud";
-
 /**
  * Scrapes sectors looking for corp scripts.
  * @param {Object} context Context.

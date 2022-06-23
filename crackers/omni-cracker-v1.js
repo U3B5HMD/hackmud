@@ -1,6 +1,3 @@
-/* global _START */
-import Hackmud from "../src/hackmud.js";
-
 /**
  * Cracks all Tier 1 locks.
  * @param {Object} context Context.

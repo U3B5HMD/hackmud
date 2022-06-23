@@ -191,9 +191,14 @@ describe("Lock", () => {
         const lock = new Lock(baseLockConfig);
         lock.isBreached = true;
 
-        sinon.spy(lock, "buildAnswerKey");
+        beforeEach(() => {
+            sinon.spy(lock, "buildAnswerKey");
+            lock.rotate();
+        });
 
-        lock.rotate();
+        afterEach(() => {
+            sinon.restore();
+        });
 
         it("should set 'isBreached' to false", () => {
             expect(lock.isBreached).to.equal(false);
