@@ -27,7 +27,7 @@ export default function conSpecCracker (context, args) {
         letters = response.split("\n")[0],
         pattern = conspecPatterns.find(conspecPattern =>
             conspecPattern.indexOf(letters) > -1
-        ) || "",
+        ),
         patternStart = pattern.indexOf(letters),
         nextLetters = pattern.substring(
             patternStart + letters.length,

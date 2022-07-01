@@ -66,6 +66,27 @@ export const securityLevelNames = [
     "NULLSEC"
 ];
 
+/**
+ * @memberof constants
+ * @type {String[]}
+ */
+export const conspecPatterns = [
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+    "ZYXWVUTSRQPONMLKJIHGFEDCBA",
+    "ACEGIKMOQSUWY",
+    "BDFHJLNPRTVXZ",
+    "ZXVTRPNLJHFDB",
+    "YWUSQOMKIGECA",
+    "ABEFIJMNQRUVYZ",
+    "BCFGJKNORSVWZ",
+    "CDGHKLOPSTWX",
+    "ADEHILMPQTUXY",
+    "ZYVURQNMJIFEBA",
+    "YXUTQPMLIHEDA",
+    "XWTSPOLKHGDC",
+    "ZWVSRONKJGFCB"
+];
+
 export const configDirectory = path.resolve(__dirname, "../hackmud");
 
 export const lockConstants = {
