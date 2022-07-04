@@ -1,0 +1,19 @@
+{
+    "plugins": [
+        "./devops/babel/strip-import-export.js",
+        "./devops/babel/strip-function-name.js"
+    ],
+    "presets": [
+        "minify",
+        [
+            "@babel/preset-env",
+            {
+                "targets": {
+                    "node": "16"
+                },
+                "modules": false
+            }
+        ]
+    ],
+    "comments": false
+}

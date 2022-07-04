@@ -35,7 +35,8 @@
     "lint": "eslint ./ --ignore-path .gitignore --fix",
     "prepublish": "rm -rf hackmud/**/scripts/*",
     "publish": "node ./devops/publish",
-    "test": "mocha"
+    "test": "mocha",
+    "test-watch": "mocha --watch --parallel"
   },
   "keywords": [
     "hackmud"
