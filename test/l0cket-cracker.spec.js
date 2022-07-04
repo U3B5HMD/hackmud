@@ -1,7 +1,7 @@
 import Loc from "../emulators/loc.js";
 import L0cket from "../emulators/l0cket.js";
 import EZ_21 from "../emulators/ez-21.js";
-import l0cketCracker from "../crackers/l0cket_cracker.js";
+import l0cketCracker from "../crackers/l0cket-cracker.js";
 import { expect } from "chai";
 
 describe("L0cket Cracker", () => {
