@@ -120,6 +120,9 @@ export default async function () {
         .filter(file => !file.isFile())
         .map(file => `${configDirectory}/${file.name}/scripts`);
 
+    // public dist folder
+    userFolders.push(nodePath.resolve(__dirname, "../dist"));
+
     let stats = [];
     let scriptsToTransform = [];
 
