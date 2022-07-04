@@ -27,12 +27,23 @@
     "sinon": "^14.0.0",
     "sinon-chai": "^3.7.0"
   },
+  "eslintIgnore": [
+    ".coverage/",
+    ".DS_STORE",
+    ".env",
+    ".nyc_output",
+    "dist/",
+    "docs/",
+    "hackmud/",
+    "node_modules",
+    "offline/"
+  ],
   "scripts": {
     "coverage": "c8 npm run test",
     "docs": "jsdoc -c .jsdocrc.json",
     "prestart": "npm ci",
     "start": "node ./start.js",
-    "lint": "eslint ./ --ignore-path .gitignore --fix",
+    "lint": "eslint ./ --fix",
     "prepublish": "rm -rf hackmud/**/scripts/* dist/*",
     "publish": "node ./devops/publish",
     "test": "mocha",
