@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## Unreleased
+## 2.0.0 - 2022-07-04
 
 ### Added
   - `CON_SPEC` lock cracker
@@ -24,7 +24,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     Change)
   - Made Tier 1 lock cracker stateful
   - Updated README to cover the comission price of an item when it sells on the
-    market.
+    market
+  - Updated README.md to cover how to use the repository scripts directly from
+    `dist/`
 
 ### Fixed
   - `DATA_CHECK` lock not returning questions when called

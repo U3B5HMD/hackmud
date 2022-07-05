@@ -126,7 +126,13 @@ upgrades or GC to `opnsrce`.
 
 ## Repository Requirements
 
-In order to use this repo, you'll need to have the following on your system:
+You do not need to install this repository to use the scripts it publishes. All
+published versions of the scripts are available in `dist/`. To use a script
+provided by the repo, simply copy and paste its contents into the `scripts`
+directory for your Hackmud user.
+
+In order to use this repo for development, you'll need to have the following on
+your system:
   - Node 16.13.1 or greater
   - The ability to run linux commands like `ln` on your system.
 
