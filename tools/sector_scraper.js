@@ -18,6 +18,8 @@ export default function (context, args) {
         runFullSec = params => Hackmud.fs.scripts.fullsec(params),
         runHighSec = params => Hackmud.fs.scripts.highsec(params),
         runMidSec = params => Hackmud.fs.scripts.midsec(params),
+        runLowSec = params => Hackmud.fs.scripts.lowsec(params),
+        runNullSec = params => Hackmud.fs.scripts.nullsec(params),
         i;
 
     const runSectors = sectorFunction => {
@@ -31,7 +33,7 @@ export default function (context, args) {
 
             scriptList = scriptList.concat(sectorFunction({ sector: sector })
                 .filter(scriptName =>
-                    /\.public|private|member/.exec(scriptName)
+                    /\.public|private|member|emp|internal/.exec(scriptName)
                 ));
 
             Hackmud.ms.chats.leave({ channel: sector });
@@ -50,6 +52,13 @@ export default function (context, args) {
         results = results.concat(
             runSectors(runHighSec),
             runSectors(runMidSec)
+        );
+    }
+
+    if (tier === 3) {
+        results = results.concat(
+            runSectors(runLowSec),
+            runSectors(runNullSec)
         );
     }
 

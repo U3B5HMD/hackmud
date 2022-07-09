@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Unrelased
 
 ### Added
+  - Tier 3 support to Sector Scraper
 
 ### Changed
   - Updated SCRIPTING_GUIDE.md to cover how to make scripts stateful
