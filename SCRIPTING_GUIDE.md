@@ -24,6 +24,7 @@ This guide will cover the basics of writing custom scripts in Hackmud.
   * [Use Minification](#use-minification)
 - [How to Test Your Script](#how-to-test-your-script)
 - [How to Debug Your Scripts In-game](#how-to-debug-your-scripts-in-game)
+- [How to Make Your Script Stateful](#how-to-make-your-script-stateful)
 - [How to Use This Repo to Write Scripts](#how-to-use-this-repo-to-write-scripts)
   * [Use Emulators for Testing](#use-emulators-for-testing)
   * [Use Hackmud Class for Calling Scriptors](#use-hackmud-class-for-calling-scriptors)
@@ -258,6 +259,49 @@ function(context, args) {
     return "hello world"; // will not be printed to the screen
 }
 ```
+
+## How to Make Your Script Stateful
+
+There are times where a script needs to be run multiple times in order to
+succeed. Maybe it's brute forcing a 4 digit number or simply ran out of time
+trying to guess the answer to an `acct_nt`. Out of the box, there's no way for a
+script to "remember" where it left off. Once it completes, all of a script's
+variables and values are erased from memory. In order to have a script continue
+where it left off, you'll need to store information in your database:
+
+```javascript
+let lastRun = #db.f({ _id: "loc" }).first() || {},
+    i = lastRun.pin || 0
+
+for(; i <= 9999; i++) {
+    if (Date.now() - _START >= 4000) {
+        #D(`Stopped at ${i} with ${username}`);
+        #D(response);
+        #db.us( { _id: "loc" },  {$set: {pin: i }});
+
+        return;
+    }
+
+    callLoc(pin: i);
+}
+```
+
+In this example, we're looping through a series of numbers and trying to brute
+force the pin number. At the beginning of the script, we check if we've run this
+script before. If we have, we set `i` to the value we last tried. If not, we
+default to 0. During the `for` loop, we check to see how long we've been
+running. If it's for more than four seconds, we save the last pin number we
+tried to the database and exist the function. Otherwise, we keep attempting to
+breach the loc.
+
+**A Note About When to Bail on a Script**
+
+Ideally, you would want to try and run the script up to the last possible second
+before exiting early. However, there are time where bailing early (around the
+2500ms mark) is actually _more_ efficient than trying to run up to 5000ms. Due
+to how some higher tier locs behave, running past 2400ms while attempting to
+brute force the loc can cause issues with Garbage collection and actually cause
+the script to take _longer_ than 5 seconds to finish.
 
 ## How to Use This Repo to Write Scripts
 
