@@ -24,6 +24,7 @@ This guide will cover the basics of writing custom scripts in Hackmud.
   * [Use Minification](#use-minification)
 - [How to Test Your Script](#how-to-test-your-script)
 - [How to Debug Your Scripts In-game](#how-to-debug-your-scripts-in-game)
+- [How to Parse Colored Text](#how-to-parse-colored-text)
 - [How to Make Your Script Stateful](#how-to-make-your-script-stateful)
 - [How to Use This Repo to Write Scripts](#how-to-use-this-repo-to-write-scripts)
   * [Use Emulators for Testing](#use-emulators-for-testing)
@@ -259,6 +260,33 @@ function(context, args) {
     return "hello world"; // will not be printed to the screen
 }
 ```
+
+## How to Parse Colored Text
+
+Often times, the text in the output of the script will be made up of different
+colors. For example, if the following text was cyan (#FF00EC):
+
+```
+Hello world!
+```
+
+You would not be able to capture it using the following regex:
+
+```javascript
+/(hello world!)/
+```
+
+This is because your script does not receive the rendered output when it calls a
+script. Instead, it receives the raw output that is eventually parsed by the
+game's UI. So, "Hello world!" is actually \`VHello world!\`. You would capture
+it with:
+
+```javascript
+/\`[A-Z](hello world!)\`/
+```
+
+See [_How to Change the Color of Your Chat Message Text_][10] for more
+information about how colors work.
 
 ## How to Make Your Script Stateful
 
@@ -504,3 +532,4 @@ If you need more information, check these out:
 [07]: https://www.mongodb.com/docs/manual/reference/method/db.collection.remove/
 [08]: https://www.mongodb.com/docs/manual/reference/method/db.collection.find/
 [09]: https://docs.mongodb.com/manual/reference/method/db.collection.update/
+[10]: ./README.md#how-to-change-the-color-of-your-chat-message-text
