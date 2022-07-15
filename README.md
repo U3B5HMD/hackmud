@@ -568,6 +568,7 @@ running). Plus, they're fun!
   - `skimmerite.learn_to_read, `
   - `suborbital_airlines.bulletin, `
   - `vacuum_rescue.responder`
+  - `packbot.color_calibration`
 
 ### Events
 
