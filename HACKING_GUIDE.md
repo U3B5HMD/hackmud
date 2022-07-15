@@ -12,6 +12,7 @@ review the instructions in the README.
   * [How to Search a Sector](#how-to-search-a-sector)
 - [How to Find Tier 1 Corporations in a Sector](#how-to-find-tier-1-corporations-in-a-sector)
 - [How to Find Tier 2 Corporations in a Sector](#how-to-find-tier-2-corporations-in-a-sector)
+- [How to Find Tier 3 Corporations in a Sector](#how-to-find-tier-3-corporations-in-a-sector)
 - [How to Hack a Tier 1 Corporation](#how-to-hack-a-tier-1-corporation)
   * [Get the Key and Secret Page](#get-the-key-and-secret-page)
   * [Get the Password](#get-the-password)
@@ -89,6 +90,14 @@ Tier2 corporations exist in `HIGHSEC` or `MIDSEC` sectors. Look for scripts that
 end in `.members`, `.members_only` or `.members_access`. Those are most likely
 going to be corporations. Keep in mind that `MIDSEC` scripts are capable of
 stealing GC.
+
+## How to Find Tier 3 Corporations in a Sector
+
+Tier 3 corporations exist in `LOWSEC` and `NULLSEC` sectors. Look for scripts
+that end in `.employee_login` `.emplogin`, `.employees`, `.priv`. Those
+are most likely going to be corporations. Keep in mind that `LOWSEC` and
+`NULLSEC` scripts are capable of stealing GC, exposing your loc, stealing
+upgrades, and more.
 
 ## How to Hack a Tier 1 Corporation
 

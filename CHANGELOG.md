@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
   - Tier 3 support to Sector Scraper
   - `packbot.color_calibration` quest to quest list in README.md
+  - How to find Tier 3 corps in sectors in HACKING_GUIDE.md
 
 ### Changed
   - Updated SCRIPTING_GUIDE.md to cover how to make scripts stateful
