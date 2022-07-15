@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
   - Updated SCRIPTING_GUIDE.md to cover how to make scripts stateful
   - Updated SCRIPTING_GUIDE.md to cover how parse colored text
+  - Improved Sector Scraper logic to better filter non-corp scripts
 
 ## 2.0.0 - 2022-07-04
 

@@ -31,10 +31,7 @@ export default function (context, args) {
 
             Hackmud.ms.chats.join({ channel: sector });
 
-            scriptList = scriptList.concat(sectorFunction({ sector: sector })
-                .filter(scriptName =>
-                    /\.public|private|member|emp|internal/.exec(scriptName)
-                ));
+            scriptList = scriptList.concat(sectorFunction({ sector: sector }));
 
             Hackmud.ms.chats.leave({ channel: sector });
         }
@@ -43,23 +40,22 @@ export default function (context, args) {
     };
 
     if (tier == 1) {
-        results = results.concat(
-            runSectors(runFullSec)
-        );
+        results = results
+            .concat(runSectors(runFullSec))
+            .filter(scriptName => /\.public$/.exec(scriptName));
+
     }
 
     if (tier == 2) {
-        results = results.concat(
-            runSectors(runHighSec),
-            runSectors(runMidSec)
-        );
+        results = results
+            .concat(runSectors(runHighSec), runSectors(runMidSec))
+            .filter(scriptName => /\.(?:members|members_only|member_access|memberlogin)$/.exec(scriptName));
     }
 
     if (tier === 3) {
-        results = results.concat(
-            runSectors(runLowSec),
-            runSectors(runNullSec)
-        );
+        results = results
+            .concat(runSectors(runLowSec), runSectors(runNullSec))
+            .filter(scriptName => /\.(?:employee_login|emplogin|employees|priv)$/.exec(scriptName));
     }
 
     return [ ...new Set(results) ].sort();
