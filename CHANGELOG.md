@@ -16,6 +16,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Updated SCRIPTING_GUIDE.md to cover how parse colored text
   - Improved Sector Scraper logic to better filter non-corp scripts
 
+## Fixed
+  - Formatting issues in HACKING_GUIDE.md
+
 ## 2.0.0 - 2022-07-04
 
 ### Added

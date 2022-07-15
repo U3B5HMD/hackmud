@@ -81,15 +81,16 @@ chats.leave{channel: "<sector>"}
 
 ## How to Find Tier 1 Corporations in a Sector
 
-Look for scripts that end in `.public`. Those are most likely going to be
-corporations.
+Tier 2 corporations exist in `FULLSEC` sectors. Look for scripts that end in
+`.public`. Those are most likely going to be corporations. Keep in mind that
+`FULLSEC` scripts are safe to run and can't damage your system.
 
 ## How to Find Tier 2 Corporations in a Sector
 
-Tier2 corporations exist in `HIGHSEC` or `MIDSEC` sectors. Look for scripts that
-end in `.members`, `.members_only` or `.members_access`. Those are most likely
-going to be corporations. Keep in mind that `MIDSEC` scripts are capable of
-stealing GC.
+Tier 2 corporations exist in `HIGHSEC` or `MIDSEC` sectors. Look for scripts that
+end in `.members`, `members_only`, `member_access`, or `memberlogin`. Those are
+most likely going to be corporations. Keep in mind that `MIDSEC` scripts are
+capable of stealing GC.
 
 ## How to Find Tier 3 Corporations in a Sector
 
@@ -266,8 +267,10 @@ enter in your username to continue.
 ```
 
 This is the splash page of the corporation. Every Tier 2 corporation has a
-similar layout. In order to proceed, you'll need to provide a `username` of a 
-user on the system. In order to get that username, you'll need to run the `.public` side of the corporation and look through the news updates for usernames. Usually, it looks something like this:
+similar layout. In order to proceed, you'll need to provide a `username` of a
+user on the system. In order to get that username, you'll need to run the
+`.public` side of the corporation and look through the news updates for
+usernames. Usually, it looks something like this:
 
 ```
 troy_cole of project Ap_calypse has come clean about the cancellation of her product.  'We just can't justify the cost.' she said.
@@ -277,12 +280,16 @@ We've got the bad guys on the run!' -- jamesb when being asked about new develop
 Anyone know what's up with knowdb? been acting weird lately. r0bertm4rley
 ```
 
+<details>
+    <summary>Spoilers:</summary>
+
 Possible usernames are `r0bertm4rley`, `troy_cole`, and `jamesb`. If none of
 these usernames work, you may need to go looking through other corp's `.public`
 scripts for usernames. I recommend you keep a list of usernames from each corp
 and try them all.
 
 Once you find a working username, you'll see something like this:
+</details>
 
 ```
 Emu-corp member panel
@@ -296,6 +303,8 @@ faq
 cust_service
 ```
 
+<details>
+    <summary>Spoilers:</summary>
 Run the `faq` command:
 
 ```javascript
@@ -303,13 +312,17 @@ emucorp.members{username: "troy_cole", navigation: "faq"}
 ```
 
 You'll see a list of questions and answers. Look for a command (cyan-colored
-text) that contains the phrase `qr` or `qrs`. Run that comamnd:
+text) that contains the phrase `qr` or `qrs`. Run that command:
 
 ```javascript
 emucorp.members{username: "troy_cole", navigation: "order_qrs"}
 ```
+</details>
 
 You'll see a bunch of QR codes that look like this:
+
+<details>
+    <summary>Spoilers:</summary>
 
 ```
 █▀▀▀▀▀█¨▄▄▄  ▄  ▀▄█▀ █  █  ▄█▄▀▄ ▀▄▄ █▄▄█ █▀▀▀▀▀█
@@ -338,16 +351,24 @@ You'll see a bunch of QR codes that look like this:
 █ ▀▀▀ █  █  █▄▀▄▀▄ ██▄ ██ ▀ █ ▄█▄ ▄█▄▀█ ▀ ▀  ▀▄▄ 
 ▀▀▀▀▀▀▀  ▀▀▀▀ §  ▀▀▀  © ▀▀▀  ▀▀ ▀   ▀▀  ▀   ▀▀▀▀▀
 ```
+</details>
 
 Scan each of these with your phone and you'll receive a JSON object for each QR
 code:
 
+<details>
+    <summary>Spoilers:</summary>
+
 ```json
 {"id":"yvct9y","user":"notused","packing_notes":"once yr pack'd,","xem":"ikhqy"}
 ```
+</details>
 
 The most important field is `id`. That's the ID of the order. Use it to contact
 customer service:
+
+<details>
+    <summary>Spoilers:</summary>
 
 ```javascript
 emucorp.members{username: "troy_cole", navigation: "cust_service", order_id: "yvct9y"}
@@ -355,6 +376,7 @@ emucorp.members{username: "troy_cole", navigation: "cust_service", order_id: "yv
 
 You'll receive some text along with a couple of Tier 2 NPC locs. If the loc
 names are corrupted, keep running the script until they become clear.
+</details>
 
 ```
 We cannot accept returns or refunds for this item.
@@ -567,9 +589,8 @@ Here is a list of Tier 2 corporations you can get Tier 2 NPCs locs from:
   - `tyrell`
   - `weyland`
 
-  Note: Tier 2 corporation extensions rotate between `members_only`,
-  `memberlogin`, and `memberaccess`. If you aren't able to find a script with
-  one extension, try another.
+  Note: Tier 2 corporation extensions rotate. If you aren't able to find a
+  script with one extension, try another.
 
 ## Quickly Farm GC from Tier 1 NPCs
 
