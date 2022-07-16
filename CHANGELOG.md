@@ -23,6 +23,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Removed
   - Removed _Quickly Farm GC from Tier 1 NPCs_ from HACKING_GUIDE.md (out of
     date)
+  - Removed list of Tier 2 corporations since they're the same as the Tier 1
+    corps with different extensions
 
 ## 2.0.0 - 2022-07-04
 

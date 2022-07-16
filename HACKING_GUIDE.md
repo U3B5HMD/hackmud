@@ -569,24 +569,6 @@ Here is a list of Tier 1 corporations you can get Tier 1 NPC locs from:
   - `world_pop.public`
 </details>
 
-Here is a list of Tier 2 corporations you can get Tier 2 NPCs locs from:
-
-  <details>
-    <summary>Spoilers:</summary>
-
-  - `bunnybat_hut`
-  - `cyberdine`
-  - `ellingson`
-  - `setec_gas`
-  - `soylentbean`
-  - `suborbital_airlines`
-  - `tandoori`
-  - `tyrell`
-  - `weyland`
-
-  Note: Tier 2 corporation extensions rotate. If you aren't able to find a
-  script with one extension, try another.
-
 ## How to Crack A Specific Lock
 
 To learn how to hack a specific lock, see [the lock guide][06].
