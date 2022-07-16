@@ -20,6 +20,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Formatting issues in HACKING_GUIDE.md
   - Formatting issues in README.md
 
+## Removed
+  - Removed _Quickly Farm GC from Tier 1 NPCs_ from HACKING_GUIDE.md (out of
+    date)
+
 ## 2.0.0 - 2022-07-04
 
 ### Added

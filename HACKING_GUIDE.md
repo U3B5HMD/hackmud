@@ -27,11 +27,6 @@ review the instructions in the README.
   * [MIDSEC](#midsec)
   * [LOWSEC/NULLSEC](#lowsec-nullsec)
 - [A List of Corporations](#a-list-of-corporations)
-- [Quickly Farm GC from Tier 1 NPCs](#quickly-farm-gc-from-tier-1-npcs)
-  * [Harvest the Locs](#harvest-the-locs)
-  * [Prepare the Commands](#prepare-the-commands)
-  * [Initialize a Hardline](#initialize-a-hardline)
-  * [Run the Commands](#run-the-commands)
 - [How to Crack A Specific Lock](#how-to-crack-a-specific-lock)
 - [How to Hack Other Players (PvP)](#how-to-hack-other-players-pvp)
   * [Finding Player Locs](#finding-player-locs)
@@ -591,84 +586,6 @@ Here is a list of Tier 2 corporations you can get Tier 2 NPCs locs from:
 
   Note: Tier 2 corporation extensions rotate. If you aren't able to find a
   script with one extension, try another.
-
-## Quickly Farm GC from Tier 1 NPCs
-
-I'll be the first to admit that getting 1 million GC to initialize your system
-is a nightmare and something that should be changed about the game. The average
-Tier 1 NPC releases about 50K GC when breached. That means you'll need to breach
-roughly 20 NPCs just to reach Tier 1. Without scripting, this is an impossible
-task.
-
-This repo contains all the tools you'll need to rapidly farm Tier 1 NPCs.
-
-### Harvest the Locs
-
-First upload `loc_harvester` onto your system:
-
-```
-#up loc_harvester
-```
-
-It's less than 500 characters so you'll be able to use it without any upgrades.
-Next, use the harvester against the list of corps in this guide:
-
-```
-loc_harvester{t: #s.<corpName>.public}
-```
-
-Make sure you include the `#s` at the front of the script name. Run this script
-and it should output a bunch of locs. It may take a few attempts to get it to
-work. Copy the list of locs to another window. Keep doing this with each corp in
-the list. You should have a couple dozen locs by the end of it.
-
-Since an uninitialized system only has one script slot, you'll need to delete
-the `loc_harvester` before you can upload the Tier 1 cracker:
-
-```
-#up loc_harvester delete
-#up tier1_cracker
-```
-
-### Prepare the Commands
-
-Append the lock cracking command to the list of NPC locs you made earler. For
-example, if the first item in your list is this:
-
-```
-anonym_jrttl_znx87h.public_fftgy3
-```
-
-It becomes this:
-
-```
-tier1_cracker{t: #s.anonym_jrttl_znx87h.public_fftgy3}
-```
-
-### Initialize a Hardline
-
-Run:
-
-```
-kernel.hardline
-```
-
-Enter the numbers you see on the screen.
-
-### Run the Commands
-
-Grab the first item from your list of locs and paste it into the command line.
-If all goes according to plan, you should receive the GC for the NPC loc. If the
-cracker can't breach a loc, delete that loc from your list, disconnect the
-hardline (`kernel.hardline{dc:true}`) and try again. You'll need to disconnect
-because you can't switch to a different loc during a hardline until after you've
-breached the previous one.
-
-If your loc name has corrupted characters (looks like a little square), just
-skip it and move on to the next one or attempt to guess the missing character.
-
-When breaching multiple locs in a single run, you'll only be able to connect
-to 4 locs before you have to disconnect your hardline and start again.
 
 ## How to Crack A Specific Lock
 
