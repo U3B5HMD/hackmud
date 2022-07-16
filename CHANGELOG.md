@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Fixed
   - Formatting issues in HACKING_GUIDE.md
+  - Formatting issues in README.md
 
 ## 2.0.0 - 2022-07-04
 

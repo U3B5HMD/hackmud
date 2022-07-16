@@ -499,10 +499,10 @@ covers everything it does), you can skip it by running:
 
 <details> 
     <summary>Spoilers:</summary>
-
-    ```javascript
-    sys.migrate{}
-    ```
+    
+```javascript
+sys.migrate{}
+```
 </details>
 
 This will immediately migrate your user out of the VLAN and into the main game.
