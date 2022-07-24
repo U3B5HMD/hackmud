@@ -1,0 +1,8 @@
+title: Hackmud Guide
+url: "https://hackmudguide.com"
+permalink: ":slug"
+repository: "opnsrce/hackmud"
+source: "./docs"
+plugins:
+- jekyll-remote-theme # add this line to the plugins list if you already have one
+remote_theme: just-the-docs/just-the-docs

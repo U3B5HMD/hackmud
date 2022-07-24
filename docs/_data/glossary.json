@@ -1,0 +1,5 @@
+{
+    "binmat": "A card game in hackmud discovered in the mallory_saves_fighting event.",
+    "botnet": "A network of bot brains that work together to achieve tasks. A single or multiple Out of Game bots can also be involved, normally to turn strings into scriptors.",
+    "breach": "A state of a user which can be viewed with sys.status caused by solving all locks on a user or by having that user call sys.breach."
+}
